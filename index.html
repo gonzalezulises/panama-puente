@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Graph ML para Clima Organizacional en Banca — Panamá Puente Digital 2026</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/theme/black.min.css">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<style>
+:root{
+  --r-background-color:#0a0e1a;
+  --r-main-font:'Outfit',sans-serif;
+  --r-heading-font:'Outfit',sans-serif;
+  --r-code-font:'JetBrains Mono',monospace;
+  --r-main-color:#e2e8f0;
+  --r-heading-color:#ffffff;
+  --r-link-color:#06d6a0;
+  --teal:#06d6a0;--amber:#fbbf24;--coral:#f97066;--violet:#a78bfa;--blue:#38bdf8;--rose:#fb7185;
+}
+.reveal{font-size:28px}
+.reveal .slides{text-align:left}
+.reveal .slides section{padding:40px 60px}
+.reveal h1{font-size:2.8em;font-weight:900;line-height:1.05;letter-spacing:-0.03em;margin-bottom:0.3em}
+.reveal h2{font-size:1.8em;font-weight:700;line-height:1.15;letter-spacing:-0.02em;margin-bottom:0.4em}
+.reveal h3{font-size:1.2em;font-weight:600;color:var(--teal);letter-spacing:0.02em;text-transform:uppercase;margin-bottom:0.3em}
+.reveal p{font-size:0.85em;line-height:1.6;color:#94a3b8;max-width:80%}
+.reveal .small{font-size:0.65em;color:#64748b}
+.reveal .mono{font-family:'JetBrains Mono',monospace}
+.reveal .teal{color:var(--teal)}
+.reveal .amber{color:var(--amber)}
+.reveal .coral{color:var(--coral)}
+.reveal .violet{color:var(--violet)}
+.reveal .blue{color:var(--blue)}
+
+/* Slide backgrounds */
+.reveal .slides section[data-state="title-slide"]{text-align:center;padding:0;display:flex!important;flex-direction:column;align-items:center;justify-content:center}
+.reveal .slides section[data-state="section-opener"]{text-align:center}
+.reveal .slides section[data-state="impact"]{text-align:center}
+
+/* Big number */
+.big-number{font-size:6em;font-weight:900;font-family:'JetBrains Mono',monospace;line-height:1;margin:0.2em 0}
+.big-number.teal{color:var(--teal)}
+.big-number.amber{color:var(--amber)}
+.big-number.coral{color:var(--coral)}
+
+/* Comparison layout */
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:30px}
+.compare-card{padding:30px;border-radius:16px;border:1px solid rgba(100,116,139,0.2)}
+.compare-card.old{background:rgba(249,112,102,0.06);border-color:rgba(249,112,102,0.2)}
+.compare-card.new{background:rgba(6,214,160,0.06);border-color:rgba(6,214,160,0.2)}
+.compare-card h4{font-size:0.85em;font-weight:600;margin-bottom:12px}
+.compare-card ul{font-size:0.7em;line-height:1.8;color:#94a3b8;list-style:none;padding:0}
+.compare-card ul li::before{content:'→ ';color:var(--teal)}
+.compare-card.old ul li::before{color:var(--coral)}
+
+/* Grid layouts */
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:30px}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-top:30px}
+.card{padding:24px;border-radius:12px;background:rgba(30,40,65,0.4);border:1px solid rgba(100,116,139,0.15)}
+.card h4{font-size:0.75em;font-weight:600;margin-bottom:8px;color:#e2e8f0}
+.card p{font-size:0.6em;color:#94a3b8;max-width:100%}
+.card .icon{font-size:1.5em;margin-bottom:8px}
+
+/* Concept cards */
+.concept-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:30px}
+.concept{padding:20px;border-radius:12px;text-align:center;border:1px solid rgba(100,116,139,0.15)}
+.concept .label{font-size:0.55em;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;margin-top:8px}
+.concept .desc{font-size:0.5em;color:#64748b;margin-top:4px;line-height:1.4}
+
+/* Timeline */
+.timeline{display:flex;gap:16px;margin-top:30px}
+.timeline-step{flex:1;padding:20px;border-radius:12px;background:rgba(30,40,65,0.4);border-left:3px solid var(--teal);position:relative}
+.timeline-step .num{font-family:'JetBrains Mono',monospace;font-size:0.6em;font-weight:700;color:var(--teal);margin-bottom:4px}
+.timeline-step h4{font-size:0.7em;font-weight:600;margin-bottom:6px}
+.timeline-step p{font-size:0.55em;color:#94a3b8;max-width:100%;line-height:1.5}
+
+/* Quote */
+.quote{font-size:1.3em;font-weight:300;font-style:italic;color:#e2e8f0;line-height:1.5;max-width:85%;margin:30px auto;text-align:center;position:relative;padding:0 40px}
+.quote::before,.quote::after{content:'"';font-size:2em;color:var(--teal);position:absolute;font-style:normal;font-weight:900;line-height:1}
+.quote::before{left:0;top:-10px}
+.quote::after{right:0;bottom:-20px}
+.quote-author{font-size:0.65em;color:#64748b;text-align:center;margin-top:12px;font-style:normal}
+
+/* Iframe container */
+.demo-frame{width:100%;height:500px;border:1px solid rgba(100,116,139,0.2);border-radius:12px;overflow:hidden;margin-top:20px}
+.demo-frame iframe{width:100%;height:100%;border:none}
+
+/* SVG inline diagrams */
+.diagram-container{width:100%;display:flex;justify-content:center;margin:20px 0}
+.diagram-container svg{max-width:100%}
+
+/* Provocation bar */
+.provocation{background:linear-gradient(90deg,rgba(6,214,160,0.1),rgba(56,189,248,0.1));border:1px solid rgba(6,214,160,0.2);border-radius:12px;padding:24px 30px;margin-top:24px}
+.provocation p{font-size:0.8em;color:#e2e8f0;max-width:100%;line-height:1.6}
+
+/* Brand footer */
+.brand-footer{position:fixed;bottom:12px;left:24px;font-size:11px;color:#475569;font-family:'JetBrains Mono',monospace;z-index:100;letter-spacing:0.04em}
+.brand-footer span{color:var(--teal)}
+
+/* Progress bar custom */
+.reveal .progress{height:3px;color:var(--teal)}
+.reveal .progress span{background:var(--teal)}
+
+/* Fragments smooth */
+.reveal .fragment{transition:all 0.4s ease}
+.reveal .fragment.fade-up{transform:translateY(20px)}
+.reveal .fragment.fade-up.visible{transform:translateY(0)}
+
+/* Animation for title */
+@keyframes glowPulse{0%,100%{text-shadow:0 0 20px rgba(6,214,160,0.2)}50%{text-shadow:0 0 40px rgba(6,214,160,0.4)}}
+.glow-text{animation:glowPulse 3s ease-in-out infinite}
+
+/* Mini graph animation */
+.mini-graph{width:100%;height:300px;margin:20px 0}
+</style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+
+<!-- =====================================================
+     ACT 0: TITLE
+     ===================================================== -->
+<section data-state="title-slide" data-background-gradient="radial-gradient(ellipse at 50% 50%, rgba(6,214,160,0.08) 0%, #0a0e1a 70%)">
+  <h3 style="color:var(--teal);font-size:0.6em;letter-spacing:0.15em;margin-bottom:16px">PANAMÁ PUENTE DIGITAL 2026</h3>
+  <h1 style="font-size:2.6em;max-width:90%;margin:0 auto" class="glow-text">Graph ML para<br>Clima Organizacional<br><span class="teal">en Banca</span></h1>
+  <p style="text-align:center;max-width:100%;margin-top:24px;font-size:0.7em">De encuestas individuales a inteligencia de red:<br>cómo los grafos revelan lo que las métricas tradicionales no ven.</p>
+  <p style="text-align:center;max-width:100%;margin-top:40px;font-size:0.6em;color:#64748b">
+    <strong style="color:#e2e8f0">Ulises González</strong> · Business Scientist · Rizo.ma<br>
+    <span class="mono" style="font-size:0.85em">ICF ACC · PMP® · MIT AI/ML</span>
+  </p>
+</section>
+
+<!-- =====================================================
+     ACT 1: THE PROBLEM (10 min)
+     ===================================================== -->
+<section data-state="section-opener" data-background-gradient="radial-gradient(ellipse at 30% 40%, rgba(249,112,102,0.06) 0%, #0a0e1a 60%)">
+  <h3>Acto I</h3>
+  <h2>El Punto Ciego</h2>
+  <p style="text-align:center;max-width:70%;margin:0 auto">Lo que las encuestas de clima no pueden ver.</p>
+</section>
+
+<section>
+  <h2>La paradoja del clima organizacional</h2>
+  <p>Medimos individuos. Gestionamos sistemas.</p>
+  <div class="compare fragment fade-up">
+    <div class="compare-card old">
+      <h4 class="coral">Lo que mide la encuesta</h4>
+      <ul>
+        <li>Satisfacción individual (1–5)</li>
+        <li>Percepción del líder directo</li>
+        <li>Intención de permanencia</li>
+        <li>Promedios por área</li>
+      </ul>
+    </div>
+    <div class="compare-card new">
+      <h4 class="teal">Lo que no puede ver</h4>
+      <ul>
+        <li>Quién sostiene la comunicación entre áreas</li>
+        <li>Qué pasa si esa persona se va</li>
+        <li>Dónde están los silos reales (no los formales)</li>
+        <li>Quién influye sin autoridad formal</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section data-state="impact">
+  <h3>El problema en un número</h3>
+  <div class="big-number coral fragment">80%</div>
+  <p style="text-align:center;max-width:70%;margin:10px auto 0;font-size:0.9em;color:#e2e8f0">de la dinámica organizacional vive en las <strong>relaciones</strong>,<br>no en las respuestas individuales.</p>
+  <p class="small" style="text-align:center;max-width:100%;margin-top:16px">Cross, Parker & Borgatti — "The Ties That Lead" (2004). Reconfirmado en Organizational Network Analysis (ONA), McKinsey & Deloitte (2019–2023).</p>
+</section>
+
+<section>
+  <h2>El organigrama miente</h2>
+  <p>La estructura formal no es la estructura real.</p>
+  <div class="grid-2 fragment fade-up">
+    <div>
+      <div id="orgChart" class="mini-graph"></div>
+      <p style="text-align:center;font-size:0.6em;color:#64748b;margin-top:8px">Estructura formal (organigrama)</p>
+    </div>
+    <div>
+      <div id="networkChart" class="mini-graph"></div>
+      <p style="text-align:center;font-size:0.6em;color:#64748b;margin-top:8px">Red informal real (quién habla con quién)</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>En banca, esto es crítico</h2>
+  <p>Los bancos son organizaciones altamente reguladas con silos naturales. Pero la velocidad de decisión depende de conexiones invisibles.</p>
+  <div class="grid-3 fragment fade-up">
+    <div class="card">
+      <div class="icon">⚡</div>
+      <h4>Velocidad de aprobación</h4>
+      <p>Un crédito corporativo cruza Riesgos, Legal, Cumplimiento y Comercial. La velocidad real depende de relaciones informales, no del workflow.</p>
+    </div>
+    <div class="card">
+      <div class="icon">🔗</div>
+      <h4>Single points of failure</h4>
+      <p>Personas que sostienen la coordinación entre áreas sin que nadie lo sepa. Su salida puede paralizar procesos.</p>
+    </div>
+    <div class="card">
+      <div class="icon">🏝️</div>
+      <h4>Islas de conocimiento</h4>
+      <p>Equipos que operan desconectados del resto. Duplican esfuerzo, pierden contexto, generan fricción con el cliente.</p>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================
+     ACT 2: THE LENS (10 min)
+     ===================================================== -->
+<section data-state="section-opener" data-background-gradient="radial-gradient(ellipse at 60% 50%, rgba(6,214,160,0.06) 0%, #0a0e1a 60%)">
+  <h3>Acto II</h3>
+  <h2>La Nueva Lente</h2>
+  <p style="text-align:center;max-width:70%;margin:0 auto">Graph ML: ver la organización como lo que es — una red.</p>
+</section>
+
+<section>
+  <h2>¿Qué es Graph ML?</h2>
+  <p>No es una herramienta. Es una <strong style="color:var(--teal)">forma de pensar</strong>.</p>
+  <div class="provocation fragment fade-up">
+    <p>Un <strong class="teal">grafo</strong> modela entidades (nodos) y sus relaciones (aristas). <strong>Graph ML</strong> aplica machine learning sobre esta estructura para descubrir patrones que no existen en datos tabulares: comunidades ocultas, influencia indirecta, vulnerabilidades estructurales.</p>
+  </div>
+  <div class="concept-grid fragment fade-up" style="margin-top:24px">
+    <div class="concept" style="border-color:rgba(6,214,160,0.3)">
+      <div style="font-size:1.8em">🔵</div>
+      <div class="label teal">Nodos</div>
+      <div class="desc">Personas, roles, equipos</div>
+    </div>
+    <div class="concept" style="border-color:rgba(251,191,36,0.3)">
+      <div style="font-size:1.8em">🔗</div>
+      <div class="label amber">Aristas</div>
+      <div class="desc">Comunicación, colaboración, confianza</div>
+    </div>
+    <div class="concept" style="border-color:rgba(167,139,250,0.3)">
+      <div style="font-size:1.8em">🎯</div>
+      <div class="label violet">Centralidad</div>
+      <div class="desc">Quién importa y por qué</div>
+    </div>
+    <div class="concept" style="border-color:rgba(56,189,248,0.3)">
+      <div style="font-size:1.8em">🏘️</div>
+      <div class="label blue">Comunidades</div>
+      <div class="desc">Grupos reales vs formales</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Las métricas que importan</h2>
+  <p>Tres lentes para tres preguntas diferentes.</p>
+  <div class="grid-3 fragment fade-up" style="margin-top:24px">
+    <div class="card" style="border-left:3px solid var(--amber)">
+      <h4 class="amber">Intermediación <span class="mono small">(betweenness)</span></h4>
+      <p style="font-size:0.65em;line-height:1.6"><strong style="color:#e2e8f0">¿Quién es puente?</strong><br>Personas que conectan grupos que de otro modo estarían desconectados. Si se van, la red se fragmenta.</p>
+    </div>
+    <div class="card" style="border-left:3px solid var(--violet)">
+      <h4 class="violet">Influencia <span class="mono small">(eigenvector)</span></h4>
+      <p style="font-size:0.65em;line-height:1.6"><strong style="color:#e2e8f0">¿Quién amplifica?</strong><br>No solo cuántas conexiones tiene, sino cuán bien conectados están sus contactos. Influencia de segundo orden.</p>
+    </div>
+    <div class="card" style="border-left:3px solid var(--teal)">
+      <h4 class="teal">Grado <span class="mono small">(degree)</span></h4>
+      <p style="font-size:0.65em;line-height:1.6"><strong style="color:#e2e8f0">¿Quién conecta más?</strong><br>Número de relaciones directas. Simple pero poderoso: detecta hubs y nodos aislados en segundos.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Human Analytics: el puente</h2>
+  <p>De "la gente está desmotivada" a diagnósticos estructurales accionables.</p>
+  <div class="compare fragment fade-up">
+    <div class="compare-card old">
+      <h4 class="coral">People Analytics tradicional</h4>
+      <ul>
+        <li>"El engagement está en 3.2/5"</li>
+        <li>"El 40% considera irse en 12 meses"</li>
+        <li>"Cumplimiento tiene el peor clima"</li>
+        <li>Recomendación: team building + coaching</li>
+      </ul>
+    </div>
+    <div class="compare-card new">
+      <h4 class="teal">Human Analytics con Graph ML</h4>
+      <ul>
+        <li>"3 clusters desconectados del liderazgo"</li>
+        <li>"2 brokers informales sostienen 60% de la comunicación cross-área"</li>
+        <li>"Cumplimiento está aislado de TI — origen de la fricción"</li>
+        <li>Recomendación: reconectar nodos específicos</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================
+     ACT 3: THE IMPLEMENTATION (15 min)
+     ===================================================== -->
+<section data-state="section-opener" data-background-gradient="radial-gradient(ellipse at 40% 60%, rgba(56,189,248,0.06) 0%, #0a0e1a 60%)">
+  <h3>Acto III</h3>
+  <h2>Implementación Real</h2>
+  <p style="text-align:center;max-width:70%;margin:0 auto">De la teoría al impacto: Graph ML en un banco panameño.</p>
+</section>
+
+<section>
+  <h2>El contexto</h2>
+  <p>Un banco en Panamá con ~600 colaboradores. Encuesta de clima con buenos puntajes generales, pero síntomas persistentes de descoordinación.</p>
+  <div class="timeline fragment fade-up">
+    <div class="timeline-step">
+      <div class="num">01</div>
+      <h4>Recolección</h4>
+      <p>Encuesta de clima + cuestionario de red: "¿Con quién colaboras? ¿A quién consultas? ¿En quién confías?"</p>
+    </div>
+    <div class="timeline-step">
+      <div class="num">02</div>
+      <h4>Construcción del grafo</h4>
+      <p>Nodos = colaboradores. Aristas = relaciones ponderadas por frecuencia y tipo.</p>
+    </div>
+    <div class="timeline-step">
+      <div class="num">03</div>
+      <h4>Análisis</h4>
+      <p>Centralidad, detección de comunidades (Louvain), clustering, y correlación con variables de clima.</p>
+    </div>
+    <div class="timeline-step">
+      <div class="num">04</div>
+      <h4>Intervención</h4>
+      <p>Acciones de diseño organizacional informadas por la estructura real de la red.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Lo que encontramos</h2>
+  <p>Los datos sintéticos del demo reflejan patrones reales observados:</p>
+  <div class="grid-2 fragment fade-up">
+    <div class="card" style="border-left:3px solid var(--coral)">
+      <h4>Hallazgo 1: Los brokers invisibles</h4>
+      <p>3 personas en niveles medios sostenían >50% de la comunicación entre departamentos. Ninguno aparecía en el organigrama como coordinador.</p>
+    </div>
+    <div class="card" style="border-left:3px solid var(--amber)">
+      <h4>Hallazgo 2: Silos reales ≠ silos formales</h4>
+      <p>Cumplimiento no estaba aislado por diseño, sino porque TI y Riesgos habían creado canales paralelos que lo excluían.</p>
+    </div>
+    <div class="card" style="border-left:3px solid var(--violet)">
+      <h4>Hallazgo 3: Fragilidad estructural</h4>
+      <p>Simulamos la salida de los 3 brokers: la red pasaba de 1 componente conectado a 5 fragmentos.</p>
+    </div>
+    <div class="card" style="border-left:3px solid var(--teal)">
+      <h4>Hallazgo 4: Clima ≠ conexión</h4>
+      <p>Personas con alto puntaje de clima pero baja centralidad. Están contentas pero desconectadas: no crean ni transfieren valor organizacional.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DEMO SLIDE -->
+<section data-background-color="#0a0e1a">
+  <h2>Demo: Explora la red</h2>
+  <p>Datos sintéticos que reflejan la estructura de un banco panameño.</p>
+  <div class="demo-frame fragment fade-up">
+    <iframe src="demo/index.html?embed=true" allow="fullscreen"></iframe>
+  </div>
+  <p class="small" style="margin-top:8px">
+    <a href="demo/index.html" target="_blank" style="color:var(--teal)">→ Abrir demo completo en nueva pestaña</a>
+  </p>
+</section>
+
+<section data-state="impact">
+  <h3>Exploración guiada</h3>
+  <h2>¿Qué observamos?</h2>
+  <div class="grid-3 fragment fade-up" style="text-align:left">
+    <div class="card">
+      <h4 class="teal">1. Cambia la métrica</h4>
+      <p>Observa cómo cambia el tamaño de los nodos al pasar de Intermediación a Influencia. No son las mismas personas.</p>
+    </div>
+    <div class="card">
+      <h4 class="amber">2. Filtra por área</h4>
+      <p>Haz clic en un departamento en la leyenda. Observa qué tan conectado (o aislado) está del resto.</p>
+    </div>
+    <div class="card">
+      <h4 class="coral">3. Simula una salida</h4>
+      <p>Activa el modo Simulación. Haz clic en un broker. Observa la fragmentación.</p>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================
+     ACT 4: IMPLICATIONS (10 min)
+     ===================================================== -->
+<section data-state="section-opener" data-background-gradient="radial-gradient(ellipse at 50% 40%, rgba(167,139,250,0.06) 0%, #0a0e1a 60%)">
+  <h3>Acto IV</h3>
+  <h2>Más Allá del Clima</h2>
+  <p style="text-align:center;max-width:70%;margin:0 auto">Graph ML como infraestructura de inteligencia organizacional.</p>
+</section>
+
+<section>
+  <h2>Aplicaciones en banca más allá de clima</h2>
+  <div class="grid-3 fragment fade-up">
+    <div class="card" style="border-top:3px solid var(--coral)">
+      <h4>Detección de fraude</h4>
+      <p>Redes de transacciones anómalas. Los grafos detectan patrones de colusión que los modelos tabulares no ven.</p>
+    </div>
+    <div class="card" style="border-top:3px solid var(--amber)">
+      <h4>Flujo de conocimiento</h4>
+      <p>Mapear cómo fluye la información regulatoria. ¿Quién se entera primero? ¿Dónde se detiene?</p>
+    </div>
+    <div class="card" style="border-top:3px solid var(--violet)">
+      <h4>Riesgo de sucesión</h4>
+      <p>Si un VP se retira, ¿quién hereda sus relaciones? Graph ML puede simular escenarios de transición.</p>
+    </div>
+    <div class="card" style="border-top:3px solid var(--blue)">
+      <h4>Onboarding efectivo</h4>
+      <p>Conectar nuevos colaboradores con los nodos correctos desde el día 1, no solo con su jefe directo.</p>
+    </div>
+    <div class="card" style="border-top:3px solid var(--teal)">
+      <h4>Due diligence en fusiones</h4>
+      <p>Mapear las redes informales de ambas organizaciones antes de fusionar. Predecir choques culturales.</p>
+    </div>
+    <div class="card" style="border-top:3px solid var(--rose)">
+      <h4>Diseño de equipos</h4>
+      <p>Formar equipos basados en complementariedad de red, no solo competencias. Equipos que ya saben colaborar.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>¿Qué necesitas para empezar?</h2>
+  <div class="timeline fragment fade-up">
+    <div class="timeline-step" style="border-left-color:var(--teal)">
+      <div class="num teal">01</div>
+      <h4>Datos relacionales</h4>
+      <p>No necesitas big data. Una encuesta de red de 15 preguntas a 100+ personas genera un grafo accionable.</p>
+    </div>
+    <div class="timeline-step" style="border-left-color:var(--amber)">
+      <div class="num amber">02</div>
+      <h4>Capacidad analítica</h4>
+      <p>Python + NetworkX + D3.js. O herramientas como Polinode, OrgAnalytix. El stack importa menos que la pregunta.</p>
+    </div>
+    <div class="timeline-step" style="border-left-color:var(--violet)">
+      <div class="num violet">03</div>
+      <h4>Voluntad ejecutiva</h4>
+      <p>El hallazgo más difícil no es técnico: es que la red informal a veces contradice las decisiones de diseño del liderazgo.</p>
+    </div>
+  </div>
+</section>
+
+<section data-state="impact" data-background-gradient="radial-gradient(ellipse at 50% 50%, rgba(6,214,160,0.08) 0%, #0a0e1a 60%)">
+  <div class="quote fragment fade-up">
+    Si tu banco no mapea sus redes informales, está gestionando con un mapa incompleto.
+  </div>
+  <p class="quote-author fragment fade-up">Y en un sector donde la regulación exige conocer tus riesgos,<br>no conocer tu estructura real es un riesgo en sí mismo.</p>
+</section>
+
+<!-- CLOSING -->
+<section data-state="title-slide" data-background-gradient="radial-gradient(ellipse at 50% 50%, rgba(6,214,160,0.06) 0%, #0a0e1a 60%)">
+  <h3 style="color:var(--teal);font-size:0.6em;letter-spacing:0.15em;margin-bottom:20px">GRACIAS</h3>
+  <h1 style="font-size:2.2em">Ulises González</h1>
+  <p style="text-align:center;max-width:100%;font-size:0.75em;color:#94a3b8;margin-top:20px">
+    Business Scientist · Rizo.ma<br>
+    <span class="mono" style="font-size:0.85em;color:var(--teal)">ulises@rizo.ma</span>
+  </p>
+  <div style="margin-top:40px;display:flex;gap:20px;justify-content:center;flex-wrap:wrap">
+    <div class="card" style="padding:16px 24px;text-align:center">
+      <p style="font-size:0.55em;color:#64748b;max-width:100%">Demo interactivo</p>
+      <p style="font-size:0.6em;max-width:100%"><a href="demo/index.html" target="_blank" class="teal" style="text-decoration:none">→ Explorar el grafo</a></p>
+    </div>
+    <div class="card" style="padding:16px 24px;text-align:center">
+      <p style="font-size:0.55em;color:#64748b;max-width:100%">LinkedIn</p>
+      <p style="font-size:0.6em;max-width:100%"><a href="https://linkedin.com/in/ulisesgonzalez" target="_blank" class="teal" style="text-decoration:none">→ /in/ulisesgonzalez</a></p>
+    </div>
+  </div>
+</section>
+
+</div><!-- /slides -->
+</div><!-- /reveal -->
+
+<div class="brand-footer">rizo.ma <span>//</span> panamá puente digital 2026</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.js"></script>
+<script>
+Reveal.initialize({
+  hash:true,
+  slideNumber:'c/t',
+  transition:'fade',
+  transitionSpeed:'default',
+  backgroundTransition:'fade',
+  center:false,
+  width:1280,
+  height:720,
+  margin:0.04,
+  progress:true,
+  controls:true,
+  controlsTutorial:false,
+  keyboard:true,
+  overview:true,
+  touch:true
+});
+
+// Mini SVG diagrams for the "orgchart vs network" slide
+Reveal.on('slidechanged',event=>{
+  if(event.currentSlide.querySelector('#orgChart')){
+    drawOrgChart();
+    drawNetworkViz();
+  }
+});
+
+function drawOrgChart(){
+  const container=document.getElementById('orgChart');
+  if(!container||container.querySelector('svg'))return;
+  const w=container.clientWidth||400,h=280;
+  const svg=d3.select(container).append('svg').attr('viewBox',`0 0 ${w} ${h}`).attr('width','100%');
+
+  const levels=[
+    [{x:w/2,y:30,label:'CEO',color:'#f97066'}],
+    [{x:w*0.25,y:100,label:'VP Banca',color:'#38bdf8'},{x:w*0.5,y:100,label:'VP Ops',color:'#fbbf24'},{x:w*0.75,y:100,label:'VP Risk',color:'#a78bfa'}],
+    [{x:w*0.12,y:170,label:'',color:'#64748b'},{x:w*0.25,y:170,label:'',color:'#64748b'},{x:w*0.38,y:170,label:'',color:'#64748b'},
+     {x:w*0.5,y:170,label:'',color:'#64748b'},{x:w*0.62,y:170,label:'',color:'#64748b'},
+     {x:w*0.75,y:170,label:'',color:'#64748b'},{x:w*0.88,y:170,label:'',color:'#64748b'}],
+    [{x:w*0.08,y:240,label:'',color:'#475569'},{x:w*0.18,y:240,label:'',color:'#475569'},{x:w*0.28,y:240,label:'',color:'#475569'},{x:w*0.38,y:240,label:'',color:'#475569'},
+     {x:w*0.48,y:240,label:'',color:'#475569'},{x:w*0.58,y:240,label:'',color:'#475569'},
+     {x:w*0.68,y:240,label:'',color:'#475569'},{x:w*0.78,y:240,label:'',color:'#475569'},{x:w*0.88,y:240,label:'',color:'#475569'}]
+  ];
+
+  // Draw lines
+  const edges=[[0,0,1,0],[0,0,1,1],[0,0,1,2],
+    [1,0,2,0],[1,0,2,1],[1,0,2,2],[1,1,2,3],[1,1,2,4],[1,2,2,5],[1,2,2,6],
+    [2,0,3,0],[2,0,3,1],[2,1,3,2],[2,2,3,3],[2,3,3,4],[2,4,3,5],[2,5,3,6],[2,5,3,7],[2,6,3,8]];
+  edges.forEach(([l1,i1,l2,i2])=>{
+    const s=levels[l1][i1],t=levels[l2][i2];
+    svg.append('line').attr('x1',s.x).attr('y1',s.y).attr('x2',t.x).attr('y2',t.y)
+      .attr('stroke','rgba(100,116,139,0.2)').attr('stroke-width',1);
+  });
+  // Draw nodes
+  levels.flat().forEach(n=>{
+    svg.append('circle').attr('cx',n.x).attr('cy',n.y).attr('r',n.label?10:6)
+      .attr('fill',n.color).attr('opacity',0.7);
+    if(n.label)svg.append('text').attr('x',n.x).attr('y',n.y+24).text(n.label)
+      .attr('text-anchor','middle').attr('fill','#94a3b8').attr('font-size','10px').attr('font-family','Outfit');
+  });
+}
+
+function drawNetworkViz(){
+  const container=document.getElementById('networkChart');
+  if(!container||container.querySelector('svg'))return;
+  const w=container.clientWidth||400,h=280;
+  const svg=d3.select(container).append('svg').attr('viewBox',`0 0 ${w} ${h}`).attr('width','100%');
+
+  const colors=['#06d6a0','#38bdf8','#fbbf24','#a78bfa','#f97066'];
+  const nodes=[];
+  for(let i=0;i<30;i++){
+    nodes.push({x:w*0.15+Math.random()*w*0.7, y:30+Math.random()*220, color:colors[Math.floor(Math.random()*5)], r:3+Math.random()*8});
+  }
+  // Random edges
+  const edges=[];
+  for(let i=0;i<50;i++){
+    const a=Math.floor(Math.random()*30),b=Math.floor(Math.random()*30);
+    if(a!==b)edges.push([a,b]);
+  }
+  // Cross-group bridge edges (thicker)
+  const bridges=[[2,15],[7,22],[10,28]];
+
+  edges.forEach(([a,b])=>{
+    svg.append('line').attr('x1',nodes[a].x).attr('y1',nodes[a].y).attr('x2',nodes[b].x).attr('y2',nodes[b].y)
+      .attr('stroke','rgba(100,116,139,0.12)').attr('stroke-width',0.8);
+  });
+  bridges.forEach(([a,b])=>{
+    svg.append('line').attr('x1',nodes[a].x).attr('y1',nodes[a].y).attr('x2',nodes[b].x).attr('y2',nodes[b].y)
+      .attr('stroke','rgba(6,214,160,0.4)').attr('stroke-width',2);
+  });
+  nodes.forEach(n=>{
+    svg.append('circle').attr('cx',n.x).attr('cy',n.y).attr('r',n.r)
+      .attr('fill',n.color).attr('opacity',0.8);
+  });
+}
+</script>
+</body>
+</html>

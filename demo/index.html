@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Graph ML — Clima Organizacional en Banca | Demo Interactivo</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0e1a;--bg-card:rgba(15,20,35,0.85);--bg-card-hover:rgba(20,28,50,0.95);
+  --text:#e2e8f0;--text-muted:#64748b;--text-dim:#475569;
+  --accent-teal:#06d6a0;--accent-amber:#fbbf24;--accent-coral:#f97066;
+  --accent-violet:#a78bfa;--accent-blue:#38bdf8;--accent-rose:#fb7185;
+  --accent-lime:#84cc16;--accent-cyan:#22d3ee;
+  --border:rgba(100,116,139,0.2);--glow:rgba(6,214,160,0.15);
+}
+html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);font-family:'Outfit',sans-serif}
+body{display:grid;grid-template-columns:1fr 340px;grid-template-rows:64px 1fr;gap:0}
+
+/* Header */
+.header{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;padding:0 24px;border-bottom:1px solid var(--border);background:rgba(10,14,26,0.95);backdrop-filter:blur(20px);z-index:100}
+.header-brand{display:flex;align-items:center;gap:12px}
+.header-brand .logo-icon{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,var(--accent-teal),var(--accent-blue));display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:var(--bg)}
+.header-brand h1{font-size:15px;font-weight:600;letter-spacing:0.02em}
+.header-brand h1 span{color:var(--accent-teal);font-family:'JetBrains Mono',monospace;font-weight:500;font-size:13px}
+.header-controls{display:flex;gap:8px;align-items:center}
+
+/* Buttons */
+.btn{padding:7px 14px;border-radius:6px;border:1px solid var(--border);background:var(--bg-card);color:var(--text);font-family:'Outfit',sans-serif;font-size:12px;font-weight:500;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;gap:6px;white-space:nowrap}
+.btn:hover{background:var(--bg-card-hover);border-color:var(--accent-teal)}
+.btn.active{background:rgba(6,214,160,0.12);border-color:var(--accent-teal);color:var(--accent-teal)}
+.btn.danger{border-color:var(--accent-coral)}
+.btn.danger:hover{background:rgba(249,112,102,0.12);color:var(--accent-coral)}
+.btn.danger.active{background:rgba(249,112,102,0.15);border-color:var(--accent-coral);color:var(--accent-coral)}
+.btn-group{display:flex;gap:0}
+.btn-group .btn{border-radius:0}
+.btn-group .btn:first-child{border-radius:6px 0 0 6px}
+.btn-group .btn:last-child{border-radius:0 6px 6px 0}
+.btn-group .btn+.btn{border-left:0}
+
+/* Graph Area */
+.graph-area{position:relative;overflow:hidden;background:var(--bg)}
+.graph-area svg{width:100%;height:100%}
+.graph-area::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 40% 50%,rgba(6,214,160,0.03) 0%,transparent 60%);pointer-events:none;z-index:1}
+.graph-overlay{position:absolute;bottom:16px;left:16px;z-index:10;display:flex;gap:8px;flex-wrap:wrap}
+.graph-overlay .legend-item{display:flex;align-items:center;gap:6px;padding:5px 10px;background:var(--bg-card);border:1px solid var(--border);border-radius:5px;font-size:11px;font-weight:500;cursor:pointer;transition:all 0.2s;user-select:none}
+.graph-overlay .legend-item:hover{border-color:var(--text-muted)}
+.graph-overlay .legend-item.dimmed{opacity:0.3}
+.legend-dot{width:10px;height:10px;border-radius:50%}
+.zoom-controls{position:absolute;bottom:16px;right:356px;z-index:10;display:flex;flex-direction:column;gap:4px}
+.zoom-btn{width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:8px;border:1px solid var(--border);background:var(--bg-card);color:var(--text);font-size:18px;cursor:pointer;transition:all 0.2s;font-family:'JetBrains Mono',monospace}
+.zoom-btn:hover{background:var(--bg-card-hover);border-color:var(--accent-teal)}
+
+/* Sidebar */
+.sidebar{border-left:1px solid var(--border);background:rgba(10,14,26,0.98);overflow-y:auto;display:flex;flex-direction:column;gap:0}
+.sidebar::-webkit-scrollbar{width:4px}
+.sidebar::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+.panel{padding:16px 18px;border-bottom:1px solid var(--border)}
+.panel-title{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.1em;color:var(--text-muted);margin-bottom:10px;font-family:'JetBrains Mono',monospace}
+.metric-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.metric-card{padding:10px;border-radius:8px;background:rgba(30,40,65,0.5);border:1px solid var(--border)}
+.metric-value{font-size:22px;font-weight:700;font-family:'JetBrains Mono',monospace;line-height:1}
+.metric-label{font-size:10px;color:var(--text-muted);margin-top:4px;font-weight:500}
+.metric-card.highlight .metric-value{color:var(--accent-teal)}
+.metric-card.warn .metric-value{color:var(--accent-amber)}
+.metric-card.danger .metric-value{color:var(--accent-coral)}
+
+/* Node detail */
+.node-detail{display:none}
+.node-detail.visible{display:block}
+.node-header{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.node-avatar{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:var(--bg)}
+.node-name{font-size:15px;font-weight:600}
+.node-role{font-size:11px;color:var(--text-muted);margin-top:2px}
+.node-metrics{display:flex;flex-direction:column;gap:6px;margin-top:10px}
+.node-metric-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid var(--border)}
+.node-metric-row:last-child{border:none}
+.node-metric-name{font-size:11px;color:var(--text-muted)}
+.node-metric-val{font-size:12px;font-weight:600;font-family:'JetBrains Mono',monospace}
+.bar-bg{width:80px;height:4px;background:rgba(100,116,139,0.2);border-radius:2px;margin-left:8px;overflow:hidden}
+.bar-fill{height:100%;border-radius:2px;transition:width 0.4s ease}
+.node-metric-right{display:flex;align-items:center;gap:4px}
+
+/* Simulation panel */
+.sim-panel{background:rgba(249,112,102,0.04);border-bottom:1px solid rgba(249,112,102,0.15)}
+.sim-info{font-size:11px;color:var(--text-muted);line-height:1.5;margin-bottom:10px}
+.sim-result{display:none;margin-top:10px;padding:10px;border-radius:8px;background:rgba(249,112,102,0.08);border:1px solid rgba(249,112,102,0.2)}
+.sim-result.visible{display:block}
+.sim-result h4{font-size:11px;font-weight:600;color:var(--accent-coral);margin-bottom:6px;text-transform:uppercase;letter-spacing:0.05em}
+.sim-result p{font-size:12px;line-height:1.5;color:var(--text)}
+.sim-result .sim-metrics{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}
+.sim-metric{text-align:center;padding:6px;border-radius:6px;background:rgba(249,112,102,0.06)}
+.sim-metric .val{font-size:16px;font-weight:700;font-family:'JetBrains Mono',monospace;color:var(--accent-coral)}
+.sim-metric .lbl{font-size:9px;color:var(--text-muted);margin-top:2px;text-transform:uppercase;letter-spacing:0.05em}
+
+/* Tooltip */
+.tooltip{position:absolute;pointer-events:none;padding:8px 12px;background:rgba(15,20,35,0.95);border:1px solid var(--border);border-radius:6px;font-size:11px;z-index:200;opacity:0;transition:opacity 0.15s;backdrop-filter:blur(10px);max-width:200px}
+.tooltip.show{opacity:1}
+.tooltip strong{color:var(--accent-teal)}
+
+/* Animations */
+@keyframes pulse{0%,100%{opacity:0.6}50%{opacity:1}}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.panel{animation:fadeIn 0.3s ease}
+
+/* Responsive embed mode */
+.embed-mode .header{display:none}
+.embed-mode .sidebar{display:none}
+.embed-mode{grid-template-columns:1fr;grid-template-rows:1fr}
+.embed-mode .zoom-controls{right:16px}
+</style>
+</head>
+<body>
+<header class="header">
+  <div class="header-brand">
+    <div class="logo-icon">G</div>
+    <h1>Graph ML <span>// Clima Organizacional</span></h1>
+  </div>
+  <div class="header-controls">
+    <div class="btn-group">
+      <button class="btn active" data-metric="betweenness" onclick="switchMetric('betweenness')">Intermediación</button>
+      <button class="btn" data-metric="eigenvector" onclick="switchMetric('eigenvector')">Influencia</button>
+      <button class="btn" data-metric="degree" onclick="switchMetric('degree')">Conexiones</button>
+    </div>
+    <button class="btn" id="toggleLabels" onclick="toggleLabels()">Nombres</button>
+    <button class="btn danger" id="simBtn" onclick="toggleSimMode()">⚡ Simulación</button>
+    <button class="btn" onclick="resetView()">Reset</button>
+  </div>
+</header>
+
+<div class="graph-area" id="graphArea">
+  <svg id="graphSvg"></svg>
+  <div class="graph-overlay" id="legend"></div>
+  <div class="zoom-controls">
+    <button class="zoom-btn" onclick="zoomIn()">+</button>
+    <button class="zoom-btn" onclick="zoomOut()">−</button>
+    <button class="zoom-btn" onclick="zoomFit()" style="font-size:12px">⊙</button>
+  </div>
+  <div class="tooltip" id="tooltip"></div>
+</div>
+
+<aside class="sidebar">
+  <!-- Network Stats -->
+  <div class="panel">
+    <div class="panel-title">Métricas de Red</div>
+    <div class="metric-grid">
+      <div class="metric-card highlight"><div class="metric-value" id="mNodes">—</div><div class="metric-label">Colaboradores</div></div>
+      <div class="metric-card"><div class="metric-value" id="mEdges">—</div><div class="metric-label">Conexiones</div></div>
+      <div class="metric-card warn"><div class="metric-value" id="mDensity">—</div><div class="metric-label">Densidad</div></div>
+      <div class="metric-card"><div class="metric-value" id="mCommunities">—</div><div class="metric-label">Comunidades</div></div>
+      <div class="metric-card highlight"><div class="metric-value" id="mModularity">—</div><div class="metric-label">Modularidad</div></div>
+      <div class="metric-card danger"><div class="metric-value" id="mIsolated">—</div><div class="metric-label">Aislados</div></div>
+    </div>
+  </div>
+
+  <!-- Top Brokers -->
+  <div class="panel">
+    <div class="panel-title">Top Brokers (Puentes Informales)</div>
+    <div id="topBrokers"></div>
+  </div>
+
+  <!-- Node Detail -->
+  <div class="panel node-detail" id="nodeDetail">
+    <div class="panel-title">Detalle del Nodo</div>
+    <div class="node-header">
+      <div class="node-avatar" id="ndAvatar">—</div>
+      <div><div class="node-name" id="ndName">—</div><div class="node-role" id="ndRole">—</div></div>
+    </div>
+    <div class="node-metrics" id="ndMetrics"></div>
+  </div>
+
+  <!-- Simulation -->
+  <div class="panel sim-panel" id="simPanel" style="display:none">
+    <div class="panel-title">🔴 Simulación de Salida</div>
+    <div class="sim-info">Haz clic en un nodo para simular su salida de la organización. Observa cómo la red se fragmenta y qué conexiones se pierden.</div>
+    <div class="sim-result" id="simResult">
+      <h4>Impacto Estimado</h4>
+      <p id="simText"></p>
+      <div class="sim-metrics">
+        <div class="sim-metric"><div class="val" id="simLostConn">—</div><div class="lbl">Conexiones Perdidas</div></div>
+        <div class="sim-metric"><div class="val" id="simFragRisk">—</div><div class="lbl">Riesgo Fragmentación</div></div>
+        <div class="sim-metric"><div class="val" id="simOrphans">—</div><div class="lbl">Nodos Aislados</div></div>
+        <div class="sim-metric"><div class="val" id="simBridges">—</div><div class="lbl">Puentes Rotos</div></div>
+      </div>
+    </div>
+    <button class="btn" onclick="restoreSimulation()" style="margin-top:10px;width:100%;justify-content:center">Restaurar Red Original</button>
+  </div>
+
+  <!-- Insights -->
+  <div class="panel">
+    <div class="panel-title">Hallazgos Clave</div>
+    <div id="insights" style="font-size:12px;line-height:1.6;color:var(--text-muted)"></div>
+  </div>
+</aside>
+
+<script>
+// =========================================================
+// SYNTHETIC DATA GENERATOR — Banking Org Structure
+// =========================================================
+const DEPARTMENTS = [
+  { id:'banca_personal', name:'Banca Personal', color:'#06d6a0', size:18 },
+  { id:'banca_corp', name:'Banca Corporativa', color:'#38bdf8', size:14 },
+  { id:'riesgos', name:'Riesgos', color:'#fbbf24', size:12 },
+  { id:'operaciones', name:'Operaciones', color:'#f97066', size:15 },
+  { id:'ti', name:'Tecnología', color:'#a78bfa', size:10 },
+  { id:'cumplimiento', name:'Cumplimiento', color:'#fb7185', size:8 },
+  { id:'rrhh', name:'Recursos Humanos', color:'#84cc16', size:6 },
+  { id:'finanzas', name:'Finanzas', color:'#22d3ee', size:7 }
+];
+
+const ROLES = {
+  banca_personal:['Gerente de Sucursal','Ejecutivo Comercial','Asesor Financiero','Analista de Crédito','Oficial de Cuenta'],
+  banca_corp:['VP Banca Corporativa','Relationship Manager','Analista de Crédito Corp','Estructurador','Oficial de Negocio'],
+  riesgos:['Director de Riesgos','Analista de Riesgo Crédito','Analista de Riesgo Mercado','Oficial de Riesgo Operativo','Modelador'],
+  operaciones:['Jefe de Operaciones','Analista Operativo','Supervisor de Procesos','Oficial de Control','Ejecutor de Pagos'],
+  ti:['CTO','Arquitecto de Soluciones','Desarrollador Senior','DBA','Analista de Seguridad','DevOps'],
+  cumplimiento:['Oficial de Cumplimiento','Analista AML','Analista KYC','Auditor Interno','Oficial FATCA'],
+  rrhh:['Director de RRHH','BP de Talento','Analista de Clima','Coordinador de Capacitación','Especialista en Compensación'],
+  finanzas:['CFO','Controller','Analista Financiero','Contador Senior','Tesorero','Analista de Presupuesto']
+};
+
+const FIRST_NAMES = ['Ana','Carlos','María','José','Laura','Miguel','Sofía','Diego','Valentina','Andrés','Isabella','Fernando','Gabriela','Ricardo','Paola','Santiago','Camila','Eduardo','Daniela','Alejandro','Natalia','Roberto','Lucía','Marco','Andrea','Pablo','Carolina','Javier','Diana','Tomás','Valeria','Sergio','Claudia','Raúl','Mariana','Luis','Patricia','Héctor','Elena','Óscar','Adriana','Iván','Rosa','Felipe','Julia','Manuel','Karla','Jorge','Sara','David','Bianca','Emilio','Mónica','Arturo','Nicole','Alberto','Teresa','Rodrigo','Silvia','Hugo'];
+
+const LAST_NAMES = ['González','Rodríguez','Martínez','López','Hernández','Pérez','Sánchez','Ramírez','Torres','Flores','Rivera','Morales','Jiménez','Reyes','Díaz','Vargas','Castillo','Mendoza','Rojas','Ortega','Navarro','Guerrero','Ramos','Medina','Cruz','Aguilar','Herrera','Castro','Vega','Delgado'];
+
+function seededRandom(seed){let s=seed;return()=>{s=(s*16807)%2147483647;return(s-1)/2147483646}}
+const rand = seededRandom(42);
+function pick(arr){return arr[Math.floor(rand()*arr.length)]}
+function shuffle(arr){const a=[...arr];for(let i=a.length-1;i>0;i--){const j=Math.floor(rand()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+
+function generateOrgData(){
+  const nodes=[], edges=[];
+  let nodeId=0;
+  const deptNodes={};
+  const usedNames=new Set();
+
+  // Generate nodes
+  DEPARTMENTS.forEach(dept=>{
+    deptNodes[dept.id]=[];
+    const roles=shuffle(ROLES[dept.id]);
+    for(let i=0;i<dept.size;i++){
+      let name;
+      do{name=pick(FIRST_NAMES)+' '+pick(LAST_NAMES)}while(usedNames.has(name));
+      usedNames.add(name);
+      const role=roles[i%roles.length];
+      const level=role.startsWith('Director')||role.startsWith('VP')||role.startsWith('CTO')||role.startsWith('CFO')||role.startsWith('Jefe')?'senior':
+                   role.startsWith('Gerente')||role.startsWith('Supervisor')||role.startsWith('Controller')?'mid':'junior';
+      const climateScore=0.3+rand()*0.6;
+      nodes.push({id:nodeId,name,department:dept.id,deptName:dept.name,role,level,color:dept.color,climateScore,
+                   engagement:0.2+rand()*0.7, satisfaction:0.3+rand()*0.6});
+      deptNodes[dept.id].push(nodeId);
+      nodeId++;
+    }
+  });
+
+  // Intra-department edges (higher probability)
+  DEPARTMENTS.forEach(dept=>{
+    const dns=deptNodes[dept.id];
+    for(let i=0;i<dns.length;i++){
+      for(let j=i+1;j<dns.length;j++){
+        if(rand()<0.35){
+          const w=0.3+rand()*0.7;
+          edges.push({source:dns[i],target:dns[j],weight:w,type:'intra'});
+        }
+      }
+    }
+  });
+
+  // Inter-department edges (lower probability, creates bridges)
+  const deptIds=DEPARTMENTS.map(d=>d.id);
+  // Define natural cross-dept collaboration pairs
+  const crossPairs=[
+    ['banca_personal','riesgos'],['banca_corp','riesgos'],
+    ['banca_personal','operaciones'],['banca_corp','operaciones'],
+    ['ti','operaciones'],['ti','banca_personal'],['ti','banca_corp'],
+    ['cumplimiento','banca_personal'],['cumplimiento','banca_corp'],['cumplimiento','riesgos'],
+    ['rrhh','banca_personal'],['rrhh','operaciones'],
+    ['finanzas','banca_corp'],['finanzas','operaciones'],['finanzas','riesgos']
+  ];
+  crossPairs.forEach(([a,b])=>{
+    const na=deptNodes[a],nb=deptNodes[b];
+    // Create 2-5 cross connections per pair
+    const count=2+Math.floor(rand()*4);
+    for(let k=0;k<count;k++){
+      const src=pick(na),tgt=pick(nb);
+      if(!edges.find(e=>(e.source===src&&e.target===tgt)||(e.source===tgt&&e.target===src))){
+        edges.push({source:src,target:tgt,weight:0.2+rand()*0.5,type:'inter'});
+      }
+    }
+  });
+
+  // Create a few deliberate "super-connectors" / brokers
+  const brokerIndices = [
+    deptNodes['ti'][0], // CTO-type
+    deptNodes['rrhh'][0], // HR Director
+    deptNodes['operaciones'][2], // Mid-ops person who knows everyone
+  ];
+  brokerIndices.forEach(brokerId=>{
+    deptIds.forEach(dId=>{
+      if(nodes[brokerId].department!==dId && rand()<0.5){
+        const tgt=pick(deptNodes[dId]);
+        if(!edges.find(e=>(e.source===brokerId&&e.target===tgt)||(e.source===tgt&&e.target===brokerId))){
+          edges.push({source:brokerId,target:tgt,weight:0.4+rand()*0.4,type:'broker'});
+        }
+      }
+    });
+  });
+
+  // Create 3-4 isolated/barely connected nodes
+  const isolatedCandidates=nodes.filter(n=>n.level==='junior').slice(-4);
+  isolatedCandidates.forEach(n=>{
+    const existing=edges.filter(e=>e.source===n.id||e.target===n.id);
+    // Remove all but 0-1 edges
+    const toRemove=existing.slice(1);
+    toRemove.forEach(e=>{const idx=edges.indexOf(e);if(idx>-1)edges.splice(idx,1)});
+  });
+
+  return{nodes,edges};
+}
+
+// =========================================================
+// GRAPH ANALYTICS
+// =========================================================
+function computeMetrics(nodes, edges){
+  const n=nodes.length;
+  const adj={};
+  nodes.forEach(nd=>{adj[nd.id]=[]});
+  edges.forEach(e=>{
+    adj[e.source]=(adj[e.source]||[]);adj[e.source].push(e.target);
+    adj[e.target]=(adj[e.target]||[]);adj[e.target].push(e.source);
+  });
+
+  // Degree centrality
+  nodes.forEach(nd=>{nd.degree=(adj[nd.id]||[]).length; nd.degreeNorm=nd.degree/(n-1)});
+
+  // Betweenness centrality (Brandes algorithm simplified)
+  const betweenness={};
+  nodes.forEach(nd=>{betweenness[nd.id]=0});
+  nodes.forEach(s=>{
+    const S=[],P={},sigma={},d={};
+    nodes.forEach(t=>{P[t.id]=[];sigma[t.id]=0;d[t.id]=-1});
+    sigma[s.id]=1;d[s.id]=0;
+    const Q=[s.id];
+    while(Q.length){
+      const v=Q.shift();S.push(v);
+      (adj[v]||[]).forEach(w=>{
+        if(d[w]<0){d[w]=d[v]+1;Q.push(w)}
+        if(d[w]===d[v]+1){sigma[w]+=sigma[v];P[w].push(v)}
+      });
+    }
+    const delta={};nodes.forEach(nd=>{delta[nd.id]=0});
+    while(S.length){
+      const w=S.pop();
+      P[w].forEach(v=>{delta[v]+=sigma[v]/sigma[w]*(1+delta[w])});
+      if(w!==s.id)betweenness[w]+=delta[w];
+    }
+  });
+  const maxB=Math.max(...Object.values(betweenness),1);
+  nodes.forEach(nd=>{nd.betweenness=betweenness[nd.id];nd.betweennessNorm=betweenness[nd.id]/maxB});
+
+  // Eigenvector centrality (power iteration)
+  let eigen={};
+  nodes.forEach(nd=>{eigen[nd.id]=1/n});
+  for(let iter=0;iter<50;iter++){
+    const next={};let norm=0;
+    nodes.forEach(nd=>{
+      next[nd.id]=(adj[nd.id]||[]).reduce((s,nb)=>s+eigen[nb],0);
+      norm+=next[nd.id]**2;
+    });
+    norm=Math.sqrt(norm)||1;
+    nodes.forEach(nd=>{eigen[nd.id]=next[nd.id]/norm});
+  }
+  const maxE=Math.max(...Object.values(eigen),0.001);
+  nodes.forEach(nd=>{nd.eigenvector=eigen[nd.id];nd.eigenvectorNorm=eigen[nd.id]/maxE});
+
+  // Community detection (Louvain-like greedy modularity)
+  const communities=greedyCommunities(nodes,edges,adj);
+  nodes.forEach(nd=>{nd.community=communities[nd.id]});
+
+  // Modularity
+  const m=edges.length;
+  const ki={};nodes.forEach(nd=>{ki[nd.id]=nd.degree});
+  let Q=0;
+  edges.forEach(e=>{
+    if(communities[e.source]===communities[e.target]){
+      Q+=1-ki[e.source]*ki[e.target]/(2*m);
+    }
+  });
+  const modularity=Q/(2*m)||0;
+
+  const isolated=nodes.filter(nd=>nd.degree<=1).length;
+  const numCommunities=new Set(Object.values(communities)).size;
+
+  return{modularity:modularity.toFixed(2),isolated,numCommunities,adj};
+}
+
+function greedyCommunities(nodes,edges,adj){
+  const comm={};
+  nodes.forEach(nd=>{comm[nd.id]=nd.id});
+  // Simple: start with department-based and refine
+  nodes.forEach(nd=>{comm[nd.id]=DEPARTMENTS.findIndex(d=>d.id===nd.department)});
+  // One pass of greedy merge
+  const m=edges.length;
+  const ki={};nodes.forEach(nd=>{ki[nd.id]=nd.degree});
+  let improved=true;
+  for(let pass=0;pass<3&&improved;pass++){
+    improved=false;
+    shuffle(nodes.map(n=>n.id)).forEach(nid=>{
+      const neighborComms={};
+      (adj[nid]||[]).forEach(nb=>{
+        const c=comm[nb];
+        neighborComms[c]=(neighborComms[c]||0)+1;
+      });
+      let bestComm=comm[nid],bestGain=0;
+      Object.entries(neighborComms).forEach(([c,cnt])=>{
+        const gain=cnt/m;
+        if(gain>bestGain){bestGain=gain;bestComm=parseInt(c)}
+      });
+      if(bestComm!==comm[nid]){comm[nid]=bestComm;improved=true}
+    });
+  }
+  return comm;
+}
+
+// =========================================================
+// VISUALIZATION
+// =========================================================
+let graphData, simulation, svg, g, linkG, nodeG, labelG;
+let currentMetric='betweenness';
+let showLabels=false;
+let simMode=false;
+let removedNode=null;
+let originalData=null;
+let zoom;
+let highlightedDept=null;
+
+function init(){
+  graphData=generateOrgData();
+  originalData=JSON.parse(JSON.stringify(graphData));
+  const metrics=computeMetrics(graphData.nodes,graphData.edges);
+
+  // Update sidebar metrics
+  document.getElementById('mNodes').textContent=graphData.nodes.length;
+  document.getElementById('mEdges').textContent=graphData.edges.length;
+  document.getElementById('mDensity').textContent=(2*graphData.edges.length/(graphData.nodes.length*(graphData.nodes.length-1))).toFixed(3);
+  document.getElementById('mCommunities').textContent=metrics.numCommunities;
+  document.getElementById('mModularity').textContent=metrics.modularity;
+  document.getElementById('mIsolated').textContent=metrics.isolated;
+
+  // Top brokers
+  const brokers=[...graphData.nodes].sort((a,b)=>b.betweenness-a.betweenness).slice(0,5);
+  const brokersHtml=brokers.map((b,i)=>`
+    <div style="display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--border);cursor:pointer" onclick="focusNode(${b.id})">
+      <div style="width:22px;height:22px;border-radius:6px;background:${b.color};display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:var(--bg);flex-shrink:0">${i+1}</div>
+      <div style="flex:1;min-width:0">
+        <div style="font-size:12px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${b.name}</div>
+        <div style="font-size:10px;color:var(--text-muted)">${b.deptName}</div>
+      </div>
+      <div style="font-family:'JetBrains Mono';font-size:11px;font-weight:600;color:var(--accent-teal)">${b.betweennessNorm.toFixed(2)}</div>
+    </div>
+  `).join('');
+  document.getElementById('topBrokers').innerHTML=brokersHtml;
+
+  // Insights
+  const topDept=DEPARTMENTS.reduce((best,d)=>{
+    const deptNodes=graphData.nodes.filter(n=>n.department===d.id);
+    const avgBetw=deptNodes.reduce((s,n)=>s+n.betweennessNorm,0)/deptNodes.length;
+    return avgBetw>best.v?{d,v:avgBetw}:best;
+  },{d:null,v:0}).d;
+  const mostIsolatedDept=DEPARTMENTS.reduce((best,d)=>{
+    const deptNodes=graphData.nodes.filter(n=>n.department===d.id);
+    const avgDeg=deptNodes.reduce((s,n)=>s+n.degree,0)/deptNodes.length;
+    return avgDeg<best.v?{d,v:avgDeg}:best;
+  },{d:null,v:Infinity}).d;
+
+  document.getElementById('insights').innerHTML=`
+    <p style="margin-bottom:8px">▸ <strong>${topDept.name}</strong> concentra los nodos con mayor intermediación — actúa como puente crítico entre áreas.</p>
+    <p style="margin-bottom:8px">▸ <strong>${mostIsolatedDept.name}</strong> presenta el menor grado promedio de conexión, sugiriendo posible aislamiento informacional.</p>
+    <p style="margin-bottom:8px">▸ <strong>${metrics.isolated}</strong> colaboradores tienen ≤1 conexión — señal de desvinculación del tejido social.</p>
+    <p>▸ La modularidad de <strong>${metrics.modularity}</strong> indica una estructura de silos ${parseFloat(metrics.modularity)>0.4?'pronunciada':'moderada'} que puede impactar la velocidad de decisión.</p>
+  `;
+
+  // Build legend
+  const legendHtml=DEPARTMENTS.map(d=>`
+    <div class="legend-item" data-dept="${d.id}" onclick="toggleDeptHighlight('${d.id}')">
+      <div class="legend-dot" style="background:${d.color}"></div>${d.name}
+    </div>
+  `).join('');
+  document.getElementById('legend').innerHTML=legendHtml;
+
+  drawGraph();
+}
+
+function drawGraph(){
+  const container=document.getElementById('graphArea');
+  const W=container.clientWidth, H=container.clientHeight;
+  svg=d3.select('#graphSvg');
+  svg.selectAll('*').remove();
+
+  // Defs for glow
+  const defs=svg.append('defs');
+  const filter=defs.append('filter').attr('id','glow');
+  filter.append('feGaussianBlur').attr('stdDeviation','3').attr('result','blur');
+  const merge=filter.append('feMerge');
+  merge.append('feMergeNode').attr('in','blur');
+  merge.append('feMergeNode').attr('in','SourceGraphic');
+
+  // Zoom
+  zoom=d3.zoom().scaleExtent([0.2,5]).on('zoom',e=>{g.attr('transform',e.transform)});
+  svg.call(zoom);
+
+  g=svg.append('g');
+  linkG=g.append('g').attr('class','links');
+  nodeG=g.append('g').attr('class','nodes');
+  labelG=g.append('g').attr('class','labels');
+
+  // Links
+  const links=linkG.selectAll('line').data(graphData.edges).enter().append('line')
+    .attr('stroke',d=>d.type==='inter'||d.type==='broker'?'rgba(100,116,139,0.15)':'rgba(100,116,139,0.08)')
+    .attr('stroke-width',d=>0.5+d.weight*1.5);
+
+  // Nodes
+  const sizeScale=getNodeSizeScale();
+  const circles=nodeG.selectAll('circle').data(graphData.nodes).enter().append('circle')
+    .attr('r',d=>sizeScale(d))
+    .attr('fill',d=>d.color)
+    .attr('stroke',d=>d.color)
+    .attr('stroke-width',1.5)
+    .attr('stroke-opacity',0.3)
+    .attr('fill-opacity',0.85)
+    .attr('filter','url(#glow)')
+    .attr('cursor','pointer')
+    .on('mouseover',handleNodeHover)
+    .on('mouseout',handleNodeOut)
+    .on('click',handleNodeClick)
+    .call(d3.drag().on('start',dragStart).on('drag',dragging).on('end',dragEnd));
+
+  // Labels
+  const labels=labelG.selectAll('text').data(graphData.nodes).enter().append('text')
+    .text(d=>d.name.split(' ')[0])
+    .attr('font-size','8px')
+    .attr('font-family','Outfit, sans-serif')
+    .attr('fill','var(--text-muted)')
+    .attr('text-anchor','middle')
+    .attr('dy',d=>sizeScale(d)+12)
+    .attr('opacity',showLabels?0.7:0)
+    .attr('pointer-events','none');
+
+  // Force simulation
+  simulation=d3.forceSimulation(graphData.nodes)
+    .force('link',d3.forceLink(graphData.edges).id(d=>d.id).distance(d=>d.type==='intra'?50:100).strength(d=>d.weight*0.3))
+    .force('charge',d3.forceManyBody().strength(-120).distanceMax(300))
+    .force('center',d3.forceCenter(W/2,H/2))
+    .force('collision',d3.forceCollide().radius(d=>sizeScale(d)+4))
+    .force('x',d3.forceX(W/2).strength(0.03))
+    .force('y',d3.forceY(H/2).strength(0.03))
+    .on('tick',()=>{
+      links.attr('x1',d=>d.source.x).attr('y1',d=>d.source.y)
+           .attr('x2',d=>d.target.x).attr('y2',d=>d.target.y);
+      circles.attr('cx',d=>d.x).attr('cy',d=>d.y);
+      labels.attr('x',d=>d.x).attr('y',d=>d.y);
+    });
+
+  // Initial zoom fit after layout stabilizes
+  setTimeout(()=>zoomFit(),1500);
+}
+
+function getNodeSizeScale(){
+  return d=>{
+    const v=currentMetric==='betweenness'?d.betweennessNorm:
+             currentMetric==='eigenvector'?d.eigenvectorNorm:d.degreeNorm;
+    return 4+v*18;
+  };
+}
+
+// =========================================================
+// INTERACTIONS
+// =========================================================
+function handleNodeHover(event,d){
+  const tooltip=document.getElementById('tooltip');
+  const metricVal=currentMetric==='betweenness'?d.betweennessNorm.toFixed(3):
+                   currentMetric==='eigenvector'?d.eigenvectorNorm.toFixed(3):d.degreeNorm.toFixed(3);
+  tooltip.innerHTML=`<strong>${d.name}</strong><br>${d.role}<br>${d.deptName}<br><span style="color:var(--accent-teal)">${currentMetric}: ${metricVal}</span>`;
+  tooltip.classList.add('show');
+  tooltip.style.left=(event.clientX+12)+'px';
+  tooltip.style.top=(event.clientY-10)+'px';
+
+  // Highlight connected
+  const connected=new Set();
+  graphData.edges.forEach(e=>{
+    const sid=typeof e.source==='object'?e.source.id:e.source;
+    const tid=typeof e.target==='object'?e.target.id:e.target;
+    if(sid===d.id)connected.add(tid);
+    if(tid===d.id)connected.add(sid);
+  });
+  connected.add(d.id);
+
+  nodeG.selectAll('circle').attr('opacity',n=>connected.has(n.id)?1:0.1);
+  linkG.selectAll('line').attr('opacity',e=>{
+    const sid=typeof e.source==='object'?e.source.id:e.source;
+    const tid=typeof e.target==='object'?e.target.id:e.target;
+    return sid===d.id||tid===d.id?0.6:0.03;
+  });
+  labelG.selectAll('text').attr('opacity',n=>connected.has(n.id)&&showLabels?0.9:connected.has(n.id)?0.7:0);
+}
+
+function handleNodeOut(){
+  document.getElementById('tooltip').classList.remove('show');
+  const dimming=highlightedDept!==null;
+  nodeG.selectAll('circle').attr('opacity',d=>dimming&&d.department!==highlightedDept?0.15:0.85);
+  linkG.selectAll('line').attr('opacity',null).attr('stroke-opacity',null);
+  linkG.selectAll('line').attr('opacity',d=>{
+    if(!dimming)return null;
+    const sid=typeof d.source==='object'?d.source:graphData.nodes[d.source];
+    const tid=typeof d.target==='object'?d.target:graphData.nodes[d.target];
+    return(sid.department===highlightedDept||tid.department===highlightedDept)?0.4:0.03;
+  });
+  labelG.selectAll('text').attr('opacity',showLabels?0.7:0);
+}
+
+function handleNodeClick(event,d){
+  if(simMode){
+    simulateDeparture(d);
+    return;
+  }
+  showNodeDetail(d);
+}
+
+function showNodeDetail(d){
+  const panel=document.getElementById('nodeDetail');
+  panel.classList.add('visible');
+  document.getElementById('ndAvatar').textContent=d.name[0];
+  document.getElementById('ndAvatar').style.background=d.color;
+  document.getElementById('ndName').textContent=d.name;
+  document.getElementById('ndRole').textContent=d.role+' — '+d.deptName;
+
+  const metrics=[
+    {name:'Grado (conexiones)',val:d.degree,norm:d.degreeNorm,color:'var(--accent-teal)'},
+    {name:'Intermediación',val:d.betweennessNorm.toFixed(3),norm:d.betweennessNorm,color:'var(--accent-amber)'},
+    {name:'Influencia (eigenvector)',val:d.eigenvectorNorm.toFixed(3),norm:d.eigenvectorNorm,color:'var(--accent-violet)'},
+    {name:'Engagement',val:(d.engagement*100).toFixed(0)+'%',norm:d.engagement,color:'var(--accent-blue)'},
+    {name:'Satisfacción',val:(d.satisfaction*100).toFixed(0)+'%',norm:d.satisfaction,color:'var(--accent-lime)'},
+    {name:'Clima (self-report)',val:(d.climateScore*100).toFixed(0)+'%',norm:d.climateScore,color:'var(--accent-cyan)'},
+  ];
+
+  document.getElementById('ndMetrics').innerHTML=metrics.map(m=>`
+    <div class="node-metric-row">
+      <span class="node-metric-name">${m.name}</span>
+      <div class="node-metric-right">
+        <span class="node-metric-val" style="color:${m.color}">${m.val}</span>
+        <div class="bar-bg"><div class="bar-fill" style="width:${m.norm*100}%;background:${m.color}"></div></div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function focusNode(id){
+  const node=graphData.nodes.find(n=>n.id===id);
+  if(!node)return;
+  showNodeDetail(node);
+  // Zoom to node
+  const transform=d3.zoomIdentity.translate(
+    document.getElementById('graphArea').clientWidth/2-node.x*2,
+    document.getElementById('graphArea').clientHeight/2-node.y*2
+  ).scale(2);
+  svg.transition().duration(600).call(zoom.transform,transform);
+}
+
+// =========================================================
+// CONTROLS
+// =========================================================
+function switchMetric(metric){
+  currentMetric=metric;
+  document.querySelectorAll('[data-metric]').forEach(b=>{
+    b.classList.toggle('active',b.dataset.metric===metric);
+  });
+  const scale=getNodeSizeScale();
+  nodeG.selectAll('circle').transition().duration(400).attr('r',d=>scale(d));
+  labelG.selectAll('text').transition().duration(400).attr('dy',d=>scale(d)+12);
+}
+
+function toggleLabels(){
+  showLabels=!showLabels;
+  document.getElementById('toggleLabels').classList.toggle('active',showLabels);
+  labelG.selectAll('text').transition().duration(300).attr('opacity',showLabels?0.7:0);
+}
+
+function toggleDeptHighlight(deptId){
+  if(highlightedDept===deptId){
+    highlightedDept=null;
+    document.querySelectorAll('.legend-item').forEach(el=>el.classList.remove('dimmed'));
+    nodeG.selectAll('circle').transition().duration(300).attr('opacity',0.85);
+    linkG.selectAll('line').transition().duration(300).attr('opacity',null);
+  } else {
+    highlightedDept=deptId;
+    document.querySelectorAll('.legend-item').forEach(el=>{
+      el.classList.toggle('dimmed',el.dataset.dept!==deptId);
+    });
+    nodeG.selectAll('circle').transition().duration(300)
+      .attr('opacity',d=>d.department===deptId?1:0.08);
+    linkG.selectAll('line').transition().duration(300)
+      .attr('opacity',d=>{
+        const s=typeof d.source==='object'?d.source:graphData.nodes[d.source];
+        const t=typeof d.target==='object'?d.target:graphData.nodes[d.target];
+        return(s.department===deptId||t.department===deptId)?0.5:0.02;
+      });
+  }
+}
+
+function toggleSimMode(){
+  simMode=!simMode;
+  document.getElementById('simBtn').classList.toggle('active',simMode);
+  document.getElementById('simPanel').style.display=simMode?'block':'none';
+  if(!simMode)restoreSimulation();
+  // Change cursor
+  nodeG.selectAll('circle').attr('cursor',simMode?'crosshair':'pointer');
+}
+
+function simulateDeparture(d){
+  removedNode=d;
+  // Calculate impact
+  const connectedEdges=graphData.edges.filter(e=>{
+    const sid=typeof e.source==='object'?e.source.id:e.source;
+    const tid=typeof e.target==='object'?e.target.id:e.target;
+    return sid===d.id||tid===d.id;
+  });
+  const lostConnections=connectedEdges.length;
+
+  // Find unique neighbors
+  const neighbors=new Set();
+  connectedEdges.forEach(e=>{
+    const sid=typeof e.source==='object'?e.source.id:e.source;
+    const tid=typeof e.target==='object'?e.target.id:e.target;
+    if(sid!==d.id)neighbors.add(sid);
+    if(tid!==d.id)neighbors.add(tid);
+  });
+
+  // Check for bridges (edges whose removal disconnects components)
+  const remainingEdges=graphData.edges.filter(e=>!connectedEdges.includes(e));
+  const remainingNodes=graphData.nodes.filter(n=>n.id!==d.id);
+
+  // BFS to count components after removal
+  const visited=new Set();
+  let components=0;
+  let orphans=0;
+  remainingNodes.forEach(n=>{
+    if(!visited.has(n.id)){
+      components++;
+      const queue=[n.id];
+      visited.add(n.id);
+      let compSize=0;
+      while(queue.length){
+        const curr=queue.shift();compSize++;
+        remainingEdges.forEach(e=>{
+          const sid=typeof e.source==='object'?e.source.id:e.source;
+          const tid=typeof e.target==='object'?e.target.id:e.target;
+          if(sid===curr&&!visited.has(tid)){visited.add(tid);queue.push(tid)}
+          if(tid===curr&&!visited.has(sid)){visited.add(sid);queue.push(sid)}
+        });
+      }
+      if(compSize===1)orphans++;
+    }
+  });
+
+  const bridgesBroken=Math.max(0,components-1);
+  const fragRisk=d.betweennessNorm>0.5?'ALTO':d.betweennessNorm>0.2?'MEDIO':'BAJO';
+
+  // Visual: fade removed node and its edges
+  nodeG.selectAll('circle').transition().duration(500)
+    .attr('opacity',n=>n.id===d.id?0.05:neighbors.has(n.id)?0.5:0.85)
+    .attr('r',n=>n.id===d.id?2:getNodeSizeScale()(n));
+  linkG.selectAll('line').transition().duration(500)
+    .attr('opacity',e=>{
+      const sid=typeof e.source==='object'?e.source.id:e.source;
+      const tid=typeof e.target==='object'?e.target.id:e.target;
+      return(sid===d.id||tid===d.id)?0.02:null;
+    });
+
+  // Update sim panel
+  document.getElementById('simResult').classList.add('visible');
+  document.getElementById('simText').innerHTML=`La salida de <strong>${d.name}</strong> (${d.role}, ${d.deptName}) desconecta <strong>${lostConnections}</strong> relaciones directas y puede dejar <strong>${orphans}</strong> nodo(s) sin conexión.`;
+  document.getElementById('simLostConn').textContent=lostConnections;
+  document.getElementById('simFragRisk').textContent=fragRisk;
+  document.getElementById('simOrphans').textContent=orphans;
+  document.getElementById('simBridges').textContent=bridgesBroken;
+}
+
+function restoreSimulation(){
+  removedNode=null;
+  document.getElementById('simResult').classList.remove('visible');
+  nodeG.selectAll('circle').transition().duration(400)
+    .attr('opacity',0.85)
+    .attr('r',d=>getNodeSizeScale()(d));
+  linkG.selectAll('line').transition().duration(400).attr('opacity',null);
+}
+
+function zoomIn(){svg.transition().duration(300).call(zoom.scaleBy,1.4)}
+function zoomOut(){svg.transition().duration(300).call(zoom.scaleBy,0.7)}
+function zoomFit(){
+  const W=document.getElementById('graphArea').clientWidth;
+  const H=document.getElementById('graphArea').clientHeight;
+  const bounds=g.node().getBBox();
+  if(!bounds.width)return;
+  const scale=0.85*Math.min(W/bounds.width,H/bounds.height);
+  const tx=W/2-scale*(bounds.x+bounds.width/2);
+  const ty=H/2-scale*(bounds.y+bounds.height/2);
+  svg.transition().duration(600).call(zoom.transform,d3.zoomIdentity.translate(tx,ty).scale(scale));
+}
+
+function resetView(){
+  highlightedDept=null;
+  removedNode=null;
+  simMode=false;
+  document.getElementById('simBtn').classList.remove('active');
+  document.getElementById('simPanel').style.display='none';
+  document.querySelectorAll('.legend-item').forEach(el=>el.classList.remove('dimmed'));
+  nodeG.selectAll('circle').transition().duration(400).attr('opacity',0.85);
+  linkG.selectAll('line').transition().duration(400).attr('opacity',null);
+  zoomFit();
+}
+
+// Drag handlers
+function dragStart(event,d){if(!event.active)simulation.alphaTarget(0.1).restart();d.fx=d.x;d.fy=d.y}
+function dragging(event,d){d.fx=event.x;d.fy=event.y}
+function dragEnd(event,d){if(!event.active)simulation.alphaTarget(0);d.fx=null;d.fy=null}
+
+// Handle resize
+window.addEventListener('resize',()=>{if(simulation){simulation.force('center',d3.forceCenter(document.getElementById('graphArea').clientWidth/2,document.getElementById('graphArea').clientHeight/2));simulation.alpha(0.1).restart()}});
+
+// Embed mode check
+if(window.location.search.includes('embed=true')){document.body.classList.add('embed-mode')}
+
+// Init
+init();
+</script>
+</body>
+</html>
