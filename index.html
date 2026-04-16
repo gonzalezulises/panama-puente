@@ -279,8 +279,8 @@
 <section>
   <h2>Encuesta descriptiva vs. análisis inferencial</h2>
   <p>Schneider & Barbera (2014) señalan que las encuestas de clima típicamente reportan promedios sin validación estadística. ¿Qué cambia cuando se agrega rigor?</p>
-  <div class="compare fragment fade-up">
-    <div class="compare-card old">
+  <div class="compare">
+    <div class="compare-card old fragment fade-up" data-fragment-index="1">
       <h4 class="teal">Solo descriptivo</h4>
       <ul>
         <li>"El engagement es 4.2 — vamos bien"</li>
@@ -291,7 +291,7 @@
         <li>Recomendaciones genéricas por cada dimensión baja</li>
       </ul>
     </div>
-    <div class="compare-card new">
+    <div class="compare-card new fragment fade-up" data-fragment-index="2">
       <h4 class="teal">Con inferencia + ONA</h4>
       <ul>
         <li>Engagement con intervalo de confianza al 95% y margen de error calculado</li>
@@ -338,36 +338,6 @@
   </div>
 </section>
 
-<!-- Glossary -->
-<section>
-  <h2>Glosario técnico</h2>
-  <p>Referencia rápida de los términos especializados que usaremos en esta sesión.</p>
-  <div class="grid-2 fragment fade-up" style="margin-top:16px">
-    <div>
-      <p style="font-size:0.58em;line-height:2.2;max-width:100%">
-        <strong style="color:#e2e8f0">Likert</strong> — <em>Escala de respuesta ordinal (1-5) para medir grado de acuerdo.</em><br>
-        <strong style="color:#e2e8f0">UWES-9</strong> — <em>Utrecht Work Engagement Scale. Instrumento validado de 9 ítems que mide vigor, dedicación y absorción (Schaufeli et al., 2006).</em><br>
-        <strong style="color:#e2e8f0">Cronbach &alpha;</strong> — <em>Coeficiente de consistencia interna. Mide si los ítems de una dimensión miden el mismo constructo (&alpha; &ge; 0.70 = aceptable).</em><br>
-        <strong style="color:#e2e8f0">r<sub>wg</sub></strong> — <em>Índice de acuerdo intra-grupo (James et al., 1984). Valida que las respuestas dentro de un equipo son consistentes, no aleatorias.</em><br>
-        <strong style="color:#e2e8f0">KMO</strong> — <em>Kaiser-Meyer-Olkin. Mide si los datos son aptos para análisis factorial (&ge; 0.90 = excelente).</em><br>
-        <strong style="color:#e2e8f0">Welch t-test</strong> — <em>Test de diferencia de medias que no asume varianzas iguales. Determina si un cambio entre mediciones es estadísticamente real.</em><br>
-        <strong style="color:#e2e8f0">Cohen's d</strong> — <em>Tamaño del efecto. Cuantifica la magnitud práctica de una diferencia (0.2 = pequeño, 0.5 = medio, 0.8 = grande).</em>
-      </p>
-    </div>
-    <div>
-      <p style="font-size:0.58em;line-height:2.2;max-width:100%">
-        <strong style="color:#e2e8f0">CFA</strong> — <em>Análisis Factorial Confirmatorio. Valida si la estructura teórica del instrumento se confirma en los datos.</em><br>
-        <strong style="color:#e2e8f0">HLM</strong> — <em>Modelo Lineal Jerárquico. Descompone varianza entre niveles (individual vs departamental) vía ICC.</em><br>
-        <strong style="color:#e2e8f0">Pearson r</strong> — <em>Coeficiente de correlación lineal (-1 a +1). Con ajuste Olkin-Pratt para corregir sesgo en muestras pequeñas.</em><br>
-        <strong style="color:#e2e8f0">ONA</strong> — <em>Organizational Network Analysis. Mapeo de relaciones informales de colaboración y confianza.</em><br>
-        <strong style="color:#e2e8f0">Leiden</strong> — <em>Algoritmo de detección de comunidades que optimiza modularidad (Traag et al., 2019). Mejora de Louvain.</em><br>
-        <strong style="color:#e2e8f0">NMI</strong> — <em>Normalized Mutual Information. Mide estabilidad de comunidades entre múltiples ejecuciones (&ge; 0.80 = robusto).</em><br>
-        <strong style="color:#e2e8f0">Betweenness</strong> — <em>Centralidad de intermediación. Proporción de caminos más cortos que pasan por un nodo — identifica puentes.</em>
-      </p>
-    </div>
-  </div>
-</section>
-
 <!-- =====================================================
      ACT 2: THE SCIENCE (12 min)
      ===================================================== -->
@@ -383,31 +353,31 @@
 <section>
   <h2>Capa 1: El instrumento</h2>
   <p>Cada dimensión tiene fundamento teórico peer-reviewed. No es una encuesta genérica.</p>
-  <div class="grid-4 fragment fade-up">
-    <div class="card" style="border-top:2px solid var(--teal)">
+  <div class="grid-4">
+    <div class="card fragment fade-up" data-fragment-index="1" style="border-top:2px solid var(--teal)">
       <h4>Bienestar</h4>
       <p style="font-size:0.55em">Orgullo, Propósito, Seguridad, Balance vida-trabajo, Cuidado mutuo, Demandas</p>
       <p style="font-size:0.45em;color:#64748b;margin-top:4px">Mael & Ashforth · Deci & Ryan</p>
     </div>
-    <div class="card" style="border-top:2px solid var(--teal)">
+    <div class="card fragment fade-up" data-fragment-index="2" style="border-top:2px solid var(--teal)">
       <h4>Dirección</h4>
       <p style="font-size:0.55em">Liderazgo, Autonomía, Comunicación, Confianza, Claridad de rol</p>
       <p style="font-size:0.45em;color:#64748b;margin-top:4px">Bass & Avolio · Hackman & Oldham</p>
     </div>
-    <div class="card" style="border-top:2px solid var(--teal)">
+    <div class="card fragment fade-up" data-fragment-index="3" style="border-top:2px solid var(--teal)">
       <h4>Compensación</h4>
       <p style="font-size:0.55em">Sueldo, Reconocimiento, Beneficios, Equidad, No-discriminación</p>
       <p style="font-size:0.45em;color:#64748b;margin-top:4px">Adams · Eisenberger</p>
     </div>
-    <div class="card" style="border-top:2px solid var(--teal)">
+    <div class="card fragment fade-up" data-fragment-index="4" style="border-top:2px solid var(--teal)">
       <h4>Cultura</h4>
       <p style="font-size:0.55em">Cohesión, Innovación, Resultados, Desarrollo, Aprendizaje</p>
       <p style="font-size:0.45em;color:#64748b;margin-top:4px">Amabile · Senge · Edmondson</p>
     </div>
   </div>
   <div class="provocation fragment fade-up" style="margin-top:16px">
-    <p><strong class="teal">Engagement</strong> se mide como variable transversal con <strong>UWES-9</strong> (Utrecht Work Engagement Scale — Schaufeli et al., 2006): vigor, dedicación y absorción. No es un promedio de satisfacción.</p>
-    <p style="font-size:0.48em;color:#5a6a7a;margin-top:8px">Schaufeli, W. B. et al. (2006). "The Measurement of Work Engagement With a Short Questionnaire." Educational and Psychological Measurement.</p>
+    <p><strong class="teal">Engagement</strong> se mide con <strong>UWES-9</strong>*: vigor, dedicación y absorción. No es un promedio de satisfacción.</p>
+    <p style="font-size:0.45em;color:#5a6a7a;margin-top:8px">*UWES-9: <em>Utrecht Work Engagement Scale — instrumento validado de 9 ítems</em> (Schaufeli et al., 2006).</p>
   </div>
 </section>
 
@@ -415,16 +385,16 @@
 <section>
   <h2>Capa 2: La estadística rigurosa</h2>
   <p>Cada número tiene un intervalo de confianza, un test de significancia y una medida de efecto.</p>
-  <div class="grid-3 fragment fade-up" style="margin-top:20px">
-    <div class="card" style="border-left:3px solid var(--teal)">
+  <div class="grid-3" style="margin-top:20px">
+    <div class="card fragment fade-up" data-fragment-index="1" style="border-left:3px solid var(--teal)">
       <h4 class="teal">Confiabilidad</h4>
       <p style="font-size:0.6em;line-height:1.5"><strong style="color:#e2e8f0">Cronbach &alpha;</strong> — ¿Los ítems de una dimensión miden lo mismo?<br><strong style="color:#e2e8f0">r<sub>wg</sub></strong> (James et al., 1984) — ¿Hay acuerdo intra-grupo?<br><strong style="color:#e2e8f0">KMO</strong> — ¿Los datos son factorizables?</p>
     </div>
-    <div class="card" style="border-left:3px solid var(--teal)">
+    <div class="card fragment fade-up" data-fragment-index="2" style="border-left:3px solid var(--teal)">
       <h4 class="teal">Significancia</h4>
       <p style="font-size:0.6em;line-height:1.5"><strong style="color:#e2e8f0">Welch t-test</strong> — ¿La diferencia entre dos mediciones es real?<br><strong style="color:#e2e8f0">Bootstrap CI</strong> — Intervalos sin asumir normalidad<br><strong style="color:#e2e8f0">Cohen's d</strong> — Tamaño del efecto (small/medium/large)</p>
     </div>
-    <div class="card" style="border-left:3px solid var(--teal)">
+    <div class="card fragment fade-up" data-fragment-index="3" style="border-left:3px solid var(--teal)">
       <h4 class="teal">Estructura</h4>
       <p style="font-size:0.6em;line-height:1.5"><strong style="color:#e2e8f0">Pearson r</strong> — ¿Qué dimensiones impulsan engagement?<br><strong style="color:#e2e8f0">CFA</strong> — ¿El modelo factorial se confirma?<br><strong style="color:#e2e8f0">HLM</strong> — ¿Cuánta varianza es departamental vs individual?</p>
     </div>
@@ -436,23 +406,23 @@
 <section>
   <h2>Capa 3: ONA + Graph ML</h2>
   <p>La capa que revela la <strong style="color:var(--teal)">estructura invisible</strong> de la organización.</p>
-  <div class="grid-2 fragment fade-up">
+  <div class="grid-2">
     <div>
-      <div class="def-block" style="border-left-color:var(--teal)">
+      <div class="def-block fragment fade-up" data-fragment-index="1" style="border-left-color:var(--teal)">
         <h4 class="teal">ONA Perceptual</h4>
         <p>Grafo construido desde <strong style="color:#e2e8f0">similitud coseno</strong> entre los vectores de 22 dimensiones de cada respondente. Dos personas están conectadas si perciben la organización de forma similar.</p>
       </div>
-      <div class="def-block" style="border-left-color:var(--teal)">
+      <div class="def-block fragment fade-up" data-fragment-index="2" style="border-left-color:var(--teal)">
         <h4 class="teal">Comunidades (Leiden)</h4>
         <p>Algoritmo que optimiza modularidad para encontrar subgrupos con mayor densidad interna que externa. <strong style="color:#e2e8f0">Estabilidad validada con NMI</strong> (Normalized Mutual Information) sobre 50 iteraciones.</p>
       </div>
     </div>
     <div>
-      <div class="def-block" style="border-left-color:var(--teal)">
+      <div class="def-block fragment fade-up" data-fragment-index="3" style="border-left-color:var(--teal)">
         <h4 class="teal">Métricas de centralidad</h4>
         <p><strong style="color:#e2e8f0">Eigenvector</strong> — influencia de segundo orden<br><strong style="color:#e2e8f0">Betweenness</strong> — nodos puente entre comunidades<br><strong style="color:#e2e8f0">Degree</strong> — conectividad directa</p>
       </div>
-      <div class="def-block" style="border-left-color:var(--teal)">
+      <div class="def-block fragment fade-up" data-fragment-index="4" style="border-left-color:var(--teal)">
         <h4 class="teal">Dimensiones discriminantes</h4>
         <p>¿Qué dimensiones de clima <strong style="color:#e2e8f0">diferencian más</strong> entre comunidades? Si Liderazgo tiene alto spread, la percepción de liderazgo es lo que divide a la organización en subgrupos.</p>
       </div>
@@ -465,18 +435,18 @@
 <section>
   <h2>Métricas de centralidad: tres preguntas</h2>
   <p>Cada métrica revela un rol distinto en la red organizacional.</p>
-  <div class="grid-3 fragment fade-up" style="margin-top:24px">
-    <div class="card" style="border-left:3px solid var(--teal)">
+  <div class="grid-3" style="margin-top:24px">
+    <div class="card fragment fade-up" data-fragment-index="1" style="border-left:3px solid var(--teal)">
       <h4 class="teal">Intermediación <span class="mono small">(betweenness)</span></h4>
       <p style="font-size:0.65em;line-height:1.6"><strong style="color:#e2e8f0">¿Quién es puente?</strong><br>Proporción de caminos más cortos que pasan por un nodo. Identifica personas que conectan comunidades.</p>
       <p style="font-size:0.5em;color:#64748b;margin-top:6px">C<sub>B</sub>(v) = &sum; &sigma;<sub>st</sub>(v) / &sigma;<sub>st</sub></p>
     </div>
-    <div class="card" style="border-left:3px solid var(--teal)">
+    <div class="card fragment fade-up" data-fragment-index="2" style="border-left:3px solid var(--teal)">
       <h4 class="teal">Influencia <span class="mono small">(eigenvector)</span></h4>
       <p style="font-size:0.65em;line-height:1.6"><strong style="color:#e2e8f0">¿Quién amplifica?</strong><br>No solo cuántas conexiones tiene, sino cuán bien conectados están sus contactos. Influencia recursiva.</p>
       <p style="font-size:0.5em;color:#64748b;margin-top:6px">x<sub>v</sub> = (1/&lambda;) &sum; x<sub>t</sub></p>
     </div>
-    <div class="card" style="border-left:3px solid var(--teal)">
+    <div class="card fragment fade-up" data-fragment-index="3" style="border-left:3px solid var(--teal)">
       <h4 class="teal">Grado <span class="mono small">(degree)</span></h4>
       <p style="font-size:0.65em;line-height:1.6"><strong style="color:#e2e8f0">¿Quién conecta más?</strong><br>Número de relaciones directas. Detecta hubs y nodos periféricos — la métrica más simple y más accionable.</p>
       <p style="font-size:0.5em;color:#64748b;margin-top:6px">C<sub>D</sub>(v) = deg(v) / (n - 1)</p>
@@ -489,23 +459,23 @@
 <section>
   <h2>Graph ML en acción: de grafo a inteligencia</h2>
   <p>¿Qué hace el machine learning que el análisis de redes clásico no puede?</p>
-  <div class="grid-2 fragment fade-up" style="margin-top:20px">
+  <div class="grid-2" style="margin-top:20px">
     <div>
-      <div class="def-block" style="margin-bottom:12px">
+      <div class="def-block fragment fade-up" data-fragment-index="1" style="margin-bottom:12px">
         <h4 class="teal">1. Feature engineering desde la estructura</h4>
         <p>Cada colaborador se representa como un <strong style="color:#e2e8f0">vector de 22 dimensiones</strong> (sus scores de clima). La <strong style="color:#e2e8f0">similitud coseno</strong> entre vectores genera las aristas del grafo — dos personas están conectadas si perciben la organización de forma similar. Esto transforma respuestas de encuesta en estructura de red.</p>
       </div>
-      <div class="def-block" style="margin-bottom:12px">
+      <div class="def-block fragment fade-up" data-fragment-index="2" style="margin-bottom:12px">
         <h4 class="teal">2. Aprendizaje no supervisado (Leiden)</h4>
         <p>El algoritmo de Leiden <strong style="color:#e2e8f0">optimiza modularidad iterativamente</strong> para descubrir comunidades que ningún humano predefinió. No se le dice cuántos grupos buscar — los encuentra maximizando densidad interna vs externa. 50 iteraciones con <strong style="color:#e2e8f0">NMI para validar estabilidad</strong>.</p>
       </div>
     </div>
     <div>
-      <div class="def-block" style="margin-bottom:12px">
+      <div class="def-block fragment fade-up" data-fragment-index="3" style="margin-bottom:12px">
         <h4 class="teal">3. Dimensiones discriminantes (lo que divide a la organización)</h4>
         <p>Una vez detectadas las comunidades, Graph ML identifica qué dimensiones de clima <strong style="color:#e2e8f0">tienen mayor spread entre clusters</strong>. Si "Liderazgo Efectivo" discrimina — la percepción de liderazgo es literalmente lo que separa a los subgrupos. Eso no emerge de promedios.</p>
       </div>
-      <div class="def-block">
+      <div class="def-block fragment fade-up" data-fragment-index="4">
         <h4 class="teal">4. Simulación de resiliencia</h4>
         <p>¿Qué pasa si un nodo con alta betweenness se va? Graph ML permite <strong style="color:#e2e8f0">simular la remoción de nodos</strong> y medir el impacto en conectividad, fragmentación de comunidades y pérdida de puentes inter-departamentales — antes de que ocurra.</p>
       </div>
@@ -546,7 +516,7 @@
         <tr><td>Ítems</td><td><span class="mono">60</span> asignados (Likert 5 pts)</td></tr>
         <tr><td>KMO</td><td><span class="mono">0.904</span> (Marvelous)</td></tr>
         <tr><td>Bartlett</td><td>&chi;² = <span class="mono">8,220</span>, p < 0.001</td></tr>
-        <tr><td>Cronbach &alpha;</td><td>Rango: <span class="mono">0.37 – 0.88</span></td></tr>
+        <tr><td>Cronbach &alpha;</td><td>Rango: <span class="mono">0.80 – 0.88</span></td></tr>
         <tr><td>Pipeline</td><td>v3_audited (mar. 2026)</td></tr>
       </table>
     </div>
@@ -584,16 +554,16 @@
 <section>
   <h2>¿Qué revela la estadística que el promedio esconde?</h2>
   <p>Tres hallazgos que solo emergen con análisis riguroso — no con promedios.</p>
-  <div class="grid-3 fragment fade-up">
-    <div class="card" style="border-top:3px solid var(--teal)">
+  <div class="grid-3">
+    <div class="card fragment fade-up" data-fragment-index="1" style="border-top:3px solid var(--teal)">
       <h4 class="teal">Drivers de engagement</h4>
       <p>Correlación Pearson con ajuste Olkin-Pratt identifica qué dimensiones <strong style="color:#e2e8f0">realmente impulsan engagement</strong> — que no siempre coinciden con las que tienen scores más altos. El driver más fuerte puede ser una dimensión "media".</p>
     </div>
-    <div class="card" style="border-top:3px solid var(--teal)">
+    <div class="card fragment fade-up" data-fragment-index="2" style="border-top:3px solid var(--teal)">
       <h4 class="teal">Varianza departamental (HLM)</h4>
       <p>El ICC (Intraclass Correlation) muestra cuánta varianza es <strong style="color:#e2e8f0">departamental vs individual</strong>. ICC alto (&gt;0.15) indica que la experiencia depende más de tu área que de ti — requiere intervención a nivel equipo.</p>
     </div>
-    <div class="card" style="border-top:3px solid var(--teal)">
+    <div class="card fragment fade-up" data-fragment-index="3" style="border-top:3px solid var(--teal)">
       <h4 class="teal">Significancia wave-over-wave</h4>
       <p>Con Welch t-test y Cohen's d: ¿el cambio entre mediciones es <strong style="color:#e2e8f0">estadísticamente significativo</strong> o solo ruido? El tamaño del efecto determina si vale la pena invertir en amplificar esa tendencia.</p>
     </div>
@@ -616,16 +586,16 @@
   <div class="vcenter">
   <h3>Exploración guiada</h3>
   <h2>¿Qué observamos?</h2>
-  <div class="grid-3 fragment fade-up" style="text-align:left">
-    <div class="card">
+  <div class="grid-3" style="text-align:left">
+    <div class="card fragment fade-up" data-fragment-index="1">
       <h4 class="teal">1. Cambia la métrica</h4>
       <p>Al pasar de Intermediación a Influencia, los nodos importantes cambian. No son las mismas personas — cada métrica revela un rol distinto en la red.</p>
     </div>
-    <div class="card">
+    <div class="card fragment fade-up" data-fragment-index="2">
       <h4 class="teal">2. Filtra por área</h4>
       <p>Haz clic en un departamento. Observa su densidad de conexiones internas vs externas. Los silos no siempre están donde crees.</p>
     </div>
-    <div class="card">
+    <div class="card fragment fade-up" data-fragment-index="3">
       <h4 class="teal">3. Simula una salida</h4>
       <p>Activa Simulación. Retira un broker. La fragmentación de la red es el riesgo que el organigrama no muestra.</p>
     </div>
@@ -665,23 +635,23 @@
 <section>
   <h2>De datos a decisiones: el flujo completo</h2>
   <p>Cada capa del stack responde una pregunta de negocio distinta — y las respuestas se encadenan.</p>
-  <div class="grid-2 fragment fade-up">
-    <div class="card" style="border-left:3px solid var(--teal)">
+  <div class="grid-2">
+    <div class="card fragment fade-up" data-fragment-index="1" style="border-left:3px solid var(--teal)">
       <h4>Instrumento &rarr; ¿Dónde intervenir?</h4>
       <p>18 dimensiones segmentadas por 22 áreas. Si una dimensión puntúa bajo, ¿es sistémico o localizado? La segmentación lo responde.</p>
       <p style="font-size:0.48em;color:#5a6a7a;margin-top:6px">Schneider & Barbera (2014). "The Oxford Handbook of Organizational Climate and Culture."</p>
     </div>
-    <div class="card" style="border-left:3px solid var(--teal)">
+    <div class="card fragment fade-up" data-fragment-index="2" style="border-left:3px solid var(--teal)">
       <h4>Estadística &rarr; ¿Cuánto invertir?</h4>
       <p>Cohen's d cuantifica el tamaño del efecto. Si d = 0.8, es grande y justifica inversión. Si d = 0.2, es marginal — no actuar impulsivamente.</p>
       <p style="font-size:0.48em;color:#5a6a7a;margin-top:6px">Cohen, J. (1988). "Statistical Power Analysis for the Behavioral Sciences."</p>
     </div>
-    <div class="card" style="border-left:3px solid var(--teal)">
+    <div class="card fragment fade-up" data-fragment-index="3" style="border-left:3px solid var(--teal)">
       <h4>ONA &rarr; ¿Con quién intervenir?</h4>
       <p>La centralidad identifica personas con alto alcance de difusión. Incluir brokers en programas de desarrollo amplifica el alcance de la intervención.</p>
       <p style="font-size:0.48em;color:#5a6a7a;margin-top:6px">Cross, R. et al. (2004). "A Relational View of Information Seeking."</p>
     </div>
-    <div class="card" style="border-left:3px solid var(--teal)">
+    <div class="card fragment fade-up" data-fragment-index="4" style="border-left:3px solid var(--teal)">
       <h4>Todo junto &rarr; ROI organizacional</h4>
       <p>Conectar clima con indicadores operativos (rotación, ausentismo, NPS) permite estimar el costo de no-intervención y el retorno esperado por acción.</p>
       <p style="font-size:0.48em;color:#5a6a7a;margin-top:6px">Harter et al. (2002). "Business-Unit-Level Relationship." Journal of Applied Psychology.</p>
@@ -693,20 +663,20 @@
 <section>
   <h2>Limitaciones y transparencia</h2>
   <p>¿Qué puede y qué <strong style="color:var(--teal)">no puede</strong> hacer este enfoque? La honestidad metodológica es parte del valor.</p>
-  <div class="grid-2 fragment fade-up">
-    <div class="card" style="border-left:3px solid var(--teal)">
+  <div class="grid-2">
+    <div class="card fragment fade-up" data-fragment-index="1" style="border-left:3px solid var(--teal)">
       <h4 class="teal">Correlación ≠ causalidad</h4>
       <p>Que Liderazgo correlacione con engagement no significa que mejorar liderazgo cause más engagement. Atribución causal requiere diseños experimentales o cuasi-experimentales.</p>
     </div>
-    <div class="card" style="border-left:3px solid var(--teal)">
+    <div class="card fragment fade-up" data-fragment-index="2" style="border-left:3px solid var(--teal)">
       <h4 class="teal">Percepciones ≠ comportamientos</h4>
       <p>El clima mide cómo la gente <em>percibe</em> la organización, no cómo <em>actúa</em>. Un engagement alto en encuesta puede coexistir con baja productividad o alta rotación.</p>
     </div>
-    <div class="card" style="border-left:3px solid var(--teal)">
+    <div class="card fragment fade-up" data-fragment-index="3" style="border-left:3px solid var(--teal)">
       <h4 class="teal">Sesgo de no-respuesta</h4>
       <p>Quienes no responden la encuesta podrían tener percepciones sistemáticamente distintas. El margen de error muestral no captura este sesgo — es una limitación inherente al autoinforme.</p>
     </div>
-    <div class="card" style="border-left:3px solid var(--teal)">
+    <div class="card fragment fade-up" data-fragment-index="4" style="border-left:3px solid var(--teal)">
       <h4 class="teal">ONA perceptual ≠ sociométrica</h4>
       <p>ONA basada en similitud de respuestas (perceptual) no es lo mismo que ONA basada en interacciones reales (sociométrica). La primera agrupa por percepción similar, la segunda por colaboración real.</p>
     </div>
