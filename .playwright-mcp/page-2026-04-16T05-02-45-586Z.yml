@@ -1,0 +1,88 @@
+- generic [active] [ref=e1]:
+  - application [ref=e2]:
+    - generic:
+      - generic:
+        - heading [level=3]: PANAMÁ PUENTE DIGITAL 2026
+        - heading [level=1]: De Encuesta de Clima a Inteligencia Organizacional
+        - paragraph: "Caso educativo: cómo la estadística rigurosa, el machine learning y el análisis de redes transforman datos de clima en decisiones de negocio."
+        - paragraph:
+          - strong: Ulises González
+          - text: · Business Scientist · Rizo.ma ICF ACC · PMP® · MIT AI/ML
+      - text: → → → → → → → → → → → →
+      - generic:
+        - heading [level=2]: "Métricas de centralidad: tres preguntas"
+        - paragraph: Cada métrica revela un rol distinto en la red organizacional.
+        - generic:
+          - generic:
+            - heading [level=4]: Intermediación (betweenness)
+            - paragraph:
+              - strong: ¿Quién es puente?
+              - text: Proporción de caminos más cortos que pasan por un nodo. Identifica personas que conectan comunidades.
+            - paragraph:
+              - text: C
+              - subscript: B
+              - text: (v) = ∑ σ
+              - subscript: st
+              - text: (v) / σ
+              - subscript: st
+          - generic:
+            - heading [level=4]: Influencia (eigenvector)
+            - paragraph:
+              - strong: ¿Quién amplifica?
+              - text: No solo cuántas conexiones tiene, sino cuán bien conectados están sus contactos. Influencia recursiva.
+            - paragraph:
+              - text: x
+              - subscript: v
+              - text: = (1/λ) ∑ x
+              - subscript: t
+          - generic:
+            - heading [level=4]: Grado (degree)
+            - paragraph:
+              - strong: ¿Quién conecta más?
+              - text: Número de relaciones directas. Detecta hubs y nodos periféricos — la métrica más simple y más accionable.
+            - paragraph:
+              - text: C
+              - subscript: D
+              - text: (v) = deg(v) / (n - 1)
+        - paragraph: "Freeman (1978). \"Centrality in Social Networks: Conceptual Clarification.\" Social Networks, 1(3), 215-239."
+      - generic:
+        - heading [level=3]: Acto III
+        - heading [level=2]: "El Caso: Banco Panameño"
+        - paragraph: 270 colaboradores, 22 áreas, 4 mediciones, y un engagement de 89.9%. ¿Qué historia cuentan los datos cuando se analizan con rigor?
+      - generic [ref=e35]:
+        - heading "Ficha técnica" [level=2] [ref=e36]
+        - paragraph [ref=e37]: Los números que validan la muestra antes de interpretar cualquier resultado.
+      - generic:
+        - heading [level=2]: "Los resultados: una cultura excepcionalmente fuerte"
+        - paragraph:
+          - text: "Cuando el clima ya es fuerte, la pregunta cambia:"
+          - strong: ¿qué estructura lo sostiene y es resiliente?
+      - generic:
+        - heading [level=2]: Qué revela la estadística que el promedio esconde
+        - paragraph: Tres hallazgos que solo emergen con análisis riguroso — no con promedios.
+      - generic:
+        - heading [level=3]: GRACIAS
+        - heading [level=1]: Ulises González
+        - paragraph: Business Scientist · Rizo.ma ulises@rizo.ma
+        - generic:
+          - generic:
+            - paragraph: Demo interactivo
+            - paragraph:
+              - link:
+                - /url: demo/index.html
+                - text: → Explorar el grafo
+          - generic:
+            - paragraph: LinkedIn
+            - paragraph:
+              - link:
+                - /url: https://linkedin.com/in/ulisesgonzalez
+                - text: → /in/ulisesgonzalez
+        - paragraph: Caso educativo. Red sintética. Datos de clima basados en estudio real (pipeline v3_audited).
+    - link "12 / 22" [ref=e38] [cursor=pointer]:
+      - /url: "#/11"
+    - complementary:
+      - button "previous slide" [ref=e26] [cursor=pointer]
+      - button "next slide" [ref=e14] [cursor=pointer]
+    - text: Speaker notes
+    - generic [ref=e17]: Conceptos clave Tres conceptos que necesitamos distinguir antes de avanzar. Clima Organizacional Percepciones compartidas de los colaboradores sobre las prácticas, políticas y procedimientos de la organización. Se mide mediante encuestas con escalas tipo Likert. Captura actitudes individuales agregadas , no relaciones. Schneider, Ehrhart & Macey (2013). "Organizational Climate and Culture." Annual Review of Psychology. Análisis de Redes Organizacionales (ONA) Mapeo y análisis de las relaciones informales de colaboración, comunicación y confianza. Captura estructura relacional — quién se conecta con quién y qué rol juegan en la red. Cross, R. & Parker, A. (2004). "The Hidden Power of Social Networks." Harvard Business School Press. Graph ML (Machine Learning sobre Grafos) Familia de técnicas de aprendizaje automático que operan sobre datos con estructura de grafo (nodos + aristas). Incluye detección de comunidades, cálculo de centralidad, y modelos que incorporan atributos relacionales. Hamilton, W. L. (2020). "Graph Representation Learning." Morgan & Claypool.
+  - generic [ref=e18]: rizo.ma // panamá puente digital 2026
