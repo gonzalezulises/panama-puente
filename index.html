@@ -132,8 +132,28 @@
 .stack-layer p{font-size:0.53em;color:#8899aa;max-width:100%;line-height:1.4;margin:0}
 
 /* ── Brand footer ── */
+/* ── Brand footer ── */
 .brand-footer{position:fixed;bottom:16px;left:28px;font-size:11px;color:rgba(100,116,139,0.5);font-family:'JetBrains Mono',monospace;z-index:100;letter-spacing:0.06em}
 .brand-footer span{color:rgba(6,214,160,0.5)}
+
+/* ── Home button ── */
+.home-btn{position:fixed;top:18px;left:24px;z-index:200;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.06em;color:rgba(100,116,139,0.4);text-decoration:none;padding:6px 14px;border-radius:8px;border:1px solid rgba(100,116,139,0.1);background:rgba(15,23,42,0.5);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:all 0.3s ease;cursor:pointer}
+.home-btn:hover{color:var(--teal);border-color:rgba(6,214,160,0.25);background:rgba(6,214,160,0.06)}
+
+/* ── Index cards ── */
+.index-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:36px;width:90%;max-width:1100px}
+.index-card{padding:28px 24px;border-radius:16px;background:var(--glass);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid var(--glass-border);text-align:left;cursor:pointer;transition:all 0.35s cubic-bezier(.4,0,.2,1);text-decoration:none;display:block}
+.index-card:hover{background:var(--glass-hover);border-color:rgba(6,214,160,0.2);transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,0.25)}
+.index-card .idx-num{font-family:'JetBrains Mono',monospace;font-size:0.55em;font-weight:700;margin-bottom:6px;opacity:0.6}
+.index-card h4{font-size:0.82em;font-weight:800;color:#e2e8f0;margin-bottom:8px}
+.index-card p{font-size:0.52em;color:#7a8a9a;line-height:1.5;max-width:100%}
+
+/* ── Takeaway cards ── */
+.takeaway-grid{display:grid;grid-template-columns:60px 1fr;gap:0;margin-top:24px;width:90%;max-width:900px}
+.takeaway-num{font-family:'JetBrains Mono',monospace;font-size:1.8em;font-weight:900;display:flex;align-items:center;justify-content:center}
+.takeaway-content{padding:16px 24px;border-left:2px solid var(--glass-border)}
+.takeaway-content h4{font-size:0.78em;font-weight:700;color:#e2e8f0;margin-bottom:4px}
+.takeaway-content p{font-size:0.58em;color:#8899aa;line-height:1.5;max-width:100%}
 
 /* ── Progress bar ── */
 .reveal .progress{height:2px;color:var(--teal)}
@@ -195,6 +215,36 @@
   </div>
 </section>
 
+<!-- INDEX -->
+<section data-state="section-opener" data-background-color="#060a14">
+  <div class="vcenter">
+    <h3 style="opacity:0.6">Agenda</h3>
+    <h2 style="margin-bottom:8px">Recorrido de la sesión</h2>
+    <div class="index-grid fragment fade-up">
+      <a class="index-card" href="#/3" style="border-top:2px solid var(--teal)">
+        <div class="idx-num teal">I</div>
+        <h4>Fundamentos</h4>
+        <p>Definiciones de clima organizacional, ONA y Graph ML. El problema de la encuesta sin análisis. El stack analítico completo.</p>
+      </a>
+      <a class="index-card" href="#/7" style="border-top:2px solid var(--blue)">
+        <div class="idx-num blue">II</div>
+        <h4>La Ciencia</h4>
+        <p>Instrumento de 22 dimensiones. Estadística rigurosa. ONA perceptual con Leiden y centralidad. Métricas formales.</p>
+      </a>
+      <a class="index-card" href="#/12" style="border-top:2px solid var(--amber)">
+        <div class="idx-num amber">III</div>
+        <h4>El Caso: Towerbank</h4>
+        <p>Ficha técnica. Resultados de cultura. Hallazgos estadísticos. Demo interactiva de la red organizacional.</p>
+      </a>
+      <a class="index-card" href="#/17" style="border-top:2px solid var(--violet)">
+        <div class="idx-num violet">IV</div>
+        <h4>Impacto de Negocio</h4>
+        <p>Modelo ADKAR de Prosci. De datos a decisiones. Limitaciones metodológicas. Takeaways.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
 <!-- =====================================================
      ACT 1: FOUNDATIONS (12 min)
      ===================================================== -->
@@ -202,7 +252,7 @@
   <div class="vcenter">
     <h3>Acto I</h3>
     <h2>Fundamentos</h2>
-    <p style="text-align:center;max-width:65%;margin:0 auto;color:#7a8a9a">Qué es clima organizacional, cómo se mide con rigor, y por qué la mayoría de las encuestas se quedan cortas.</p>
+    <p style="text-align:center;max-width:65%;margin:0 auto;color:#7a8a9a">¿Qué es clima organizacional? ¿Cómo se mide con rigor? ¿Por qué la mayoría de las encuestas se quedan cortas?</p>
   </div>
 </section>
 
@@ -294,7 +344,7 @@
   <div class="vcenter">
     <h3>Acto II</h3>
     <h2>La Ciencia</h2>
-    <p style="text-align:center;max-width:65%;margin:0 auto;color:#7a8a9a">El valor de cada capa: qué pregunta responde, qué método usa, y por qué importa.</p>
+    <p style="text-align:center;max-width:65%;margin:0 auto;color:#7a8a9a">El valor de cada capa: ¿qué pregunta responde? ¿Qué método usa? ¿Por qué importa?</p>
   </div>
 </section>
 
@@ -618,6 +668,49 @@
   <p class="small fragment fade-up" style="margin-top:12px">Podsakoff et al. (2003). "Common Method Biases in Behavioral Research." Journal of Applied Psychology. · Conway, M. (1967). "How Do Committees Invent?"</p>
 </section>
 
+<!-- Takeaways -->
+<section>
+  <h2>Principales takeaways</h2>
+  <p>Lo que esta sesión debería dejar claro.</p>
+  <div style="margin-top:28px">
+    <div class="takeaway-grid fragment fade-up" style="margin-bottom:16px">
+      <div class="takeaway-num teal">1</div>
+      <div class="takeaway-content" style="border-left-color:var(--teal)">
+        <h4>La encuesta de clima es el inicio, no el destino</h4>
+        <p>Sin estadística rigurosa (Cronbach &alpha;, Welch t, Cohen's d), los resultados son anecdóticos. Con ella, son evidencia accionable.</p>
+      </div>
+    </div>
+    <div class="takeaway-grid fragment fade-up" style="margin-bottom:16px">
+      <div class="takeaway-num amber">2</div>
+      <div class="takeaway-content" style="border-left-color:var(--amber)">
+        <h4>ONA revela lo que el organigrama esconde</h4>
+        <p>La estructura informal de colaboración determina cómo fluyen las ideas, quién amplifica el cambio y dónde están las vulnerabilidades reales de la organización.</p>
+      </div>
+    </div>
+    <div class="takeaway-grid fragment fade-up" style="margin-bottom:16px">
+      <div class="takeaway-num violet">3</div>
+      <div class="takeaway-content" style="border-left-color:var(--violet)">
+        <h4>El valor está en conectar con decisiones de negocio</h4>
+        <p>ADKAR (Prosci) conecta hallazgos de clima con gestión del cambio: ¿quién debe recibir el mensaje? ¿Por qué canal? ¿Cuándo reforzar? Cada capa del stack responde una pregunta de negocio distinta.</p>
+      </div>
+    </div>
+    <div class="takeaway-grid fragment fade-up" style="margin-bottom:16px">
+      <div class="takeaway-num coral">4</div>
+      <div class="takeaway-content" style="border-left-color:var(--coral)">
+        <h4>Honestidad metodológica es parte del valor</h4>
+        <p>Correlación no es causalidad. ONA perceptual no es sociométrica. Documentar limitaciones no debilita el análisis — lo fortalece ante audiencias técnicas.</p>
+      </div>
+    </div>
+    <div class="takeaway-grid fragment fade-up">
+      <div class="takeaway-num blue">5</div>
+      <div class="takeaway-content" style="border-left-color:var(--blue)">
+        <h4>Towerbank demuestra que es posible en banca panameña</h4>
+        <p>270 colaboradores, 22 áreas, 4 mediciones, instrumento con KMO de 0.904. No es teoría — es un caso real con rigor estadístico verificable.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- Closing quote -->
 <section data-state="impact" data-background-gradient="radial-gradient(ellipse at 50% 50%, rgba(6,214,160,0.08) 0%, rgba(56,189,248,0.03) 35%, #060a14 65%)">
   <div class="vcenter">
@@ -656,6 +749,7 @@
 </div><!-- /slides -->
 </div><!-- /reveal -->
 
+<a class="home-btn" href="#/0" title="Inicio">⌂ Inicio</a>
 <div class="brand-footer">rizo.ma <span>//</span> panamá puente digital 2026</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.js"></script>
