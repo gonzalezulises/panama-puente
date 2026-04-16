@@ -455,6 +455,35 @@
   <p class="small fragment fade-up" style="margin-top:12px">Freeman (1978). "Centrality in Social Networks: Conceptual Clarification." Social Networks, 1(3), 215-239.</p>
 </section>
 
+<!-- Graph ML in action -->
+<section>
+  <h2>Graph ML en acción: de grafo a inteligencia</h2>
+  <p>¿Qué hace el machine learning que el análisis de redes clásico no puede?</p>
+  <div class="grid-2 fragment fade-up" style="margin-top:20px">
+    <div>
+      <div class="def-block" style="margin-bottom:12px">
+        <h4 class="teal">1. Feature engineering desde la estructura</h4>
+        <p>Cada colaborador se representa como un <strong style="color:#e2e8f0">vector de 22 dimensiones</strong> (sus scores de clima). La <strong style="color:#e2e8f0">similitud coseno</strong> entre vectores genera las aristas del grafo — dos personas están conectadas si perciben la organización de forma similar. Esto transforma respuestas de encuesta en estructura de red.</p>
+      </div>
+      <div class="def-block" style="margin-bottom:12px">
+        <h4 class="teal">2. Aprendizaje no supervisado (Leiden)</h4>
+        <p>El algoritmo de Leiden <strong style="color:#e2e8f0">optimiza modularidad iterativamente</strong> para descubrir comunidades que ningún humano predefinió. No se le dice cuántos grupos buscar — los encuentra maximizando densidad interna vs externa. 50 iteraciones con <strong style="color:#e2e8f0">NMI para validar estabilidad</strong>.</p>
+      </div>
+    </div>
+    <div>
+      <div class="def-block" style="margin-bottom:12px">
+        <h4 class="teal">3. Dimensiones discriminantes (lo que divide a la organización)</h4>
+        <p>Una vez detectadas las comunidades, Graph ML identifica qué dimensiones de clima <strong style="color:#e2e8f0">tienen mayor spread entre clusters</strong>. Si "Liderazgo Efectivo" discrimina — la percepción de liderazgo es literalmente lo que separa a los subgrupos. Eso no emerge de promedios.</p>
+      </div>
+      <div class="def-block">
+        <h4 class="teal">4. Simulación de resiliencia</h4>
+        <p>¿Qué pasa si un nodo con alta betweenness se va? Graph ML permite <strong style="color:#e2e8f0">simular la remoción de nodos</strong> y medir el impacto en conectividad, fragmentación de comunidades y pérdida de puentes inter-departamentales — antes de que ocurra.</p>
+      </div>
+    </div>
+  </div>
+  <p class="small fragment fade-up" style="margin-top:8px">Hamilton (2020). "Graph Representation Learning." · Traag et al. (2019). "From Louvain to Leiden." · Grover & Leskovec (2016). "node2vec."</p>
+</section>
+
 <!-- =====================================================
      ACT 3: THE CASE (12 min)
      ===================================================== -->
