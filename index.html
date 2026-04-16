@@ -314,26 +314,56 @@
     <div class="fragment fade-up" data-fragment-index="1">
       <div class="stack-layer">
         <div class="layer-num teal">1</div>
-        <div><h4 class="teal">Instrumento de medición</h4><p><strong style="color:#c8d6e5">Sin un instrumento validado, no hay datos confiables.</strong> 22 dimensiones con fundamento peer-reviewed (Schaufeli, Mael & Ashforth, Deci & Ryan). Escala Likert 5 pts, 107+ ítems, checks de atención. La base sin la cual todo lo demás es especulación.</p></div>
+        <div><h4 class="teal">Instrumento de medición</h4><p><strong style="color:#c8d6e5">Sin instrumento validado, no hay datos confiables.</strong> 22 dimensiones peer-reviewed, Likert 5 pts, 107+ ítems.</p></div>
       </div>
     </div>
     <div class="fragment fade-up" data-fragment-index="2">
       <div class="stack-layer">
         <div class="layer-num teal">2</div>
-        <div><h4 class="teal">Estadística e inferencia</h4><p><strong style="color:#c8d6e5">Sin inferencia, un promedio es solo un número.</strong> Cronbach &alpha; valida que los ítems miden lo mismo. Welch t-test determina si un cambio es real o ruido. Cohen's d cuantifica si vale la pena invertir. HLM separa lo individual de lo departamental. Sin esta capa, cualquier conclusión es anecdótica.</p></div>
+        <div><h4 class="teal">Estadística e inferencia</h4><p><strong style="color:#c8d6e5">Sin inferencia, un promedio es solo un número.</strong> Cronbach &alpha;, Welch t, Cohen's d, HLM. Discriminar señal de ruido.</p></div>
       </div>
     </div>
     <div class="fragment fade-up" data-fragment-index="3">
       <div class="stack-layer">
         <div class="layer-num teal">3</div>
-        <div><h4 class="teal">ONA + Graph ML</h4><p><strong style="color:#c8d6e5">La encuesta mide actitudes, no relaciones.</strong> ONA agrega la capa estructural que falta: ¿quién colabora con quién? ¿Dónde están los puentes y los silos? ¿Qué tan resiliente es la red si un nodo clave se va? Leiden detecta comunidades reales, NMI valida su estabilidad.</p></div>
+        <div><h4 class="teal">ONA + Graph ML</h4><p><strong style="color:#c8d6e5">La encuesta mide actitudes, no relaciones.</strong> Comunidades, centralidad, puentes, resiliencia de la red.</p></div>
       </div>
     </div>
     <div class="fragment fade-up" data-fragment-index="4">
       <div class="stack-layer">
         <div class="layer-num teal">4</div>
-        <div><h4 class="teal">Impacto de negocio</h4><p><strong style="color:#c8d6e5">Si no se traduce en decisiones, no sirve.</strong> Conectar dimensiones de clima con indicadores operativos (rotación, ausentismo, NPS) y usar las 10 dimensiones de Prosci para diseñar intervenciones de cambio con evidencia, no con intuición.</p></div>
+        <div><h4 class="teal">Impacto de negocio</h4><p><strong style="color:#c8d6e5">Si no se traduce en decisiones, no sirve.</strong> Prosci + indicadores operativos. Evidencia, no intuición.</p></div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- Glossary -->
+<section>
+  <h2>Glosario técnico</h2>
+  <p>Referencia rápida de los términos especializados que usaremos en esta sesión.</p>
+  <div class="grid-2 fragment fade-up" style="margin-top:16px">
+    <div>
+      <p style="font-size:0.58em;line-height:2.2;max-width:100%">
+        <strong style="color:#e2e8f0">Likert</strong> — <em>Escala de respuesta ordinal (1-5) para medir grado de acuerdo.</em><br>
+        <strong style="color:#e2e8f0">UWES-9</strong> — <em>Utrecht Work Engagement Scale. Instrumento validado de 9 ítems que mide vigor, dedicación y absorción (Schaufeli et al., 2006).</em><br>
+        <strong style="color:#e2e8f0">Cronbach &alpha;</strong> — <em>Coeficiente de consistencia interna. Mide si los ítems de una dimensión miden el mismo constructo (&alpha; &ge; 0.70 = aceptable).</em><br>
+        <strong style="color:#e2e8f0">r<sub>wg</sub></strong> — <em>Índice de acuerdo intra-grupo (James et al., 1984). Valida que las respuestas dentro de un equipo son consistentes, no aleatorias.</em><br>
+        <strong style="color:#e2e8f0">KMO</strong> — <em>Kaiser-Meyer-Olkin. Mide si los datos son aptos para análisis factorial (&ge; 0.90 = excelente).</em><br>
+        <strong style="color:#e2e8f0">Welch t-test</strong> — <em>Test de diferencia de medias que no asume varianzas iguales. Determina si un cambio entre mediciones es estadísticamente real.</em><br>
+        <strong style="color:#e2e8f0">Cohen's d</strong> — <em>Tamaño del efecto. Cuantifica la magnitud práctica de una diferencia (0.2 = pequeño, 0.5 = medio, 0.8 = grande).</em>
+      </p>
+    </div>
+    <div>
+      <p style="font-size:0.58em;line-height:2.2;max-width:100%">
+        <strong style="color:#e2e8f0">CFA</strong> — <em>Análisis Factorial Confirmatorio. Valida si la estructura teórica del instrumento se confirma en los datos.</em><br>
+        <strong style="color:#e2e8f0">HLM</strong> — <em>Modelo Lineal Jerárquico. Descompone varianza entre niveles (individual vs departamental) vía ICC.</em><br>
+        <strong style="color:#e2e8f0">Pearson r</strong> — <em>Coeficiente de correlación lineal (-1 a +1). Con ajuste Olkin-Pratt para corregir sesgo en muestras pequeñas.</em><br>
+        <strong style="color:#e2e8f0">ONA</strong> — <em>Organizational Network Analysis. Mapeo de relaciones informales de colaboración y confianza.</em><br>
+        <strong style="color:#e2e8f0">Leiden</strong> — <em>Algoritmo de detección de comunidades que optimiza modularidad (Traag et al., 2019). Mejora de Louvain.</em><br>
+        <strong style="color:#e2e8f0">NMI</strong> — <em>Normalized Mutual Information. Mide estabilidad de comunidades entre múltiples ejecuciones (&ge; 0.80 = robusto).</em><br>
+        <strong style="color:#e2e8f0">Betweenness</strong> — <em>Centralidad de intermediación. Proporción de caminos más cortos que pasan por un nodo — identifica puentes.</em>
+      </p>
     </div>
   </div>
 </section>
