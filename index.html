@@ -135,12 +135,12 @@
 .home-btn:hover{color:var(--teal);border-bottom-color:var(--teal)}
 
 /* ── Index cards ── */
-.index-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:36px;width:90%;max-width:1100px}
-.index-card{padding:28px 0 28px 24px;border-radius:0;background:transparent;border:none;border-left:1px solid var(--glass-border);text-align:left;cursor:pointer;transition:all 0.3s ease;text-decoration:none;display:block}
+.index-grid{display:flex;flex-direction:column;gap:0;margin-top:28px;width:80%;max-width:700px}
+.index-card{padding:18px 0 18px 28px;border-radius:0;background:transparent;border:none;border-left:2px solid var(--glass-border);text-align:left;cursor:pointer;transition:all 0.3s ease;text-decoration:none;display:flex;align-items:baseline;gap:16px}
 .index-card:hover{border-left-color:rgba(255,255,255,0.3)}
-.index-card .idx-num{font-family:'JetBrains Mono',monospace;font-size:0.55em;font-weight:700;margin-bottom:6px;opacity:0.6}
-.index-card h4{font-size:0.82em;font-weight:800;color:#e2e8f0;margin-bottom:8px}
-.index-card p{font-size:0.52em;color:#7a8a9a;line-height:1.5;max-width:100%}
+.index-card .idx-num{font-family:'JetBrains Mono',monospace;font-size:1.1em;font-weight:900;min-width:28px;opacity:0.5}
+.index-card h4{font-size:0.78em;font-weight:800;color:#e2e8f0;margin-bottom:4px}
+.index-card p{font-size:0.5em;color:#5a6a7a;line-height:1.4;max-width:100%;margin:0}
 
 /* ── Takeaway cards ── */
 .takeaway-grid{display:grid;grid-template-columns:60px 1fr;gap:0;margin-top:24px;width:90%;max-width:900px}
@@ -204,26 +204,22 @@
   <div class="vcenter">
     <h3 style="opacity:0.6">Agenda</h3>
     <h2 style="margin-bottom:8px">Recorrido de la sesión</h2>
-    <div class="index-grid fragment fade-up">
-      <a class="index-card" href="#/3" style="border-top:2px solid var(--teal)">
+    <div class="index-grid">
+      <a class="index-card fragment fade-up" data-fragment-index="1" href="#/3" style="border-left-color:var(--teal)">
         <div class="idx-num teal">I</div>
-        <h4>Fundamentos</h4>
-        <p>Definiciones de clima organizacional, ONA y Graph ML. El problema de la encuesta sin análisis. El stack analítico completo.</p>
+        <div><h4>Fundamentos</h4><p>Definiciones de clima, ONA y Graph ML. El stack analítico completo.</p></div>
       </a>
-      <a class="index-card" href="#/7" style="border-top:2px solid var(--blue)">
+      <a class="index-card fragment fade-up" data-fragment-index="2" href="#/7" style="border-left-color:var(--blue)">
         <div class="idx-num blue">II</div>
-        <h4>La Ciencia</h4>
-        <p>Instrumento de 22 dimensiones. Estadística rigurosa. ONA perceptual con Leiden y centralidad. Métricas formales.</p>
+        <div><h4>La Ciencia</h4><p>Instrumento de 22 dimensiones. Estadística rigurosa. ONA y centralidad.</p></div>
       </a>
-      <a class="index-card" href="#/12" style="border-top:2px solid var(--amber)">
+      <a class="index-card fragment fade-up" data-fragment-index="3" href="#/12" style="border-left-color:var(--amber)">
         <div class="idx-num amber">III</div>
-        <h4>El Caso: Towerbank</h4>
-        <p>Ficha técnica. Resultados de cultura. Hallazgos estadísticos. Demo interactiva de la red organizacional.</p>
+        <div><h4>El Caso: Towerbank</h4><p>Ficha técnica. Resultados de cultura. Demo interactiva de la red.</p></div>
       </a>
-      <a class="index-card" href="#/17" style="border-top:2px solid var(--violet)">
+      <a class="index-card fragment fade-up" data-fragment-index="4" href="#/17" style="border-left-color:var(--violet)">
         <div class="idx-num violet">IV</div>
-        <h4>Impacto de Negocio</h4>
-        <p>Dimensiones de Prosci. De datos a decisiones. Limitaciones metodológicas. Takeaways.</p>
+        <div><h4>Impacto de Negocio</h4><p>Dimensiones de Prosci. De datos a decisiones. Takeaways.</p></div>
       </a>
     </div>
   </div>
