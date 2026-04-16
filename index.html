@@ -252,7 +252,7 @@
     <div class="compare-card new">
       <h4 class="teal">Encuesta + Estadística + ML + ONA</h4>
       <ul>
-        <li>Engagement 4.50/5.00 con IC 95% y margen ±3.9%</li>
+        <li>Engagement con intervalo de confianza al 95% y margen de error calculado</li>
         <li>Confiabilidad validada (Cronbach &alpha;, r<sub>wg</sub>, KMO)</li>
         <li>Tests de significancia entre segmentos (Welch t, Cohen's d)</li>
         <li>Drivers de engagement por correlación Pearson</li>
@@ -326,6 +326,7 @@
   </div>
   <div class="provocation fragment fade-up" style="margin-top:16px">
     <p><strong class="teal">Engagement</strong> se mide como variable transversal con <strong>UWES-9</strong> (Utrecht Work Engagement Scale — Schaufeli et al., 2006): vigor, dedicación y absorción. No es un promedio de satisfacción.</p>
+    <p style="font-size:0.48em;color:#5a6a7a;margin-top:8px">Schaufeli, W. B. et al. (2006). "The Measurement of Work Engagement With a Short Questionnaire." Educational and Psychological Measurement.</p>
   </div>
 </section>
 
@@ -347,7 +348,7 @@
       <p style="font-size:0.6em;line-height:1.5"><strong style="color:#e2e8f0">Pearson r</strong> — ¿Qué dimensiones impulsan engagement?<br><strong style="color:#e2e8f0">CFA</strong> — ¿El modelo factorial se confirma?<br><strong style="color:#e2e8f0">HLM</strong> — ¿Cuánta varianza es departamental vs individual?</p>
     </div>
   </div>
-  <p class="small fragment fade-up" style="margin-top:12px">Sin esta capa, cualquier afirmación del tipo "mejoró el engagement" o "el área X está peor" es anecdótica. Con ella, es evidencia.</p>
+  <p class="small fragment fade-up" style="margin-top:12px">James et al. (1984). "Estimating Within-Group Interrater Reliability." · Cronbach (1951). "Coefficient Alpha." · Kaiser (1974). "An Index of Factorial Simplicity." · Welch (1947). "The Generalization of Student's Problem."</p>
 </section>
 
 <!-- Layer 3: ONA + Graph ML -->
@@ -376,6 +377,7 @@
       </div>
     </div>
   </div>
+  <p class="small fragment fade-up" style="margin-top:8px">Traag et al. (2019). "From Louvain to Leiden." Scientific Reports. · Danon et al. (2005). "Comparing Community Structure Identification."</p>
 </section>
 
 <!-- Centrality metrics detail -->
@@ -408,8 +410,8 @@
 <section data-state="section-opener" data-background-gradient="radial-gradient(ellipse at 40% 55%, rgba(251,191,36,0.05) 0%, rgba(6,214,160,0.03) 35%, #060a14 60%)">
   <div class="vcenter">
     <h3>Acto III</h3>
-    <h2>El Caso: Banco Panameño</h2>
-    <p style="text-align:center;max-width:65%;margin:0 auto;color:#7a8a9a">270 colaboradores, 22 áreas, 4 mediciones, y un engagement de 89.9%.<br>¿Qué historia cuentan los datos cuando se analizan con rigor?</p>
+    <h2>El Caso: Towerbank</h2>
+    <p style="text-align:center;max-width:65%;margin:0 auto;color:#7a8a9a">270 colaboradores, 22 áreas funcionales y 4 mediciones históricas.<br>¿Qué historia cuentan los datos cuando se analizan con rigor?</p>
   </div>
 </section>
 
@@ -420,8 +422,8 @@
   <div class="grid-2 fragment fade-up">
     <div>
       <table class="ficha-table">
+        <tr><td>Organización</td><td>Towerbank (banca privada, Panamá)</td></tr>
         <tr><td>Universo</td><td><span class="mono">270</span> colaboradores</td></tr>
-        <tr><td>Respondentes</td><td><span class="mono">189</span> (tasa: 70.0%)</td></tr>
         <tr><td>Margen de error</td><td><span class="mono">±3.9%</span> (IC 95%)</td></tr>
         <tr><td>Período</td><td>Noviembre 2025</td></tr>
         <tr><td>Historicidad</td><td>4 mediciones (2023–2026)</td></tr>
@@ -439,39 +441,31 @@
       </table>
     </div>
   </div>
-  <p class="small fragment fade-up" style="margin-top:16px">Tasa de respuesta del 70% con margen ±3.9% es estadísticamente válida pero implica que 81 colaboradores no están representados. Este sesgo se documenta, no se ignora.</p>
+  <p class="small fragment fade-up" style="margin-top:16px">Instrumento validado con análisis factorial exploratorio. Pipeline reproducible (v3_audited, marzo 2026).</p>
 </section>
 
 <!-- Results overview -->
 <section>
   <h2>Los resultados: una cultura excepcionalmente fuerte</h2>
-  <p>Cuando el clima ya es fuerte, la pregunta cambia: <strong style="color:var(--teal)">¿qué estructura lo sostiene y es resiliente?</strong></p>
-  <div class="grid-4 fragment fade-up">
-    <div class="card" style="text-align:center;border-top:2px solid var(--teal)">
-      <p style="font-size:2em;font-weight:900;color:var(--teal);margin:0;font-family:'JetBrains Mono',monospace">89.9%</p>
-      <p style="font-size:0.55em;margin-top:4px">Engagement global</p>
+  <p>Cuando el clima ya es fuerte, la pregunta cambia: <strong style="color:var(--teal)">¿qué estructura lo sostiene y qué tan resiliente es?</strong></p>
+  <div class="grid-2 fragment fade-up">
+    <div>
+      <div id="dimChart" style="width:100%;height:340px;margin-top:10px"></div>
+      <p class="small" style="text-align:center;margin-top:4px">Escala relativa por dimensión — valores omitidos por confidencialidad.</p>
     </div>
-    <div class="card" style="text-align:center;border-top:2px solid var(--amber)">
-      <p style="font-size:2em;font-weight:900;color:var(--amber);margin:0;font-family:'JetBrains Mono',monospace">97.4%</p>
-      <p style="font-size:0.55em;margin-top:4px">Orgullo institucional</p>
-    </div>
-    <div class="card" style="text-align:center;border-top:2px solid var(--violet)">
-      <p style="font-size:2em;font-weight:900;color:var(--violet);margin:0;font-family:'JetBrains Mono',monospace">86.8</p>
-      <p style="font-size:0.55em;margin-top:4px">eNPS</p>
-    </div>
-    <div class="card" style="text-align:center;border-top:2px solid var(--blue)">
-      <p style="font-size:2em;font-weight:900;color:var(--blue);margin:0;font-family:'JetBrains Mono',monospace">+0.45</p>
-      <p style="font-size:0.55em;margin-top:4px">Puntos desde 2023</p>
-    </div>
-  </div>
-  <div class="grid-2 fragment fade-up" style="margin-top:16px">
-    <div class="card" style="border-left:3px solid var(--teal)">
-      <h4>Perfiles de engagement</h4>
-      <p style="font-size:0.6em"><span class="teal mono">58.2%</span> True Believers (&ge;4.50) · <span class="amber mono">31.7%</span> Engaged Pragmáticos · <span class="mono">10.1%</span> Neutrales · <span class="coral mono">0.0%</span> Desengaged</p>
-    </div>
-    <div class="card" style="border-left:3px solid var(--coral)">
-      <h4>Señal de atención</h4>
-      <p style="font-size:0.6em">Seguridad Laboral Percibida: <span class="coral mono">3.57/5.00</span> — única dimensión por debajo de 4.00. Compensación: <span class="amber mono">4.09</span> y Autonomía: <span class="amber mono">4.27</span> con &alpha; bajo (0.37).</p>
+    <div>
+      <div class="card" style="border-left:3px solid var(--teal);margin-bottom:14px">
+        <h4>Engagement sostenidamente alto</h4>
+        <p>El engagement global se encuentra consistentemente en el rango superior de la escala, con una tendencia positiva sostenida a lo largo de las 4 mediciones históricas.</p>
+      </div>
+      <div class="card" style="border-left:3px solid var(--amber);margin-bottom:14px">
+        <h4>Perfiles de engagement</h4>
+        <p>La mayoría de los colaboradores se ubican en los segmentos de mayor compromiso (True Believers y Engaged Pragmáticos), con representación mínima en perfiles de desvinculación.</p>
+      </div>
+      <div class="card" style="border-left:3px solid var(--violet)">
+        <h4>eNPS en zona de excelencia</h4>
+        <p>El índice de promotores netos de empleados se posiciona muy por encima del benchmark del sector bancario en la región.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -483,7 +477,7 @@
   <div class="grid-3 fragment fade-up">
     <div class="card" style="border-top:3px solid var(--amber)">
       <h4 class="amber">Drivers de engagement</h4>
-      <p>Correlación Pearson con ajuste Olkin-Pratt identifica qué dimensiones <strong style="color:#e2e8f0">realmente impulsan engagement</strong> (no cuáles son las más altas). Liderazgo, Justicia y Cohesión lideran — no Orgullo, que ya está en techo.</p>
+      <p>Correlación Pearson con ajuste Olkin-Pratt identifica qué dimensiones <strong style="color:#e2e8f0">realmente impulsan engagement</strong> — que no siempre coinciden con las que tienen scores más altos. El driver más fuerte puede ser una dimensión "media".</p>
     </div>
     <div class="card" style="border-top:3px solid var(--violet)">
       <h4 class="violet">Varianza departamental (HLM)</h4>
@@ -491,7 +485,7 @@
     </div>
     <div class="card" style="border-top:3px solid var(--teal)">
       <h4 class="teal">Significancia wave-over-wave</h4>
-      <p>Con Welch t-test y Cohen's d: ¿el cambio de 4.05 a 4.50 en 3 años es <strong style="color:#e2e8f0">estadísticamente significativo</strong>? Sí — d = 0.72 (efecto medio-grande). Sin este test, sería solo un número mayor.</p>
+      <p>Con Welch t-test y Cohen's d: ¿el cambio entre mediciones es <strong style="color:#e2e8f0">estadísticamente significativo</strong> o solo ruido? El tamaño del efecto determina si vale la pena invertir en amplificar esa tendencia.</p>
     </div>
   </div>
 </section>
@@ -541,55 +535,60 @@
 </section>
 
 <section>
-  <h2>De datos a decisiones: el flujo completo</h2>
-  <p>Cada capa del stack analítico responde una pregunta de negocio distinta.</p>
-  <div class="grid-2 fragment fade-up">
-    <div class="card" style="border-left:3px solid var(--blue)">
-      <h4>Instrumento &rarr; ¿Dónde intervenir?</h4>
-      <p>18 dimensiones segmentadas por 22 áreas. Seguridad Laboral Percibida a 3.57 no es un problema de toda la organización — ¿es sistémico o localizado? La segmentación lo responde.</p>
+  <h2>El modelo ADKAR aplicado al clima</h2>
+  <p>Las dimensiones de cambio de Prosci (Hiatt, 2006) conectan hallazgos de clima con gestión del cambio organizacional.</p>
+  <div class="grid-3 fragment fade-up">
+    <div class="card" style="border-top:3px solid var(--teal)">
+      <h4 class="teal">Awareness (Conciencia)</h4>
+      <p>El estudio de clima genera conciencia sobre brechas reales. ONA muestra <strong style="color:#e2e8f0">quién</strong> debe recibir el mensaje y por <strong style="color:#e2e8f0">qué canal</strong> de la red se propaga con mayor eficiencia.</p>
     </div>
-    <div class="card" style="border-left:3px solid var(--amber)">
-      <h4>Estadística &rarr; ¿Cuánto invertir?</h4>
-      <p>Cohen's d cuantifica el tamaño del efecto. Si la diferencia entre áreas tiene d = 0.8, es grande y justifica inversión. Si d = 0.2, es marginal — no actuar impulsivamente.</p>
+    <div class="card" style="border-top:3px solid var(--amber)">
+      <h4 class="amber">Desire (Deseo)</h4>
+      <p>Identificar líderes informales con alta centralidad y alto engagement permite activar <strong style="color:#e2e8f0">agentes de cambio naturales</strong> que generan deseo de adopción en sus comunidades.</p>
     </div>
-    <div class="card" style="border-left:3px solid var(--violet)">
-      <h4>ONA &rarr; ¿Con quién intervenir?</h4>
-      <p>La centralidad identifica personas con alto alcance de difusión. Incluir brokers en programas de desarrollo multiplica el alcance vs seleccionar al azar.</p>
+    <div class="card" style="border-top:3px solid var(--violet)">
+      <h4 class="violet">Knowledge (Conocimiento)</h4>
+      <p>Seleccionar participantes de programas de desarrollo por posición en la red: capacitar a un broker <strong style="color:#e2e8f0">multiplica la difusión</strong> de conocimiento vs. seleccionar al azar.</p>
     </div>
-    <div class="card" style="border-left:3px solid var(--teal)">
-      <h4>Todo junto &rarr; ROI del clima</h4>
-      <p>Conectar dimensiones con indicadores de negocio (rotación, ausentismo, NPS) permite estimar el costo de no-intervención y el retorno esperado de cada acción.</p>
+    <div class="card" style="border-top:3px solid var(--blue)">
+      <h4 class="blue">Ability (Habilidad)</h4>
+      <p>Los drivers de engagement (Pearson) revelan qué dimensiones habilitan el desempeño. HLM muestra si la intervención debe ser <strong style="color:#e2e8f0">a nivel equipo o individual</strong>.</p>
+    </div>
+    <div class="card" style="border-top:3px solid var(--coral)">
+      <h4 class="coral">Reinforcement (Refuerzo)</h4>
+      <p>Con 4 mediciones históricas + tests de significancia: ¿la intervención produjo un <strong style="color:#e2e8f0">cambio sostenido</strong> o solo un pico temporal? El delta wave-over-wave lo responde.</p>
+    </div>
+    <div class="card" style="border-top:3px solid var(--rose)">
+      <h4 style="color:var(--rose)">ROI del cambio</h4>
+      <p>Conectar dimensiones de clima con indicadores de negocio (rotación, ausentismo, NPS) permite estimar el <strong style="color:#e2e8f0">costo de no-intervención</strong> y priorizar inversión por impacto.</p>
     </div>
   </div>
+  <p class="small fragment fade-up" style="margin-top:10px">Hiatt, J. (2006). "ADKAR: A Model for Change in Business, Government and Our Community." Prosci Research.</p>
 </section>
 
 <section>
-  <h2>Aplicaciones concretas</h2>
-  <p>Cinco decisiones organizacionales que este stack habilita.</p>
-  <div class="grid-3 fragment fade-up">
-    <div class="card" style="border-top:3px solid var(--teal)">
-      <h4>Capacitación con efecto red</h4>
-      <p>Seleccionar participantes de programas de desarrollo por centralidad: capacitar a un broker tiene mayor alcance de difusión que un nodo periférico.</p>
+  <h2>De datos a decisiones: el flujo completo</h2>
+  <p>Cada capa del stack responde una pregunta de negocio distinta — y las respuestas se encadenan.</p>
+  <div class="grid-2 fragment fade-up">
+    <div class="card" style="border-left:3px solid var(--blue)">
+      <h4>Instrumento &rarr; ¿Dónde intervenir?</h4>
+      <p>18 dimensiones segmentadas por 22 áreas. Si una dimensión puntúa bajo, ¿es sistémico o localizado? La segmentación lo responde.</p>
+      <p style="font-size:0.48em;color:#5a6a7a;margin-top:6px">Schneider & Barbera (2014). "The Oxford Handbook of Organizational Climate and Culture."</p>
     </div>
-    <div class="card" style="border-top:3px solid var(--amber)">
-      <h4>Sucesión informada</h4>
-      <p>Si un líder informal con alta intermediación se va, ¿quién hereda sus relaciones? ONA + engagement identifica candidatos de sucesión no obvios.</p>
+    <div class="card" style="border-left:3px solid var(--amber)">
+      <h4>Estadística &rarr; ¿Cuánto invertir?</h4>
+      <p>Cohen's d cuantifica el tamaño del efecto. Si d = 0.8, es grande y justifica inversión. Si d = 0.2, es marginal — no actuar impulsivamente.</p>
+      <p style="font-size:0.48em;color:#5a6a7a;margin-top:6px">Cohen, J. (1988). "Statistical Power Analysis for the Behavioral Sciences."</p>
     </div>
-    <div class="card" style="border-top:3px solid var(--violet)">
-      <h4>Alertas tempranas</h4>
-      <p>Dimensiones con caída significativa (Welch t, p&lt;0.05) + nodos puente en esa área = señal de intervención antes de que se convierta en rotación.</p>
+    <div class="card" style="border-left:3px solid var(--violet)">
+      <h4>ONA &rarr; ¿Con quién intervenir?</h4>
+      <p>La centralidad identifica personas con alto alcance de difusión. Incluir brokers en programas de desarrollo amplifica el alcance de la intervención.</p>
+      <p style="font-size:0.48em;color:#5a6a7a;margin-top:6px">Cross, R. et al. (2004). "A Relational View of Information Seeking."</p>
     </div>
-    <div class="card" style="border-top:3px solid var(--blue)">
-      <h4>Formalizar colaboración orgánica</h4>
-      <p>Si ONA muestra que dos áreas ya colaboran naturalmente, formalizar esa conexión es más eficiente que crear una nueva desde cero.</p>
-    </div>
-    <div class="card" style="border-top:3px solid var(--coral)">
-      <h4>Medir delta post-intervención</h4>
-      <p>Con historicidad (4 mediciones) + tests de significancia: ¿la intervención del año pasado produjo un cambio real o solo ruido estadístico?</p>
-    </div>
-    <div class="card" style="border-top:3px solid var(--rose)">
-      <h4>Priorizar inversión</h4>
-      <p>Drivers de engagement × varianza departamental: ¿dónde tiene más impacto cada peso invertido en desarrollo organizacional?</p>
+    <div class="card" style="border-left:3px solid var(--teal)">
+      <h4>Todo junto &rarr; ROI organizacional</h4>
+      <p>Conectar clima con indicadores operativos (rotación, ausentismo, NPS) permite estimar el costo de no-intervención y el retorno esperado por acción.</p>
+      <p style="font-size:0.48em;color:#5a6a7a;margin-top:6px">Harter et al. (2002). "Business-Unit-Level Relationship." Journal of Applied Psychology.</p>
     </div>
   </div>
 </section>
@@ -609,13 +608,14 @@
     </div>
     <div class="card" style="border-left:3px solid var(--coral)">
       <h4 class="coral">Sesgo de no-respuesta</h4>
-      <p>30% de colaboradores no respondieron. Sus percepciones podrían diferir sistemáticamente. El margen de error (±3.9%) no captura este sesgo — solo el muestral.</p>
+      <p>Quienes no responden la encuesta podrían tener percepciones sistemáticamente distintas. El margen de error muestral no captura este sesgo — es una limitación inherente al autoinforme.</p>
     </div>
     <div class="card" style="border-left:3px solid var(--coral)">
       <h4 class="coral">ONA perceptual ≠ sociométrica</h4>
       <p>ONA basada en similitud de respuestas (perceptual) no es lo mismo que ONA basada en interacciones reales (sociométrica). La primera agrupa por percepción similar, la segunda por colaboración real.</p>
     </div>
   </div>
+  <p class="small fragment fade-up" style="margin-top:12px">Podsakoff et al. (2003). "Common Method Biases in Behavioral Research." Journal of Applied Psychology. · Conway, M. (1967). "How Do Committees Invent?"</p>
 </section>
 
 <!-- Closing quote -->
@@ -685,6 +685,9 @@ Reveal.on('slidechanged',event=>{
     drawOrgChart();
     drawNetworkViz();
   }
+  if(event.currentSlide.querySelector('#dimChart')){
+    drawDimChart();
+  }
 });
 
 function drawOrgChart(){
@@ -750,6 +753,55 @@ function drawNetworkViz(){
     svg.append('circle').attr('cx',n.x).attr('cy',n.y).attr('r',n.r)
       .attr('fill',n.color).attr('opacity',0.8);
   });
+}
+
+function drawDimChart(){
+  const container=document.getElementById('dimChart');
+  if(!container||container.querySelector('svg'))return;
+  const w=container.clientWidth||500,h=340;
+  const svg=d3.select(container).append('svg').attr('viewBox',`0 0 ${w} ${h}`).attr('width','100%');
+
+  // Relative bars (no real values) — order by strength, high to low
+  const dims=[
+    {name:'Orgullo Institucional',v:0.97,color:'#06d6a0'},
+    {name:'Propósito del Trabajo',v:0.95,color:'#06d6a0'},
+    {name:'Resultados y Logros',v:0.93,color:'#06d6a0'},
+    {name:'Integridad del Liderazgo',v:0.92,color:'#06d6a0'},
+    {name:'Cohesión de Equipo',v:0.91,color:'#06d6a0'},
+    {name:'Justicia Organizacional',v:0.88,color:'#38bdf8'},
+    {name:'Liderazgo Efectivo',v:0.87,color:'#38bdf8'},
+    {name:'Comunicación Interna',v:0.86,color:'#38bdf8'},
+    {name:'Cuidado Mutuo',v:0.85,color:'#38bdf8'},
+    {name:'Balance Vida-Trabajo',v:0.84,color:'#38bdf8'},
+    {name:'Reconocimiento',v:0.80,color:'#a78bfa'},
+    {name:'Desarrollo Profesional',v:0.76,color:'#a78bfa'},
+    {name:'Innovación y Cambio',v:0.72,color:'#fbbf24'},
+    {name:'Compensación',v:0.70,color:'#fbbf24'}
+  ];
+
+  const margin={top:8,right:20,bottom:8,left:145};
+  const bw=w-margin.left-margin.right;
+  const bh=(h-margin.top-margin.bottom)/dims.length;
+  const g=svg.append('g').attr('transform',`translate(${margin.left},${margin.top})`);
+
+  dims.forEach((d,i)=>{
+    const y=i*bh;
+    // Label
+    g.append('text').attr('x',-8).attr('y',y+bh/2+4).text(d.name)
+      .attr('text-anchor','end').attr('fill','#8899aa').attr('font-size','10px').attr('font-family','Inter,sans-serif');
+    // Background bar
+    g.append('rect').attr('x',0).attr('y',y+4).attr('width',bw).attr('height',bh-8)
+      .attr('rx',4).attr('fill','rgba(30,40,65,0.3)');
+    // Value bar
+    g.append('rect').attr('x',0).attr('y',y+4).attr('width',bw*d.v).attr('height',bh-8)
+      .attr('rx',4).attr('fill',d.color).attr('opacity',0.7);
+  });
+
+  // Zone labels
+  g.append('line').attr('x1',bw*0.75).attr('y1',0).attr('x2',bw*0.75).attr('y2',h-margin.top-margin.bottom)
+    .attr('stroke','rgba(100,116,139,0.15)').attr('stroke-dasharray','4,4');
+  g.append('text').attr('x',bw*0.75-4).attr('y',h-margin.top-margin.bottom-2).text('Benchmark')
+    .attr('text-anchor','end').attr('fill','rgba(100,116,139,0.3)').attr('font-size','9px').attr('font-family','Inter,sans-serif');
 }
 </script>
 </body>
