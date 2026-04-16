@@ -11,7 +11,11 @@
       "Bash(kill 39523)",
       "Bash(echo \"Server on port 8767, PID: $!\")",
       "mcp__playwright__browser_press_key",
-      "Bash(kill 47904)"
+      "Bash(kill 47904)",
+      "mcp__claude_ai_Gamma__get_themes",
+      "Bash(echo \"PID: $!\")",
+      "mcp__playwright__browser_take_screenshot",
+      "Bash(kill 54146)"
     ]
   }
 }

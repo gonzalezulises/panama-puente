@@ -1,0 +1,83 @@
+- generic [active] [ref=e1]:
+  - application [ref=e2]:
+    - generic:
+      - generic:
+        - heading [level=3]: PANAMÁ PUENTE DIGITAL 2026
+        - heading [level=1]: De Encuesta de Clima a Inteligencia Organizacional
+        - paragraph: "Caso educativo: cómo la estadística rigurosa, el machine learning y el análisis de redes transforman datos de clima en decisiones de negocio."
+        - paragraph:
+          - strong: Ulises González
+          - text: · Business Scientist · Rizo.ma ICF ACC · PMP® · MIT AI/ML
+      - text: → → → → → → → → → → → →
+      - generic:
+        - heading [level=2]: Aplicaciones concretas
+        - paragraph: Cinco decisiones organizacionales que este stack habilita.
+        - generic:
+          - generic:
+            - heading [level=4]: Capacitación con efecto red
+            - paragraph: "Seleccionar participantes de programas de desarrollo por centralidad: capacitar a un broker tiene mayor alcance de difusión que un nodo periférico."
+          - generic:
+            - heading [level=4]: Sucesión informada
+            - paragraph: Si un líder informal con alta intermediación se va, ¿quién hereda sus relaciones? ONA + engagement identifica candidatos de sucesión no obvios.
+          - generic:
+            - heading [level=4]: Alertas tempranas
+            - paragraph: Dimensiones con caída significativa (Welch t, p<0.05) + nodos puente en esa área = señal de intervención antes de que se convierta en rotación.
+          - generic:
+            - heading [level=4]: Formalizar colaboración orgánica
+            - paragraph: Si ONA muestra que dos áreas ya colaboran naturalmente, formalizar esa conexión es más eficiente que crear una nueva desde cero.
+          - generic:
+            - heading [level=4]: Medir delta post-intervención
+            - paragraph: "Con historicidad (4 mediciones) + tests de significancia: ¿la intervención del año pasado produjo un cambio real o solo ruido estadístico?"
+          - generic:
+            - heading [level=4]: Priorizar inversión
+            - paragraph: "Drivers de engagement × varianza departamental: ¿dónde tiene más impacto cada peso invertido en desarrollo organizacional?"
+      - generic:
+        - heading [level=2]: Limitaciones y transparencia
+        - paragraph:
+          - text: Qué puede y qué
+          - strong: no puede
+          - text: hacer este enfoque. La honestidad metodológica es parte del valor.
+        - generic:
+          - generic:
+            - heading [level=4]: Correlación ≠ causalidad
+            - paragraph: Que Liderazgo correlacione con engagement no significa que mejorar liderazgo cause más engagement. Atribución causal requiere diseños experimentales o cuasi-experimentales.
+          - generic:
+            - heading [level=4]: Percepciones ≠ comportamientos
+            - paragraph:
+              - text: El clima mide cómo la gente
+              - emphasis: percibe
+              - text: la organización, no cómo
+              - emphasis: actúa
+              - text: . Un engagement alto en encuesta puede coexistir con baja productividad o alta rotación.
+          - generic:
+            - heading [level=4]: Sesgo de no-respuesta
+            - paragraph: 30% de colaboradores no respondieron. Sus percepciones podrían diferir sistemáticamente. El margen de error (±3.9%) no captura este sesgo — solo el muestral.
+          - generic:
+            - heading [level=4]: ONA perceptual ≠ sociométrica
+            - paragraph: ONA basada en similitud de respuestas (perceptual) no es lo mismo que ONA basada en interacciones reales (sociométrica). La primera agrupa por percepción similar, la segunda por colaboración real.
+      - generic:
+        - heading [level=3]: GRACIAS
+        - heading [level=1]: Ulises González
+        - paragraph: Business Scientist · Rizo.ma ulises@rizo.ma
+        - generic:
+          - generic:
+            - paragraph: Demo interactivo
+            - paragraph:
+              - link:
+                - /url: demo/index.html
+                - text: → Explorar el grafo
+          - generic:
+            - paragraph: LinkedIn
+            - paragraph:
+              - link:
+                - /url: https://linkedin.com/in/ulisesgonzalez
+                - text: → /in/ulisesgonzalez
+        - paragraph: Caso educativo. Red sintética. Datos de clima basados en estudio real (pipeline v3_audited).
+    - link "21 / 22" [ref=e142] [cursor=pointer]:
+      - /url: "#/20"
+    - complementary:
+      - button "previous slide" [ref=e24] [cursor=pointer]
+      - button "next slide" [ref=e14] [cursor=pointer]
+    - text: Speaker notes
+    - generic [ref=e17]: Una encuesta de clima te dice cómo se siente la organización. Estadística te dice si es significativo. ONA te muestra la estructura. Juntos, te dicen dónde actuar. El valor no está en medir más. Está en entender mejor.
+  - generic [ref=e18]: rizo.ma // panamá puente digital 2026

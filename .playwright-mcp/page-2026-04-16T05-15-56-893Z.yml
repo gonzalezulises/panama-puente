@@ -1,0 +1,81 @@
+- generic [active] [ref=e1]:
+  - application [ref=e2]:
+    - generic:
+      - generic:
+        - heading [level=3]: PANAMÁ PUENTE DIGITAL 2026
+        - heading [level=1]: De Encuesta de Clima a Inteligencia Organizacional
+        - paragraph: "Caso educativo: cómo la estadística rigurosa, el machine learning y el análisis de redes transforman datos de clima en decisiones de negocio."
+        - paragraph:
+          - strong: Ulises González
+          - text: · Business Scientist · Rizo.ma ICF ACC · PMP® · MIT AI/ML
+      - text: → → → → → → → → → → → →
+      - generic:
+        - heading [level=2]: "De datos a decisiones: el flujo completo"
+        - paragraph: Cada capa del stack analítico responde una pregunta de negocio distinta.
+        - generic:
+          - generic:
+            - heading [level=4]: Instrumento → ¿Dónde intervenir?
+            - paragraph: 18 dimensiones segmentadas por 22 áreas. Seguridad Laboral Percibida a 3.57 no es un problema de toda la organización — ¿es sistémico o localizado? La segmentación lo responde.
+          - generic:
+            - heading [level=4]: Estadística → ¿Cuánto invertir?
+            - paragraph: Cohen's d cuantifica el tamaño del efecto. Si la diferencia entre áreas tiene d = 0.8, es grande y justifica inversión. Si d = 0.2, es marginal — no actuar impulsivamente.
+          - generic:
+            - heading [level=4]: ONA → ¿Con quién intervenir?
+            - paragraph: La centralidad identifica personas con alto alcance de difusión. Incluir brokers en programas de desarrollo multiplica el alcance vs seleccionar al azar.
+          - generic:
+            - heading [level=4]: Todo junto → ROI del clima
+            - paragraph: Conectar dimensiones con indicadores de negocio (rotación, ausentismo, NPS) permite estimar el costo de no-intervención y el retorno esperado de cada acción.
+      - generic:
+        - heading [level=2]: Aplicaciones concretas
+        - paragraph: Cinco decisiones organizacionales que este stack habilita.
+        - generic:
+          - generic:
+            - heading [level=4]: Capacitación con efecto red
+            - paragraph: "Seleccionar participantes de programas de desarrollo por centralidad: capacitar a un broker tiene mayor alcance de difusión que un nodo periférico."
+          - generic:
+            - heading [level=4]: Sucesión informada
+            - paragraph: Si un líder informal con alta intermediación se va, ¿quién hereda sus relaciones? ONA + engagement identifica candidatos de sucesión no obvios.
+          - generic:
+            - heading [level=4]: Alertas tempranas
+            - paragraph: Dimensiones con caída significativa (Welch t, p<0.05) + nodos puente en esa área = señal de intervención antes de que se convierta en rotación.
+          - generic:
+            - heading [level=4]: Formalizar colaboración orgánica
+            - paragraph: Si ONA muestra que dos áreas ya colaboran naturalmente, formalizar esa conexión es más eficiente que crear una nueva desde cero.
+          - generic:
+            - heading [level=4]: Medir delta post-intervención
+            - paragraph: "Con historicidad (4 mediciones) + tests de significancia: ¿la intervención del año pasado produjo un cambio real o solo ruido estadístico?"
+          - generic:
+            - heading [level=4]: Priorizar inversión
+            - paragraph: "Drivers de engagement × varianza departamental: ¿dónde tiene más impacto cada peso invertido en desarrollo organizacional?"
+      - generic [ref=e117]:
+        - heading "Limitaciones y transparencia" [level=2] [ref=e118]
+        - paragraph [ref=e119]:
+          - text: Qué puede y qué
+          - strong [ref=e120]: no puede
+          - text: hacer este enfoque. La honestidad metodológica es parte del valor.
+      - generic:
+        - heading [level=3]: GRACIAS
+        - heading [level=1]: Ulises González
+        - paragraph: Business Scientist · Rizo.ma ulises@rizo.ma
+        - generic:
+          - generic:
+            - paragraph: Demo interactivo
+            - paragraph:
+              - link:
+                - /url: demo/index.html
+                - text: → Explorar el grafo
+          - generic:
+            - paragraph: LinkedIn
+            - paragraph:
+              - link:
+                - /url: https://linkedin.com/in/ulisesgonzalez
+                - text: → /in/ulisesgonzalez
+        - paragraph: Caso educativo. Red sintética. Datos de clima basados en estudio real (pipeline v3_audited).
+    - link "20 / 22" [ref=e121] [cursor=pointer]:
+      - /url: "#/19"
+    - complementary:
+      - button "previous slide" [ref=e24] [cursor=pointer]
+      - button "next slide" [ref=e14] [cursor=pointer]
+    - text: Speaker notes
+    - generic [ref=e17]: "Los resultados: una cultura excepcionalmente fuerte Cuando el clima ya es fuerte, la pregunta cambia: ¿qué estructura lo sostiene y es resiliente? 89.9% Engagement global 97.4% Orgullo institucional 86.8 eNPS +0.45 Puntos desde 2023 Perfiles de engagement 58.2% True Believers (≥4.50) · 31.7% Engaged Pragmáticos · 10.1% Neutrales · 0.0% Desengaged Señal de atención Seguridad Laboral Percibida: 3.57/5.00 — única dimensión por debajo de 4.00. Compensación: 4.09 y Autonomía: 4.27 con α bajo (0.37)."
+  - generic [ref=e18]: rizo.ma // panamá puente digital 2026

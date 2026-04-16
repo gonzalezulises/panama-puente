@@ -1,0 +1,123 @@
+- generic [active] [ref=e1]:
+  - application [ref=e2]:
+    - generic:
+      - generic:
+        - heading [level=3]: PANAMÁ PUENTE DIGITAL 2026
+        - heading [level=1]: De Encuesta de Clima a Inteligencia Organizacional
+        - paragraph: "Caso educativo: cómo la estadística rigurosa, el machine learning y el análisis de redes transforman datos de clima en decisiones de negocio."
+        - paragraph:
+          - strong: Ulises González
+          - text: · Business Scientist · Rizo.ma ICF ACC · PMP® · MIT AI/ML
+      - text: → → → → → → → → → → → →
+      - generic:
+        - heading [level=2]: Ficha técnica
+        - paragraph: Los números que validan la muestra antes de interpretar cualquier resultado.
+        - generic:
+          - generic:
+            - table:
+              - rowgroup:
+                - row:
+                  - cell: Universo
+                  - cell: 270 colaboradores
+                - row:
+                  - cell: Respondentes
+                  - cell: "189 (tasa: 70.0%)"
+                - row:
+                  - cell: Margen de error
+                  - cell: ±3.9% (IC 95%)
+                - row:
+                  - cell: Período
+                  - cell: Noviembre 2025
+                - row:
+                  - cell: Historicidad
+                  - cell: 4 mediciones (2023–2026)
+                - row:
+                  - cell: Áreas funcionales
+                  - cell: 22 canónicas
+          - generic:
+            - table:
+              - rowgroup:
+                - row:
+                  - cell: Dimensiones
+                  - cell: 18 dimensiones medidas
+                - row:
+                  - cell: Ítems
+                  - cell: 60 asignados (Likert 5 pts)
+                - row:
+                  - cell: KMO
+                  - cell: 0.904 (Marvelous)
+                - row:
+                  - cell: Bartlett
+                  - cell: χ² = 8,220, p < 0.001
+                - row:
+                  - cell: Cronbach α
+                  - cell: "Rango: 0.37 – 0.88"
+                - row:
+                  - cell: Pipeline
+                  - cell: v3_audited (mar. 2026)
+        - paragraph: Tasa de respuesta del 70% con margen ±3.9% es estadísticamente válida pero implica que 81 colaboradores no están representados. Este sesgo se documenta, no se ignora.
+      - generic:
+        - heading [level=2]: "Los resultados: una cultura excepcionalmente fuerte"
+        - paragraph:
+          - text: "Cuando el clima ya es fuerte, la pregunta cambia:"
+          - strong: ¿qué estructura lo sostiene y es resiliente?
+        - generic:
+          - generic:
+            - paragraph: 89.9%
+            - paragraph: Engagement global
+          - generic:
+            - paragraph: 97.4%
+            - paragraph: Orgullo institucional
+          - generic:
+            - paragraph: "86.8"
+            - paragraph: eNPS
+          - generic:
+            - paragraph: "+0.45"
+            - paragraph: Puntos desde 2023
+        - generic:
+          - generic:
+            - heading [level=4]: Perfiles de engagement
+            - paragraph: 58.2% True Believers (≥4.50) · 31.7% Engaged Pragmáticos · 10.1% Neutrales · 0.0% Desengaged
+          - generic:
+            - heading [level=4]: Señal de atención
+            - paragraph: "Seguridad Laboral Percibida: 3.57/5.00 — única dimensión por debajo de 4.00. Compensación: 4.09 y Autonomía: 4.27 con α bajo (0.37)."
+      - generic [ref=e63]:
+        - heading "Qué revela la estadística que el promedio esconde" [level=2] [ref=e64]
+        - paragraph [ref=e65]: Tres hallazgos que solo emergen con análisis riguroso — no con promedios.
+      - generic:
+        - heading [level=2]: "ONA: la red detrás de los números"
+        - paragraph: Grafo sintético que ilustra cómo se visualiza la estructura relacional de una organización.
+        - paragraph:
+          - link:
+            - /url: demo/index.html
+            - text: → Abrir demo en nueva pestaña
+          - text: · Datos 100% sintéticos para fines educativos.
+      - generic:
+        - heading [level=3]: Exploración guiada
+        - heading [level=2]: ¿Qué observamos?
+      - generic:
+        - heading [level=3]: GRACIAS
+        - heading [level=1]: Ulises González
+        - paragraph: Business Scientist · Rizo.ma ulises@rizo.ma
+        - generic:
+          - generic:
+            - paragraph: Demo interactivo
+            - paragraph:
+              - link:
+                - /url: demo/index.html
+                - text: → Explorar el grafo
+          - generic:
+            - paragraph: LinkedIn
+            - paragraph:
+              - link:
+                - /url: https://linkedin.com/in/ulisesgonzalez
+                - text: → /in/ulisesgonzalez
+        - paragraph: Caso educativo. Red sintética. Datos de clima basados en estudio real (pipeline v3_audited).
+    - link "14 / 22" [ref=e66] [cursor=pointer]:
+      - /url: "#/13"
+    - complementary:
+      - button "previous slide" [ref=e24] [cursor=pointer]
+      - button "next slide" [ref=e14] [cursor=pointer]
+    - text: Speaker notes
+    - generic [ref=e17]: "4 Impacto de negocio Conectar hallazgos con indicadores operativos: rotación, ausentismo, NPS, productividad 3 ONA + Graph ML Comunidades (Leiden), centralidad, puentes, densidad inter-departamental, estabilidad (NMI) 2 Estadística e inferencia Cronbach α, r wg , Pearson, Welch t-test, Bootstrap CI, Cohen's d, CFA, HLM 1 Instrumento de medición 22 dimensiones, 107+ ítems, escala Likert 5 pts, validación con fundamento peer-reviewed"
+  - generic [ref=e18]: rizo.ma // panamá puente digital 2026

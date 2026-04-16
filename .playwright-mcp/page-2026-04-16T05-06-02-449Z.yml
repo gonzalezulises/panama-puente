@@ -1,0 +1,46 @@
+- generic [active] [ref=e1]:
+  - application [ref=e2]:
+    - generic:
+      - generic [ref=e3]:
+        - heading "PANAMÁ PUENTE DIGITAL 2026" [level=3] [ref=e4]
+        - heading "De Encuesta de Clima a Inteligencia Organizacional" [level=1] [ref=e5]:
+          - text: De Encuesta de Clima a
+          - text: Inteligencia Organizacional
+        - paragraph [ref=e6]:
+          - text: "Caso educativo: cómo la estadística rigurosa, el machine learning y el análisis"
+          - text: de redes transforman datos de clima en decisiones de negocio.
+        - paragraph [ref=e7]:
+          - strong [ref=e8]: Ulises González
+          - text: Rizo.ma
+      - generic:
+        - heading [level=3]: Acto I
+        - heading [level=2]: Fundamentos
+        - paragraph: Qué es clima organizacional, cómo se mide con rigor, y por qué la mayoría de las encuestas se quedan cortas.
+      - generic:
+        - heading [level=2]: Conceptos clave
+        - paragraph: Tres conceptos que necesitamos distinguir antes de avanzar.
+      - generic:
+        - heading [level=3]: GRACIAS
+        - heading [level=1]: Ulises González
+        - paragraph: Business Scientist · Rizo.ma ulises@rizo.ma
+        - generic:
+          - generic:
+            - paragraph: Demo interactivo
+            - paragraph:
+              - link:
+                - /url: demo/index.html
+                - text: → Explorar el grafo
+          - generic:
+            - paragraph: LinkedIn
+            - paragraph:
+              - link:
+                - /url: https://linkedin.com/in/ulisesgonzalez
+                - text: → /in/ulisesgonzalez
+        - paragraph: Caso educativo. Red sintética. Datos de clima basados en estudio real (pipeline v3_audited).
+    - link "1 / 22" [ref=e13] [cursor=pointer]:
+      - /url: "#/"
+    - complementary:
+      - button "next slide" [ref=e14] [cursor=pointer]
+    - text: Speaker notes
+    - generic [ref=e17]: "PANAMÁ PUENTE DIGITAL 2026 De Encuesta de Clima a Inteligencia Organizacional Caso educativo: cómo la estadística rigurosa, el machine learning y el análisis de redes transforman datos de clima en decisiones de negocio. Ulises González · Business Scientist · Rizo.ma ICF ACC · PMP® · MIT AI/ML"
+  - generic [ref=e18]: rizo.ma // panamá puente digital 2026

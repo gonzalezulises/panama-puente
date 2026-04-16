@@ -1,0 +1,52 @@
+- generic [active] [ref=e1]:
+  - application [ref=e2]:
+    - generic:
+      - generic:
+        - heading [level=3]: PANAMÁ PUENTE DIGITAL 2026
+        - heading [level=1]: De Encuesta de Clima a Inteligencia Organizacional
+        - paragraph: "Caso educativo: cómo la estadística rigurosa, el machine learning y el análisis de redes transforman datos de clima en decisiones de negocio."
+        - paragraph:
+          - strong: Ulises González
+          - text: · Business Scientist · Rizo.ma ICF ACC · PMP® · MIT AI/ML
+      - generic:
+        - heading [level=2]: Conceptos clave
+        - paragraph: Tres conceptos que necesitamos distinguir antes de avanzar.
+      - generic:
+        - heading [level=2]: El problema de la encuesta sin análisis
+        - paragraph: La mayoría de los estudios de clima se quedan en la primera columna. El valor está en cruzar las tres.
+      - generic [ref=e35]:
+        - heading "El stack analítico completo" [level=2] [ref=e36]
+        - paragraph [ref=e37]: Cuatro capas que transforman respuestas de encuesta en inteligencia accionable.
+      - generic:
+        - heading [level=3]: Acto II
+        - heading [level=2]: La Ciencia
+        - paragraph: "El valor de cada capa: qué pregunta responde, qué método usa, y por qué importa."
+      - generic:
+        - heading [level=2]: "Capa 1: El instrumento"
+        - paragraph: Cada dimensión tiene fundamento teórico peer-reviewed. No es una encuesta genérica.
+      - generic:
+        - heading [level=3]: GRACIAS
+        - heading [level=1]: Ulises González
+        - paragraph: Business Scientist · Rizo.ma ulises@rizo.ma
+        - generic:
+          - generic:
+            - paragraph: Demo interactivo
+            - paragraph:
+              - link:
+                - /url: demo/index.html
+                - text: → Explorar el grafo
+          - generic:
+            - paragraph: LinkedIn
+            - paragraph:
+              - link:
+                - /url: https://linkedin.com/in/ulisesgonzalez
+                - text: → /in/ulisesgonzalez
+        - paragraph: Caso educativo. Red sintética. Datos de clima basados en estudio real (pipeline v3_audited).
+    - link "5 / 22" [ref=e38] [cursor=pointer]:
+      - /url: "#/4"
+    - complementary:
+      - button "previous slide" [ref=e24] [cursor=pointer]
+      - button "next slide" [ref=e14] [cursor=pointer]
+    - text: Speaker notes
+    - generic [ref=e17]: Conceptos clave Tres conceptos que necesitamos distinguir antes de avanzar. Clima Organizacional Percepciones compartidas de los colaboradores sobre las prácticas, políticas y procedimientos de la organización. Se mide mediante encuestas con escalas tipo Likert. Captura actitudes individuales agregadas , no relaciones. Schneider, Ehrhart & Macey (2013). "Organizational Climate and Culture." Annual Review of Psychology. Análisis de Redes Organizacionales (ONA) Mapeo y análisis de las relaciones informales de colaboración, comunicación y confianza. Captura estructura relacional — quién se conecta con quién y qué rol juegan en la red. Cross, R. & Parker, A. (2004). "The Hidden Power of Social Networks." Harvard Business School Press. Graph ML (Machine Learning sobre Grafos) Familia de técnicas de aprendizaje automático que operan sobre datos con estructura de grafo (nodos + aristas). Incluye detección de comunidades, cálculo de centralidad, y modelos que incorporan atributos relacionales. Hamilton, W. L. (2020). "Graph Representation Learning." Morgan & Claypool.
+  - generic [ref=e18]: rizo.ma // panamá puente digital 2026
