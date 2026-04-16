@@ -45,9 +45,13 @@
 .reveal .violet{color:var(--violet)}
 .reveal .blue{color:var(--blue)}
 
-.reveal .slides section[data-state="title-slide"]{text-align:center;padding:0;display:flex!important;flex-direction:column;align-items:center;justify-content:center}
-.reveal .slides section[data-state="section-opener"]{text-align:center}
-.reveal .slides section[data-state="impact"]{text-align:center}
+/* Center content vertically on special slides via wrapper */
+.reveal .slides section[data-state="title-slide"],
+.reveal .slides section[data-state="section-opener"],
+.reveal .slides section[data-state="impact"]{
+  text-align:center;
+}
+.vcenter{display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;height:680px}
 
 /* ── Glassmorphism cards ── */
 .card{padding:26px;border-radius:16px;background:var(--glass);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--glass-border);transition:all 0.35s cubic-bezier(.4,0,.2,1);box-shadow:0 4px 24px rgba(0,0,0,0.15),inset 0 1px 0 rgba(255,255,255,0.04)}
@@ -180,22 +184,26 @@
 <section data-state="title-slide" data-background-color="#060a14">
   <div class="title-orb orb1"></div>
   <div class="title-orb orb2"></div>
-  <h3 style="color:var(--teal);font-size:0.55em;letter-spacing:0.2em;margin-bottom:20px;opacity:0.8">PANAMÁ PUENTE DIGITAL 2026</h3>
-  <h1 style="font-size:2.5em;max-width:90%;margin:0 auto" class="glow-text">De Encuesta de Clima a<br><span class="teal">Inteligencia Organizacional</span></h1>
-  <p style="text-align:center;max-width:100%;margin-top:24px;font-size:0.68em;color:#7a8a9a">Caso educativo: cómo la estadística rigurosa, el machine learning y el análisis<br>de redes transforman datos de clima en decisiones de negocio.</p>
-  <p style="text-align:center;max-width:100%;margin-top:36px;font-size:0.58em;color:#5a6a7a">
-    <strong style="color:#c8d6e5">Ulises González</strong> · Business Scientist · Rizo.ma<br>
-    <span class="mono" style="font-size:0.85em;color:rgba(6,214,160,0.6)">ICF ACC · PMP® · MIT AI/ML</span>
-  </p>
+  <div class="vcenter">
+    <h3 style="color:var(--teal);font-size:0.55em;letter-spacing:0.2em;margin-bottom:20px;opacity:0.8">PANAMÁ PUENTE DIGITAL 2026</h3>
+    <h1 style="font-size:2.5em;max-width:90%;margin:0 auto" class="glow-text">De Encuesta de Clima a<br><span class="teal">Inteligencia Organizacional</span></h1>
+    <p style="text-align:center;max-width:100%;margin-top:24px;font-size:0.68em;color:#7a8a9a">Caso educativo: cómo la estadística rigurosa, el machine learning y el análisis<br>de redes transforman datos de clima en decisiones de negocio.</p>
+    <p style="text-align:center;max-width:100%;margin-top:36px;font-size:0.58em;color:#5a6a7a">
+      <strong style="color:#c8d6e5">Ulises González</strong> · Business Scientist · Rizo.ma<br>
+      <span class="mono" style="font-size:0.85em;color:rgba(6,214,160,0.6)">ICF ACC · PMP® · MIT AI/ML</span>
+    </p>
+  </div>
 </section>
 
 <!-- =====================================================
      ACT 1: FOUNDATIONS (12 min)
      ===================================================== -->
 <section data-state="section-opener" data-background-gradient="radial-gradient(ellipse at 25% 40%, rgba(6,214,160,0.07) 0%, #060a14 55%)">
-  <h3>Acto I</h3>
-  <h2>Fundamentos</h2>
-  <p style="text-align:center;max-width:65%;margin:0 auto;color:#7a8a9a">Qué es clima organizacional, cómo se mide con rigor, y por qué la mayoría de las encuestas se quedan cortas.</p>
+  <div class="vcenter">
+    <h3>Acto I</h3>
+    <h2>Fundamentos</h2>
+    <p style="text-align:center;max-width:65%;margin:0 auto;color:#7a8a9a">Qué es clima organizacional, cómo se mide con rigor, y por qué la mayoría de las encuestas se quedan cortas.</p>
+  </div>
 </section>
 
 <!-- Definitions -->
@@ -283,9 +291,11 @@
      ACT 2: THE SCIENCE (12 min)
      ===================================================== -->
 <section data-state="section-opener" data-background-gradient="radial-gradient(ellipse at 65% 45%, rgba(56,189,248,0.06) 0%, rgba(167,139,250,0.03) 30%, #060a14 60%)">
-  <h3>Acto II</h3>
-  <h2>La Ciencia</h2>
-  <p style="text-align:center;max-width:65%;margin:0 auto;color:#7a8a9a">El valor de cada capa: qué pregunta responde, qué método usa, y por qué importa.</p>
+  <div class="vcenter">
+    <h3>Acto II</h3>
+    <h2>La Ciencia</h2>
+    <p style="text-align:center;max-width:65%;margin:0 auto;color:#7a8a9a">El valor de cada capa: qué pregunta responde, qué método usa, y por qué importa.</p>
+  </div>
 </section>
 
 <!-- Layer 1: The instrument -->
@@ -396,9 +406,11 @@
      ACT 3: THE CASE (12 min)
      ===================================================== -->
 <section data-state="section-opener" data-background-gradient="radial-gradient(ellipse at 40% 55%, rgba(251,191,36,0.05) 0%, rgba(6,214,160,0.03) 35%, #060a14 60%)">
-  <h3>Acto III</h3>
-  <h2>El Caso: Banco Panameño</h2>
-  <p style="text-align:center;max-width:65%;margin:0 auto;color:#7a8a9a">270 colaboradores, 22 áreas, 4 mediciones, y un engagement de 89.9%.<br>¿Qué historia cuentan los datos cuando se analizan con rigor?</p>
+  <div class="vcenter">
+    <h3>Acto III</h3>
+    <h2>El Caso: Banco Panameño</h2>
+    <p style="text-align:center;max-width:65%;margin:0 auto;color:#7a8a9a">270 colaboradores, 22 áreas, 4 mediciones, y un engagement de 89.9%.<br>¿Qué historia cuentan los datos cuando se analizan con rigor?</p>
+  </div>
 </section>
 
 <!-- Ficha técnica -->
@@ -497,6 +509,7 @@
 </section>
 
 <section data-state="impact">
+  <div class="vcenter">
   <h3>Exploración guiada</h3>
   <h2>¿Qué observamos?</h2>
   <div class="grid-3 fragment fade-up" style="text-align:left">
@@ -513,15 +526,18 @@
       <p>Activa Simulación. Retira un broker. La fragmentación de la red es el riesgo que el organigrama no muestra.</p>
     </div>
   </div>
+  </div>
 </section>
 
 <!-- =====================================================
      ACT 4: BUSINESS IMPACT (10 min)
      ===================================================== -->
 <section data-state="section-opener" data-background-gradient="radial-gradient(ellipse at 50% 40%, rgba(167,139,250,0.06) 0%, rgba(6,214,160,0.03) 35%, #060a14 60%)">
-  <h3>Acto IV</h3>
-  <h2>Impacto de Negocio</h2>
-  <p style="text-align:center;max-width:65%;margin:0 auto;color:#7a8a9a">Todo se resume en una pregunta: ¿cómo se traduce esto en decisiones que mueven indicadores?</p>
+  <div class="vcenter">
+    <h3>Acto IV</h3>
+    <h2>Impacto de Negocio</h2>
+    <p style="text-align:center;max-width:65%;margin:0 auto;color:#7a8a9a">Todo se resume en una pregunta: ¿cómo se traduce esto en decisiones que mueven indicadores?</p>
+  </div>
 </section>
 
 <section>
@@ -604,16 +620,19 @@
 
 <!-- Closing quote -->
 <section data-state="impact" data-background-gradient="radial-gradient(ellipse at 50% 50%, rgba(6,214,160,0.08) 0%, rgba(56,189,248,0.03) 35%, #060a14 65%)">
-  <div class="quote fragment fade-up">
-    Una encuesta de clima te dice cómo se siente la organización. Estadística te dice si es significativo. ONA te muestra la estructura. Juntos, te dicen dónde actuar.
+  <div class="vcenter">
+    <div class="quote fragment fade-up">
+      Una encuesta de clima te dice cómo se siente la organización. Estadística te dice si es significativo. ONA te muestra la estructura. Juntos, te dicen dónde actuar.
+    </div>
+    <p class="quote-author fragment fade-up">El valor no está en medir más. Está en entender mejor.</p>
   </div>
-  <p class="quote-author fragment fade-up">El valor no está en medir más. Está en entender mejor.</p>
 </section>
 
 <!-- CLOSING -->
 <section data-state="title-slide" data-background-color="#060a14">
   <div class="title-orb orb1"></div>
   <div class="title-orb orb2"></div>
+  <div class="vcenter">
   <h3 style="color:var(--teal);font-size:0.55em;letter-spacing:0.2em;margin-bottom:20px;opacity:0.8">GRACIAS</h3>
   <h1 style="font-size:2.2em">Ulises González</h1>
   <p style="text-align:center;max-width:100%;font-size:0.75em;color:#94a3b8;margin-top:20px">
@@ -631,6 +650,7 @@
     </div>
   </div>
   <p class="small" style="text-align:center;max-width:100%;margin-top:24px">Caso educativo. Red sintética. Datos de clima basados en estudio real (pipeline v3_audited).</p>
+  </div>
 </section>
 
 </div><!-- /slides -->
