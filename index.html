@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Graph ML para Estructura Organizacional en Banca — Panamá Puente Digital 2026</title>
+<title>De Encuesta de Clima a Inteligencia Organizacional — Panamá Puente Digital 2026</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/theme/black.min.css">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -34,18 +34,15 @@
 .reveal .violet{color:var(--violet)}
 .reveal .blue{color:var(--blue)}
 
-/* Slide backgrounds */
 .reveal .slides section[data-state="title-slide"]{text-align:center;padding:0;display:flex!important;flex-direction:column;align-items:center;justify-content:center}
 .reveal .slides section[data-state="section-opener"]{text-align:center}
 .reveal .slides section[data-state="impact"]{text-align:center}
 
-/* Big number */
 .big-number{font-size:6em;font-weight:900;font-family:'JetBrains Mono',monospace;line-height:1;margin:0.2em 0}
 .big-number.teal{color:var(--teal)}
 .big-number.amber{color:var(--amber)}
 .big-number.coral{color:var(--coral)}
 
-/* Comparison layout */
 .compare{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:30px}
 .compare-card{padding:30px;border-radius:16px;border:1px solid rgba(100,116,139,0.2)}
 .compare-card.old{background:rgba(249,112,102,0.06);border-color:rgba(249,112,102,0.2)}
@@ -55,64 +52,66 @@
 .compare-card ul li::before{content:'→ ';color:var(--teal)}
 .compare-card.old ul li::before{color:var(--coral)}
 
-/* Grid layouts */
 .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:30px}
 .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-top:30px}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:30px}
 .card{padding:24px;border-radius:12px;background:rgba(30,40,65,0.4);border:1px solid rgba(100,116,139,0.15)}
 .card h4{font-size:0.75em;font-weight:600;margin-bottom:8px;color:#e2e8f0}
 .card p{font-size:0.6em;color:#94a3b8;max-width:100%}
 .card .icon{font-size:1.5em;margin-bottom:8px}
 
-/* Concept cards */
 .concept-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:30px}
 .concept{padding:20px;border-radius:12px;text-align:center;border:1px solid rgba(100,116,139,0.15)}
 .concept .label{font-size:0.55em;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;margin-top:8px}
 .concept .desc{font-size:0.5em;color:#64748b;margin-top:4px;line-height:1.4}
 
-/* Timeline */
+.def-block{padding:20px 24px;border-radius:12px;background:rgba(30,40,65,0.4);border-left:3px solid var(--teal);margin-bottom:16px}
+.def-block h4{font-size:0.75em;font-weight:700;color:#e2e8f0;margin-bottom:6px}
+.def-block p{font-size:0.6em;color:#94a3b8;max-width:100%;line-height:1.6}
+.def-block .source{font-size:0.5em;color:#64748b;margin-top:4px;font-style:italic}
+
 .timeline{display:flex;gap:16px;margin-top:30px}
 .timeline-step{flex:1;padding:20px;border-radius:12px;background:rgba(30,40,65,0.4);border-left:3px solid var(--teal);position:relative}
 .timeline-step .num{font-family:'JetBrains Mono',monospace;font-size:0.6em;font-weight:700;color:var(--teal);margin-bottom:4px}
 .timeline-step h4{font-size:0.7em;font-weight:600;margin-bottom:6px}
 .timeline-step p{font-size:0.55em;color:#94a3b8;max-width:100%;line-height:1.5}
 
-/* Quote */
 .quote{font-size:1.3em;font-weight:300;font-style:italic;color:#e2e8f0;line-height:1.5;max-width:85%;margin:30px auto;text-align:center;position:relative;padding:0 40px}
 .quote::before,.quote::after{content:'"';font-size:2em;color:var(--teal);position:absolute;font-style:normal;font-weight:900;line-height:1}
 .quote::before{left:0;top:-10px}
 .quote::after{right:0;bottom:-20px}
 .quote-author{font-size:0.65em;color:#64748b;text-align:center;margin-top:12px;font-style:normal}
 
-/* Iframe container */
 .demo-frame{width:100%;height:500px;border:1px solid rgba(100,116,139,0.2);border-radius:12px;overflow:hidden;margin-top:20px}
 .demo-frame iframe{width:100%;height:100%;border:none}
 
-/* SVG inline diagrams */
-.diagram-container{width:100%;display:flex;justify-content:center;margin:20px 0}
-.diagram-container svg{max-width:100%}
-
-/* Provocation bar */
 .provocation{background:linear-gradient(90deg,rgba(6,214,160,0.1),rgba(56,189,248,0.1));border:1px solid rgba(6,214,160,0.2);border-radius:12px;padding:24px 30px;margin-top:24px}
 .provocation p{font-size:0.8em;color:#e2e8f0;max-width:100%;line-height:1.6}
 
-/* Brand footer */
+.ficha-table{width:100%;border-collapse:collapse;margin-top:20px;font-size:0.65em}
+.ficha-table td{padding:10px 16px;border-bottom:1px solid rgba(100,116,139,0.15);color:#94a3b8}
+.ficha-table td:first-child{font-weight:600;color:#e2e8f0;width:40%}
+.ficha-table td .mono{font-family:'JetBrains Mono',monospace;color:var(--teal)}
+
+/* Stack layer visual */
+.stack-layer{padding:16px 24px;border-radius:10px;margin-bottom:8px;display:flex;align-items:center;gap:16px}
+.stack-layer .layer-num{font-family:'JetBrains Mono',monospace;font-size:1.2em;font-weight:900;min-width:32px}
+.stack-layer h4{font-size:0.7em;font-weight:700;color:#e2e8f0;margin-bottom:2px}
+.stack-layer p{font-size:0.55em;color:#94a3b8;max-width:100%;line-height:1.4;margin:0}
+
 .brand-footer{position:fixed;bottom:12px;left:24px;font-size:11px;color:#475569;font-family:'JetBrains Mono',monospace;z-index:100;letter-spacing:0.04em}
 .brand-footer span{color:var(--teal)}
 
-/* Progress bar custom */
 .reveal .progress{height:3px;color:var(--teal)}
 .reveal .progress span{background:var(--teal)}
 
-/* Fragments smooth */
 .reveal .fragment{transition:all 0.4s ease}
 .reveal .fragment.fade-up{transform:translateY(20px)}
 .reveal .fragment.fade-up.visible{transform:translateY(0)}
 
-/* Animation for title */
 @keyframes glowPulse{0%,100%{text-shadow:0 0 20px rgba(6,214,160,0.2)}50%{text-shadow:0 0 40px rgba(6,214,160,0.4)}}
 .glow-text{animation:glowPulse 3s ease-in-out infinite}
 
-/* Mini graph animation */
 .mini-graph{width:100%;height:300px;margin:20px 0}
 </style>
 </head>
@@ -121,269 +120,322 @@
 <div class="slides">
 
 <!-- =====================================================
-     ACT 0: TITLE
+     TITLE
      ===================================================== -->
 <section data-state="title-slide" data-background-gradient="radial-gradient(ellipse at 50% 50%, rgba(6,214,160,0.08) 0%, #0a0e1a 70%)">
   <h3 style="color:var(--teal);font-size:0.6em;letter-spacing:0.15em;margin-bottom:16px">PANAMÁ PUENTE DIGITAL 2026</h3>
-  <h1 style="font-size:2.6em;max-width:90%;margin:0 auto" class="glow-text">Graph ML para<br>Estructura Organizacional<br><span class="teal">en Banca</span></h1>
-  <p style="text-align:center;max-width:100%;margin-top:24px;font-size:0.7em">Cómo usar ONA y graph ML para detectar estructuras organizacionales<br>que explican adopción, coordinación y riesgo de fricción.</p>
-  <p style="text-align:center;max-width:100%;margin-top:40px;font-size:0.6em;color:#64748b">
+  <h1 style="font-size:2.4em;max-width:90%;margin:0 auto" class="glow-text">De Encuesta de Clima a<br><span class="teal">Inteligencia Organizacional</span></h1>
+  <p style="text-align:center;max-width:100%;margin-top:20px;font-size:0.7em">Caso educativo: cómo la estadística rigurosa, el machine learning y el análisis<br>de redes transforman datos de clima en decisiones de negocio.</p>
+  <p style="text-align:center;max-width:100%;margin-top:32px;font-size:0.6em;color:#64748b">
     <strong style="color:#e2e8f0">Ulises González</strong> · Business Scientist · Rizo.ma<br>
     <span class="mono" style="font-size:0.85em">ICF ACC · PMP® · MIT AI/ML</span>
   </p>
 </section>
 
 <!-- =====================================================
-     ACT 1: THE OPPORTUNITY (10 min)
+     ACT 1: FOUNDATIONS (12 min)
      ===================================================== -->
 <section data-state="section-opener" data-background-gradient="radial-gradient(ellipse at 30% 40%, rgba(6,214,160,0.06) 0%, #0a0e1a 60%)">
   <h3>Acto I</h3>
-  <h2>La Siguiente Frontera</h2>
-  <p style="text-align:center;max-width:70%;margin:0 auto">Cuando la cultura ya es fuerte, la pregunta cambia: ¿qué patrones estructurales la sostienen?</p>
+  <h2>Fundamentos</h2>
+  <p style="text-align:center;max-width:70%;margin:0 auto">Qué es clima organizacional, cómo se mide con rigor, y por qué la mayoría de las encuestas se quedan cortas.</p>
 </section>
 
+<!-- Definitions -->
 <section>
-  <h2>De cultura fuerte a cultura observable</h2>
-  <p>Towerbank ya invierte en su gente. <strong style="color:var(--teal)">Transforma tu Pensamiento</strong> es la prueba. El siguiente paso es observar la estructura relacional que amplifica — o frena — esa inversión.</p>
+  <h2>Conceptos clave</h2>
+  <p>Tres conceptos que necesitamos distinguir antes de avanzar.</p>
+  <div class="fragment fade-up" style="margin-top:24px">
+    <div class="def-block">
+      <h4 class="teal">Clima Organizacional</h4>
+      <p>Percepciones compartidas de los colaboradores sobre las prácticas, políticas y procedimientos de la organización. Se mide mediante encuestas con escalas tipo Likert. Captura <strong style="color:#e2e8f0">actitudes individuales agregadas</strong>, no relaciones.</p>
+      <div class="source">Schneider, Ehrhart & Macey (2013). "Organizational Climate and Culture." Annual Review of Psychology.</div>
+    </div>
+  </div>
+  <div class="fragment fade-up">
+    <div class="def-block" style="border-left-color:var(--amber)">
+      <h4 class="amber">Análisis de Redes Organizacionales (ONA)</h4>
+      <p>Mapeo y análisis de las relaciones informales de colaboración, comunicación y confianza. Captura <strong style="color:#e2e8f0">estructura relacional</strong> — quién se conecta con quién y qué rol juegan en la red.</p>
+      <div class="source">Cross, R. & Parker, A. (2004). "The Hidden Power of Social Networks." Harvard Business School Press.</div>
+    </div>
+  </div>
+  <div class="fragment fade-up">
+    <div class="def-block" style="border-left-color:var(--violet)">
+      <h4 class="violet">Graph ML (Machine Learning sobre Grafos)</h4>
+      <p>Familia de técnicas de aprendizaje automático que operan sobre datos con estructura de grafo (nodos + aristas). Incluye detección de comunidades, cálculo de centralidad, y modelos que incorporan atributos relacionales.</p>
+      <div class="source">Hamilton, W. L. (2020). "Graph Representation Learning." Morgan & Claypool.</div>
+    </div>
+  </div>
+</section>
+
+<!-- The problem with traditional surveys -->
+<section>
+  <h2>El problema de la encuesta sin análisis</h2>
+  <p>La mayoría de los estudios de clima se quedan en la primera columna. El valor está en cruzar las tres.</p>
   <div class="compare fragment fade-up">
     <div class="compare-card old">
-      <h4 class="amber">Lo que ya saben</h4>
+      <h4 class="coral">La encuesta típica</h4>
       <ul>
-        <li>Satisfacción general es alta</li>
-        <li>Hay compromiso con el desarrollo</li>
-        <li>La gente quiere crecer</li>
-        <li>La cultura se siente vibrante</li>
+        <li>"El engagement es 4.2 — vamos bien"</li>
+        <li>Promedios por área sin validación estadística</li>
+        <li>Sin saber si las diferencias son significativas</li>
+        <li>Sin entender qué dimensiones impulsan engagement</li>
+        <li>Sin ver la estructura relacional</li>
+        <li>Recomendaciones genéricas por cada dimensión baja</li>
       </ul>
     </div>
     <div class="compare-card new">
-      <h4 class="teal">Lo que pueden descubrir</h4>
+      <h4 class="teal">Encuesta + Estadística + ML + ONA</h4>
       <ul>
-        <li>Quién amplifica el conocimiento de las capacitaciones</li>
-        <li>Qué conexiones aceleran la transferencia de aprendizaje</li>
-        <li>Dónde están los puentes naturales entre áreas</li>
-        <li>Cómo diseñar el desarrollo basado en la red real</li>
+        <li>Engagement 4.50/5.00 con IC 95% y margen ±3.9%</li>
+        <li>Confiabilidad validada (Cronbach &alpha;, r<sub>wg</sub>, KMO)</li>
+        <li>Tests de significancia entre segmentos (Welch t, Cohen's d)</li>
+        <li>Drivers de engagement por correlación Pearson</li>
+        <li>Comunidades reales vs formales (Leiden, NMI)</li>
+        <li>Intervenciones quirúrgicas basadas en evidencia</li>
       </ul>
     </div>
   </div>
 </section>
 
-<section data-state="impact">
-  <h3>La oportunidad en un número</h3>
-  <div class="big-number teal fragment">80%</div>
-  <p style="text-align:center;max-width:70%;margin:10px auto 0;font-size:0.9em;color:#e2e8f0">de la dinámica organizacional vive en las <strong>relaciones</strong>,<br>no en las respuestas individuales.</p>
-  <p class="small" style="text-align:center;max-width:100%;margin-top:16px">Cross, Parker & Borgatti — "A Relational View of Information Seeking and Learning in Social Networks" (2001).<br>Los datos relacionales permiten observar patrones organizacionales que no emergen en promedios agregados.</p>
-</section>
-
+<!-- The analytical stack -->
 <section>
-  <h2>Dos mapas de la misma organización</h2>
-  <p>La estructura formal muestra jerarquía. La red informal muestra cómo fluyen las ideas, la confianza y el conocimiento.</p>
-  <div class="grid-2 fragment fade-up">
-    <div>
-      <div id="orgChart" class="mini-graph"></div>
-      <p style="text-align:center;font-size:0.6em;color:#64748b;margin-top:8px">Estructura formal (organigrama)</p>
+  <h2>El stack analítico completo</h2>
+  <p>Cuatro capas que transforman respuestas de encuesta en inteligencia accionable.</p>
+  <div class="fragment fade-up" style="margin-top:20px">
+    <div class="stack-layer" style="background:rgba(6,214,160,0.08);border:1px solid rgba(6,214,160,0.2);border-radius:12px">
+      <div class="layer-num teal">4</div>
+      <div><h4 class="teal">Impacto de negocio</h4><p>Conectar hallazgos con indicadores operativos: rotación, ausentismo, NPS, productividad</p></div>
     </div>
-    <div>
-      <div id="networkChart" class="mini-graph"></div>
-      <p style="text-align:center;font-size:0.6em;color:#64748b;margin-top:8px">Red informal real (quién colabora con quién)</p>
+    <div class="stack-layer" style="background:rgba(167,139,250,0.06);border:1px solid rgba(167,139,250,0.15);border-radius:12px">
+      <div class="layer-num violet">3</div>
+      <div><h4 class="violet">ONA + Graph ML</h4><p>Comunidades (Leiden), centralidad, puentes, densidad inter-departamental, estabilidad (NMI)</p></div>
     </div>
-  </div>
-</section>
-
-<section>
-  <h2>La Ley de Conway en banca</h2>
-  <p><em style="color:var(--teal)">"Las organizaciones diseñan sistemas que reflejan su propia estructura de comunicación."</em> — Melvin Conway, 1967</p>
-  <div class="grid-3 fragment fade-up">
-    <div class="card">
-      <div class="icon">🔄</div>
-      <h4>Estructura = Resultado</h4>
-      <p>La forma en que los 200 colaboradores de Towerbank se conectan determina la velocidad de decisión, la innovación y la experiencia del cliente.</p>
+    <div class="stack-layer" style="background:rgba(251,191,36,0.06);border:1px solid rgba(251,191,36,0.15);border-radius:12px">
+      <div class="layer-num amber">2</div>
+      <div><h4 class="amber">Estadística e inferencia</h4><p>Cronbach &alpha;, r<sub>wg</sub>, Pearson, Welch t-test, Bootstrap CI, Cohen's d, CFA, HLM</p></div>
     </div>
-    <div class="card">
-      <div class="icon">🌱</div>
-      <h4>Capacitación amplificada</h4>
-      <p>El impacto de "Transforma tu Pensamiento" no depende solo del contenido: depende de la red por la que se propaga. Los brokers informales son los multiplicadores.</p>
-    </div>
-    <div class="card">
-      <div class="icon">🧭</div>
-      <h4>Talento con dirección</h4>
-      <p>Conocer la red permite diseñar planes de desarrollo que fortalecen conexiones estratégicas, no solo competencias individuales.</p>
+    <div class="stack-layer" style="background:rgba(56,189,248,0.06);border:1px solid rgba(56,189,248,0.15);border-radius:12px">
+      <div class="layer-num blue">1</div>
+      <div><h4 class="blue">Instrumento de medición</h4><p>22 dimensiones, 107+ ítems, escala Likert 5 pts, validación con fundamento peer-reviewed</p></div>
     </div>
   </div>
 </section>
 
 <!-- =====================================================
-     ACT 2: THE LENS (10 min)
+     ACT 2: THE SCIENCE (12 min)
      ===================================================== -->
 <section data-state="section-opener" data-background-gradient="radial-gradient(ellipse at 60% 50%, rgba(6,214,160,0.06) 0%, #0a0e1a 60%)">
   <h3>Acto II</h3>
-  <h2>La Nueva Lente</h2>
-  <p style="text-align:center;max-width:70%;margin:0 auto">ONA + Graph ML: observar la organización como lo que es — una red.</p>
+  <h2>La Ciencia</h2>
+  <p style="text-align:center;max-width:70%;margin:0 auto">El valor de cada capa: qué pregunta responde, qué método usa, y por qué importa.</p>
 </section>
 
+<!-- Layer 1: The instrument -->
 <section>
-  <h2>¿Qué es Graph ML?</h2>
-  <p>No es una herramienta. Es una <strong style="color:var(--teal)">forma de pensar</strong>.</p>
-  <div class="provocation fragment fade-up">
-    <p>Un <strong class="teal">grafo</strong> modela entidades (nodos) y sus relaciones (aristas). <strong>Graph ML</strong> aplica machine learning sobre esta estructura para representar patrones relacionales — comunidades, centralidad, vulnerabilidades — que los datos tabulares no capturan directamente.</p>
+  <h2>Capa 1: El instrumento</h2>
+  <p>Cada dimensión tiene fundamento teórico peer-reviewed. No es una encuesta genérica.</p>
+  <div class="grid-4 fragment fade-up">
+    <div class="card" style="border-top:2px solid var(--teal)">
+      <h4>Bienestar</h4>
+      <p style="font-size:0.55em">Orgullo, Propósito, Seguridad, Balance vida-trabajo, Cuidado mutuo, Demandas</p>
+      <p style="font-size:0.45em;color:#64748b;margin-top:4px">Mael & Ashforth · Deci & Ryan</p>
+    </div>
+    <div class="card" style="border-top:2px solid var(--amber)">
+      <h4>Dirección</h4>
+      <p style="font-size:0.55em">Liderazgo, Autonomía, Comunicación, Confianza, Claridad de rol</p>
+      <p style="font-size:0.45em;color:#64748b;margin-top:4px">Bass & Avolio · Hackman & Oldham</p>
+    </div>
+    <div class="card" style="border-top:2px solid var(--violet)">
+      <h4>Compensación</h4>
+      <p style="font-size:0.55em">Sueldo, Reconocimiento, Beneficios, Equidad, No-discriminación</p>
+      <p style="font-size:0.45em;color:#64748b;margin-top:4px">Adams · Eisenberger</p>
+    </div>
+    <div class="card" style="border-top:2px solid var(--blue)">
+      <h4>Cultura</h4>
+      <p style="font-size:0.55em">Cohesión, Innovación, Resultados, Desarrollo, Aprendizaje</p>
+      <p style="font-size:0.45em;color:#64748b;margin-top:4px">Amabile · Senge · Edmondson</p>
+    </div>
   </div>
-  <div class="concept-grid fragment fade-up" style="margin-top:24px">
-    <div class="concept" style="border-color:rgba(6,214,160,0.3)">
-      <div style="font-size:1.8em">🔵</div>
-      <div class="label teal">Nodos</div>
-      <div class="desc">Personas, roles, equipos</div>
+  <div class="provocation fragment fade-up" style="margin-top:16px">
+    <p><strong class="teal">Engagement</strong> se mide como variable transversal con <strong>UWES-9</strong> (Utrecht Work Engagement Scale — Schaufeli et al., 2006): vigor, dedicación y absorción. No es un promedio de satisfacción.</p>
+  </div>
+</section>
+
+<!-- Layer 2: Statistics -->
+<section>
+  <h2>Capa 2: La estadística rigurosa</h2>
+  <p>Cada número tiene un intervalo de confianza, un test de significancia y una medida de efecto.</p>
+  <div class="grid-3 fragment fade-up" style="margin-top:20px">
+    <div class="card" style="border-left:3px solid var(--teal)">
+      <h4 class="teal">Confiabilidad</h4>
+      <p style="font-size:0.6em;line-height:1.5"><strong style="color:#e2e8f0">Cronbach &alpha;</strong> — ¿Los ítems de una dimensión miden lo mismo?<br><strong style="color:#e2e8f0">r<sub>wg</sub></strong> (James et al., 1984) — ¿Hay acuerdo intra-grupo?<br><strong style="color:#e2e8f0">KMO</strong> — ¿Los datos son factorizables?</p>
     </div>
-    <div class="concept" style="border-color:rgba(251,191,36,0.3)">
-      <div style="font-size:1.8em">🔗</div>
-      <div class="label amber">Aristas</div>
-      <div class="desc">Comunicación, colaboración, confianza</div>
+    <div class="card" style="border-left:3px solid var(--amber)">
+      <h4 class="amber">Significancia</h4>
+      <p style="font-size:0.6em;line-height:1.5"><strong style="color:#e2e8f0">Welch t-test</strong> — ¿La diferencia entre dos mediciones es real?<br><strong style="color:#e2e8f0">Bootstrap CI</strong> — Intervalos sin asumir normalidad<br><strong style="color:#e2e8f0">Cohen's d</strong> — Tamaño del efecto (small/medium/large)</p>
     </div>
-    <div class="concept" style="border-color:rgba(167,139,250,0.3)">
-      <div style="font-size:1.8em">🎯</div>
-      <div class="label violet">Centralidad</div>
-      <div class="desc">Quién importa y por qué</div>
+    <div class="card" style="border-left:3px solid var(--violet)">
+      <h4 class="violet">Estructura</h4>
+      <p style="font-size:0.6em;line-height:1.5"><strong style="color:#e2e8f0">Pearson r</strong> — ¿Qué dimensiones impulsan engagement?<br><strong style="color:#e2e8f0">CFA</strong> — ¿El modelo factorial se confirma?<br><strong style="color:#e2e8f0">HLM</strong> — ¿Cuánta varianza es departamental vs individual?</p>
     </div>
-    <div class="concept" style="border-color:rgba(56,189,248,0.3)">
-      <div style="font-size:1.8em">🏘️</div>
-      <div class="label blue">Comunidades</div>
-      <div class="desc">Grupos reales vs formales</div>
+  </div>
+  <p class="small fragment fade-up" style="margin-top:12px">Sin esta capa, cualquier afirmación del tipo "mejoró el engagement" o "el área X está peor" es anecdótica. Con ella, es evidencia.</p>
+</section>
+
+<!-- Layer 3: ONA + Graph ML -->
+<section>
+  <h2>Capa 3: ONA + Graph ML</h2>
+  <p>La capa que revela la <strong style="color:var(--teal)">estructura invisible</strong> de la organización.</p>
+  <div class="grid-2 fragment fade-up">
+    <div>
+      <div class="def-block" style="border-left-color:var(--blue)">
+        <h4 class="blue">ONA Perceptual</h4>
+        <p>Grafo construido desde <strong style="color:#e2e8f0">similitud coseno</strong> entre los vectores de 22 dimensiones de cada respondente. Dos personas están conectadas si perciben la organización de forma similar.</p>
+      </div>
+      <div class="def-block" style="border-left-color:var(--amber)">
+        <h4 class="amber">Comunidades (Leiden)</h4>
+        <p>Algoritmo que optimiza modularidad para encontrar subgrupos con mayor densidad interna que externa. <strong style="color:#e2e8f0">Estabilidad validada con NMI</strong> (Normalized Mutual Information) sobre 50 iteraciones.</p>
+      </div>
+    </div>
+    <div>
+      <div class="def-block" style="border-left-color:var(--teal)">
+        <h4 class="teal">Métricas de centralidad</h4>
+        <p><strong style="color:#e2e8f0">Eigenvector</strong> — influencia de segundo orden<br><strong style="color:#e2e8f0">Betweenness</strong> — nodos puente entre comunidades<br><strong style="color:#e2e8f0">Degree</strong> — conectividad directa</p>
+      </div>
+      <div class="def-block" style="border-left-color:var(--violet)">
+        <h4 class="violet">Dimensiones discriminantes</h4>
+        <p>¿Qué dimensiones de clima <strong style="color:#e2e8f0">diferencian más</strong> entre comunidades? Si Liderazgo tiene alto spread, la percepción de liderazgo es lo que divide a la organización en subgrupos.</p>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- Centrality metrics detail -->
 <section>
-  <h2>Las métricas que importan</h2>
-  <p>Tres lentes para tres preguntas diferentes.</p>
+  <h2>Métricas de centralidad: tres preguntas</h2>
+  <p>Cada métrica revela un rol distinto en la red organizacional.</p>
   <div class="grid-3 fragment fade-up" style="margin-top:24px">
     <div class="card" style="border-left:3px solid var(--amber)">
       <h4 class="amber">Intermediación <span class="mono small">(betweenness)</span></h4>
-      <p style="font-size:0.65em;line-height:1.6"><strong style="color:#e2e8f0">¿Quién es puente?</strong><br>Personas que conectan grupos que de otro modo estarían desconectados. Si se van, la red se fragmenta.</p>
+      <p style="font-size:0.65em;line-height:1.6"><strong style="color:#e2e8f0">¿Quién es puente?</strong><br>Proporción de caminos más cortos que pasan por un nodo. Identifica personas que conectan comunidades.</p>
+      <p style="font-size:0.5em;color:#64748b;margin-top:6px">C<sub>B</sub>(v) = &sum; &sigma;<sub>st</sub>(v) / &sigma;<sub>st</sub></p>
     </div>
     <div class="card" style="border-left:3px solid var(--violet)">
       <h4 class="violet">Influencia <span class="mono small">(eigenvector)</span></h4>
-      <p style="font-size:0.65em;line-height:1.6"><strong style="color:#e2e8f0">¿Quién amplifica?</strong><br>No solo cuántas conexiones tiene, sino cuán bien conectados están sus contactos. Influencia de segundo orden.</p>
+      <p style="font-size:0.65em;line-height:1.6"><strong style="color:#e2e8f0">¿Quién amplifica?</strong><br>No solo cuántas conexiones tiene, sino cuán bien conectados están sus contactos. Influencia recursiva.</p>
+      <p style="font-size:0.5em;color:#64748b;margin-top:6px">x<sub>v</sub> = (1/&lambda;) &sum; x<sub>t</sub></p>
     </div>
     <div class="card" style="border-left:3px solid var(--teal)">
       <h4 class="teal">Grado <span class="mono small">(degree)</span></h4>
-      <p style="font-size:0.65em;line-height:1.6"><strong style="color:#e2e8f0">¿Quién conecta más?</strong><br>Número de relaciones directas. Simple pero poderoso: detecta hubs y nodos aislados en segundos.</p>
+      <p style="font-size:0.65em;line-height:1.6"><strong style="color:#e2e8f0">¿Quién conecta más?</strong><br>Número de relaciones directas. Detecta hubs y nodos periféricos — la métrica más simple y más accionable.</p>
+      <p style="font-size:0.5em;color:#64748b;margin-top:6px">C<sub>D</sub>(v) = deg(v) / (n - 1)</p>
     </div>
   </div>
-</section>
-
-<section>
-  <h2>Human Analytics: el puente</h2>
-  <p>De "tenemos buena cultura" a "entendemos qué estructura la sostiene".</p>
-  <div class="compare fragment fade-up">
-    <div class="compare-card old">
-      <h4 class="amber">People Analytics tradicional</h4>
-      <ul>
-        <li>"El engagement está en 4.2/5 — vamos bien"</li>
-        <li>"85% recomienda trabajar aquí"</li>
-        <li>"Las capacitaciones tienen buena asistencia"</li>
-        <li>Recomendación: más de lo mismo</li>
-      </ul>
-    </div>
-    <div class="compare-card new">
-      <h4 class="teal">Human Analytics con ONA + Graph ML</h4>
-      <ul>
-        <li>"5 brokers informales conectan al 70% de la red — son los canales naturales de difusión"</li>
-        <li>"Ops y TI ya colaboran orgánicamente — hay oportunidad de formalizar esa conexión"</li>
-        <li>"El próximo cohort debería incluir estos nodos puente para maximizar alcance"</li>
-        <li>Recomendación: intervenciones informadas por la estructura real de la red</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<section>
-  <h2>Tres niveles de madurez</h2>
-  <p>No todo está en el mismo grado de resolución. Ser explícito sobre qué es posible hoy — y qué requiere condiciones específicas.</p>
-  <div class="grid-3 fragment fade-up">
-    <div class="card" style="border-top:3px solid var(--teal)">
-      <h4 class="teal">Nivel 1: Descriptivo</h4>
-      <p>Mapeo de red, brokers, silos, concentración relacional, patrones de coordinación. <strong style="color:#e2e8f0">Factible hoy</strong> con datos de colaboración y HRIS.</p>
-    </div>
-    <div class="card" style="border-top:3px solid var(--amber)">
-      <h4 class="amber">Nivel 2: Predictivo</h4>
-      <p>Modelos para rotación, adopción o riesgo operativo apoyados en atributos relacionales. Requiere <strong style="color:#e2e8f0">labels de calidad y validación contra baselines</strong>.</p>
-    </div>
-    <div class="card" style="border-top:3px solid var(--violet)">
-      <h4 class="violet">Nivel 3: Evaluativo</h4>
-      <p>Análisis de impacto de intervenciones bajo <strong style="color:#e2e8f0">condiciones metodológicas específicas</strong>: diseño cuasi-experimental, timing claro, supuestos de identificación.</p>
-    </div>
-  </div>
-  <div class="provocation fragment fade-up" style="margin-top:20px">
-    <p>Esta presentación se centra en los niveles 1 y 2. El nivel 3 es el horizonte — requiere diseño de datos deliberado.</p>
-  </div>
+  <p class="small fragment fade-up" style="margin-top:12px">Freeman (1978). "Centrality in Social Networks: Conceptual Clarification." Social Networks, 1(3), 215-239.</p>
 </section>
 
 <!-- =====================================================
-     ACT 3: THE IMPLEMENTATION (15 min)
+     ACT 3: THE CASE (12 min)
      ===================================================== -->
 <section data-state="section-opener" data-background-gradient="radial-gradient(ellipse at 40% 60%, rgba(56,189,248,0.06) 0%, #0a0e1a 60%)">
   <h3>Acto III</h3>
-  <h2>Towerbank: El Caso</h2>
-  <p style="text-align:center;max-width:70%;margin:0 auto">200 colaboradores, cultura vibrante, y la ambición de ir más allá.</p>
+  <h2>El Caso: Banco Panameño</h2>
+  <p style="text-align:center;max-width:70%;margin:0 auto">270 colaboradores, 22 áreas, 4 mediciones, y un engagement de 89.9%.<br>¿Qué historia cuentan los datos cuando se analizan con rigor?</p>
 </section>
 
+<!-- Ficha técnica -->
 <section>
-  <h2>El contexto: Transforma tu Pensamiento</h2>
-  <p>Towerbank no tiene un problema de cultura — tiene una <strong style="color:var(--teal)">oportunidad de amplificación</strong>. Con "Transforma tu Pensamiento" ya están invirtiendo en mentalidad de crecimiento. Graph ML permite ver cómo esa inversión se propaga por la red.</p>
-  <div class="timeline fragment fade-up">
-    <div class="timeline-step">
-      <div class="num">01</div>
-      <h4>Mapeo de red</h4>
-      <p>Cuestionario ligero: "¿Con quién colaboras? ¿A quién consultas? ¿Quién te inspira?" — 200 nodos, miles de conexiones.</p>
-    </div>
-    <div class="timeline-step">
-      <div class="num">02</div>
-      <h4>Construcción del grafo</h4>
-      <p>Nodos = colaboradores. Aristas = relaciones ponderadas por frecuencia, tipo y confianza.</p>
-    </div>
-    <div class="timeline-step">
-      <div class="num">03</div>
-      <h4>Análisis inteligente</h4>
-      <p>Centralidad, comunidades (Louvain), y exploración de asociaciones con participación en programas de desarrollo.</p>
-    </div>
-    <div class="timeline-step">
-      <div class="num">04</div>
-      <h4>Diseño informado</h4>
-      <p>Decisiones de desarrollo, sucesión y capacitación basadas en la estructura real de la red.</p>
-    </div>
-  </div>
-</section>
-
-<section>
-  <h2>Lo que revela el grafo</h2>
-  <p>Datos sintéticos que reflejan patrones típicos en organizaciones con cultura fuerte:</p>
+  <h2>Ficha técnica</h2>
+  <p>Los números que validan la muestra antes de interpretar cualquier resultado.</p>
   <div class="grid-2 fragment fade-up">
+    <div>
+      <table class="ficha-table">
+        <tr><td>Universo</td><td><span class="mono">270</span> colaboradores</td></tr>
+        <tr><td>Respondentes</td><td><span class="mono">189</span> (tasa: 70.0%)</td></tr>
+        <tr><td>Margen de error</td><td><span class="mono">±3.9%</span> (IC 95%)</td></tr>
+        <tr><td>Período</td><td>Noviembre 2025</td></tr>
+        <tr><td>Historicidad</td><td>4 mediciones (2023–2026)</td></tr>
+        <tr><td>Áreas funcionales</td><td><span class="mono">22</span> canónicas</td></tr>
+      </table>
+    </div>
+    <div>
+      <table class="ficha-table">
+        <tr><td>Dimensiones</td><td><span class="mono">18</span> dimensiones medidas</td></tr>
+        <tr><td>Ítems</td><td><span class="mono">60</span> asignados (Likert 5 pts)</td></tr>
+        <tr><td>KMO</td><td><span class="mono">0.904</span> (Marvelous)</td></tr>
+        <tr><td>Bartlett</td><td>&chi;² = <span class="mono">8,220</span>, p < 0.001</td></tr>
+        <tr><td>Cronbach &alpha;</td><td>Rango: <span class="mono">0.37 – 0.88</span></td></tr>
+        <tr><td>Pipeline</td><td>v3_audited (mar. 2026)</td></tr>
+      </table>
+    </div>
+  </div>
+  <p class="small fragment fade-up" style="margin-top:16px">Tasa de respuesta del 70% con margen ±3.9% es estadísticamente válida pero implica que 81 colaboradores no están representados. Este sesgo se documenta, no se ignora.</p>
+</section>
+
+<!-- Results overview -->
+<section>
+  <h2>Los resultados: una cultura excepcionalmente fuerte</h2>
+  <p>Cuando el clima ya es fuerte, la pregunta cambia: <strong style="color:var(--teal)">¿qué estructura lo sostiene y es resiliente?</strong></p>
+  <div class="grid-4 fragment fade-up">
+    <div class="card" style="text-align:center;border-top:2px solid var(--teal)">
+      <p style="font-size:2em;font-weight:900;color:var(--teal);margin:0;font-family:'JetBrains Mono',monospace">89.9%</p>
+      <p style="font-size:0.55em;margin-top:4px">Engagement global</p>
+    </div>
+    <div class="card" style="text-align:center;border-top:2px solid var(--amber)">
+      <p style="font-size:2em;font-weight:900;color:var(--amber);margin:0;font-family:'JetBrains Mono',monospace">97.4%</p>
+      <p style="font-size:0.55em;margin-top:4px">Orgullo institucional</p>
+    </div>
+    <div class="card" style="text-align:center;border-top:2px solid var(--violet)">
+      <p style="font-size:2em;font-weight:900;color:var(--violet);margin:0;font-family:'JetBrains Mono',monospace">86.8</p>
+      <p style="font-size:0.55em;margin-top:4px">eNPS</p>
+    </div>
+    <div class="card" style="text-align:center;border-top:2px solid var(--blue)">
+      <p style="font-size:2em;font-weight:900;color:var(--blue);margin:0;font-family:'JetBrains Mono',monospace">+0.45</p>
+      <p style="font-size:0.55em;margin-top:4px">Puntos desde 2023</p>
+    </div>
+  </div>
+  <div class="grid-2 fragment fade-up" style="margin-top:16px">
     <div class="card" style="border-left:3px solid var(--teal)">
-      <h4>Descubrimiento 1: Los puentes ocultos</h4>
-      <p>Personas en niveles medios que conectan departamentos y funcionan como canales naturales de difusión. ONA los identifica por su posición estructural, no por su título.</p>
+      <h4>Perfiles de engagement</h4>
+      <p style="font-size:0.6em"><span class="teal mono">58.2%</span> True Believers (&ge;4.50) · <span class="amber mono">31.7%</span> Engaged Pragmáticos · <span class="mono">10.1%</span> Neutrales · <span class="coral mono">0.0%</span> Desengaged</p>
     </div>
-    <div class="card" style="border-left:3px solid var(--amber)">
-      <h4>Descubrimiento 2: Colaboración orgánica</h4>
-      <p>Áreas que ya colaboran naturalmente sin que la estructura formal lo contemple. Formalizar esas conexiones las fortalece.</p>
-    </div>
-    <div class="card" style="border-left:3px solid var(--violet)">
-      <h4>Descubrimiento 3: Resiliencia de la red</h4>
-      <p>¿Qué tan robusta es la cultura si un broker clave se va? La simulación permite anticipar y construir redundancia antes de que sea necesaria.</p>
-    </div>
-    <div class="card" style="border-left:3px solid var(--blue)">
-      <h4>Descubrimiento 4: Conway's Law en acción</h4>
-      <p>La estructura de comunicación real se asocia con la fluidez operativa. Equipos mejor conectados tienden a coordinar procesos con menos fricción.</p>
+    <div class="card" style="border-left:3px solid var(--coral)">
+      <h4>Señal de atención</h4>
+      <p style="font-size:0.6em">Seguridad Laboral Percibida: <span class="coral mono">3.57/5.00</span> — única dimensión por debajo de 4.00. Compensación: <span class="amber mono">4.09</span> y Autonomía: <span class="amber mono">4.27</span> con &alpha; bajo (0.37).</p>
     </div>
   </div>
 </section>
 
-<!-- DEMO SLIDE -->
+<!-- What statistics reveal -->
+<section>
+  <h2>Qué revela la estadística que el promedio esconde</h2>
+  <p>Tres hallazgos que solo emergen con análisis riguroso — no con promedios.</p>
+  <div class="grid-3 fragment fade-up">
+    <div class="card" style="border-top:3px solid var(--amber)">
+      <h4 class="amber">Drivers de engagement</h4>
+      <p>Correlación Pearson con ajuste Olkin-Pratt identifica qué dimensiones <strong style="color:#e2e8f0">realmente impulsan engagement</strong> (no cuáles son las más altas). Liderazgo, Justicia y Cohesión lideran — no Orgullo, que ya está en techo.</p>
+    </div>
+    <div class="card" style="border-top:3px solid var(--violet)">
+      <h4 class="violet">Varianza departamental (HLM)</h4>
+      <p>El ICC (Intraclass Correlation) muestra cuánta varianza es <strong style="color:#e2e8f0">departamental vs individual</strong>. ICC alto (&gt;0.15) indica que la experiencia depende más de tu área que de ti — requiere intervención a nivel equipo.</p>
+    </div>
+    <div class="card" style="border-top:3px solid var(--teal)">
+      <h4 class="teal">Significancia wave-over-wave</h4>
+      <p>Con Welch t-test y Cohen's d: ¿el cambio de 4.05 a 4.50 en 3 años es <strong style="color:#e2e8f0">estadísticamente significativo</strong>? Sí — d = 0.72 (efecto medio-grande). Sin este test, sería solo un número mayor.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ONA demo -->
 <section data-background-color="#0a0e1a">
-  <h2>Demo: Explora la red</h2>
-  <p>Datos sintéticos que reflejan la estructura de Towerbank: 200 colaboradores, 8 departamentos.</p>
+  <h2>ONA: la red detrás de los números</h2>
+  <p>Grafo sintético que ilustra cómo se visualiza la estructura relacional de una organización.</p>
   <div class="demo-frame fragment fade-up">
     <iframe src="demo/index.html?embed=true" allow="fullscreen"></iframe>
   </div>
   <p class="small" style="margin-top:8px">
-    <a href="demo/index.html" target="_blank" style="color:var(--teal)">→ Abrir demo completo en nueva pestaña</a>
+    <a href="demo/index.html" target="_blank" style="color:var(--teal)">→ Abrir demo en nueva pestaña</a> · Datos 100% sintéticos para fines educativos.
   </p>
 </section>
 
@@ -393,85 +445,112 @@
   <div class="grid-3 fragment fade-up" style="text-align:left">
     <div class="card">
       <h4 class="teal">1. Cambia la métrica</h4>
-      <p>Observa cómo cambia el tamaño de los nodos al pasar de Intermediación a Influencia. No son las mismas personas.</p>
+      <p>Al pasar de Intermediación a Influencia, los nodos importantes cambian. No son las mismas personas — cada métrica revela un rol distinto en la red.</p>
     </div>
     <div class="card">
       <h4 class="amber">2. Filtra por área</h4>
-      <p>Haz clic en un departamento en la leyenda. Observa qué tan conectado (o aislado) está del resto.</p>
+      <p>Haz clic en un departamento. Observa su densidad de conexiones internas vs externas. Los silos no siempre están donde crees.</p>
     </div>
     <div class="card">
       <h4 class="coral">3. Simula una salida</h4>
-      <p>Activa el modo Simulación. Haz clic en un broker. Observa la fragmentación.</p>
+      <p>Activa Simulación. Retira un broker. La fragmentación de la red es el riesgo que el organigrama no muestra.</p>
     </div>
   </div>
 </section>
 
 <!-- =====================================================
-     ACT 4: IMPLICATIONS (10 min)
+     ACT 4: BUSINESS IMPACT (10 min)
      ===================================================== -->
 <section data-state="section-opener" data-background-gradient="radial-gradient(ellipse at 50% 40%, rgba(167,139,250,0.06) 0%, #0a0e1a 60%)">
   <h3>Acto IV</h3>
-  <h2>Amplificar el Impacto</h2>
-  <p style="text-align:center;max-width:70%;margin:0 auto">De la observación a la acción: cómo usar hallazgos de red para decisiones organizacionales.</p>
+  <h2>Impacto de Negocio</h2>
+  <p style="text-align:center;max-width:70%;margin:0 auto">Todo se resume en una pregunta: ¿cómo se traduce esto en decisiones que mueven indicadores?</p>
 </section>
 
 <section>
-  <h2>Conway's Law: entender la estructura para intervenir mejor</h2>
-  <p>Si la estructura de comunicación influye en el resultado, entonces <strong style="color:var(--teal)">observar las conexiones reales permite intervenciones más precisas</strong>.</p>
+  <h2>De datos a decisiones: el flujo completo</h2>
+  <p>Cada capa del stack analítico responde una pregunta de negocio distinta.</p>
+  <div class="grid-2 fragment fade-up">
+    <div class="card" style="border-left:3px solid var(--blue)">
+      <h4>Instrumento &rarr; ¿Dónde intervenir?</h4>
+      <p>18 dimensiones segmentadas por 22 áreas. Seguridad Laboral Percibida a 3.57 no es un problema de toda la organización — ¿es sistémico o localizado? La segmentación lo responde.</p>
+    </div>
+    <div class="card" style="border-left:3px solid var(--amber)">
+      <h4>Estadística &rarr; ¿Cuánto invertir?</h4>
+      <p>Cohen's d cuantifica el tamaño del efecto. Si la diferencia entre áreas tiene d = 0.8, es grande y justifica inversión. Si d = 0.2, es marginal — no actuar impulsivamente.</p>
+    </div>
+    <div class="card" style="border-left:3px solid var(--violet)">
+      <h4>ONA &rarr; ¿Con quién intervenir?</h4>
+      <p>La centralidad identifica personas con alto alcance de difusión. Incluir brokers en programas de desarrollo multiplica el alcance vs seleccionar al azar.</p>
+    </div>
+    <div class="card" style="border-left:3px solid var(--teal)">
+      <h4>Todo junto &rarr; ROI del clima</h4>
+      <p>Conectar dimensiones con indicadores de negocio (rotación, ausentismo, NPS) permite estimar el costo de no-intervención y el retorno esperado de cada acción.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Aplicaciones concretas</h2>
+  <p>Cinco decisiones organizacionales que este stack habilita.</p>
   <div class="grid-3 fragment fade-up">
     <div class="card" style="border-top:3px solid var(--teal)">
       <h4>Capacitación con efecto red</h4>
-      <p>Seleccionar participantes de "Transforma tu Pensamiento" basado en centralidad: capacitar a un broker tiene mayor alcance de difusión que un nodo periférico.</p>
+      <p>Seleccionar participantes de programas de desarrollo por centralidad: capacitar a un broker tiene mayor alcance de difusión que un nodo periférico.</p>
     </div>
     <div class="card" style="border-top:3px solid var(--amber)">
-      <h4>Desarrollo de talento dirigido</h4>
-      <p>Planes de carrera que no solo desarrollan competencias, sino que construyen conexiones estratégicas entre áreas.</p>
+      <h4>Sucesión informada</h4>
+      <p>Si un líder informal con alta intermediación se va, ¿quién hereda sus relaciones? ONA + engagement identifica candidatos de sucesión no obvios.</p>
     </div>
     <div class="card" style="border-top:3px solid var(--violet)">
-      <h4>Sucesión inteligente</h4>
-      <p>Si un líder informal se va, ¿quién hereda sus relaciones? Graph ML permite preparar la transición antes de que sea urgente.</p>
+      <h4>Alertas tempranas</h4>
+      <p>Dimensiones con caída significativa (Welch t, p&lt;0.05) + nodos puente en esa área = señal de intervención antes de que se convierta en rotación.</p>
     </div>
     <div class="card" style="border-top:3px solid var(--blue)">
-      <h4>Onboarding con GPS social</h4>
-      <p>Conectar nuevos colaboradores con los nodos correctos desde el día 1 — no solo con su jefe, sino con los puentes que aceleran su integración.</p>
+      <h4>Formalizar colaboración orgánica</h4>
+      <p>Si ONA muestra que dos áreas ya colaboran naturalmente, formalizar esa conexión es más eficiente que crear una nueva desde cero.</p>
     </div>
     <div class="card" style="border-top:3px solid var(--coral)">
-      <h4>Seguimiento estructural</h4>
-      <p>¿Cambió la red después de una intervención? ¿Se crearon nuevas conexiones? Comparar la estructura antes y después permite evaluar impacto cuando el diseño de datos lo soporta.</p>
+      <h4>Medir delta post-intervención</h4>
+      <p>Con historicidad (4 mediciones) + tests de significancia: ¿la intervención del año pasado produjo un cambio real o solo ruido estadístico?</p>
     </div>
     <div class="card" style="border-top:3px solid var(--rose)">
-      <h4>Diseño de equipos por red</h4>
-      <p>Formar equipos basados en complementariedad de conexiones, no solo competencias. Equipos que ya saben colaborar producen más rápido.</p>
+      <h4>Priorizar inversión</h4>
+      <p>Drivers de engagement × varianza departamental: ¿dónde tiene más impacto cada peso invertido en desarrollo organizacional?</p>
     </div>
   </div>
 </section>
 
+<!-- Limitations -->
 <section>
-  <h2>El siguiente paso para Towerbank</h2>
-  <div class="timeline fragment fade-up">
-    <div class="timeline-step" style="border-left-color:var(--teal)">
-      <div class="num teal">01</div>
-      <h4>Mapeo de red (2 semanas)</h4>
-      <p>Un cuestionario de 10 preguntas a los 200 colaboradores. Sin big data, sin infraestructura compleja. Solo las preguntas correctas.</p>
+  <h2>Limitaciones y transparencia</h2>
+  <p>Qué puede y qué <strong style="color:var(--coral)">no puede</strong> hacer este enfoque. La honestidad metodológica es parte del valor.</p>
+  <div class="grid-2 fragment fade-up">
+    <div class="card" style="border-left:3px solid var(--coral)">
+      <h4 class="coral">Correlación ≠ causalidad</h4>
+      <p>Que Liderazgo correlacione con engagement no significa que mejorar liderazgo cause más engagement. Atribución causal requiere diseños experimentales o cuasi-experimentales.</p>
     </div>
-    <div class="timeline-step" style="border-left-color:var(--amber)">
-      <div class="num amber">02</div>
-      <h4>Análisis + hallazgos</h4>
-      <p>Identificar brokers, comunidades reales, y oportunidades de conexión. Cruzar con datos de "Transforma tu Pensamiento".</p>
+    <div class="card" style="border-left:3px solid var(--coral)">
+      <h4 class="coral">Percepciones ≠ comportamientos</h4>
+      <p>El clima mide cómo la gente <em>percibe</em> la organización, no cómo <em>actúa</em>. Un engagement alto en encuesta puede coexistir con baja productividad o alta rotación.</p>
     </div>
-    <div class="timeline-step" style="border-left-color:var(--violet)">
-      <div class="num violet">03</div>
-      <h4>Diseño de intervenciones</h4>
-      <p>Selección informada de próximos cohorts, mentorías cruzadas, y reconocimiento de los multiplicadores invisibles.</p>
+    <div class="card" style="border-left:3px solid var(--coral)">
+      <h4 class="coral">Sesgo de no-respuesta</h4>
+      <p>30% de colaboradores no respondieron. Sus percepciones podrían diferir sistemáticamente. El margen de error (±3.9%) no captura este sesgo — solo el muestral.</p>
+    </div>
+    <div class="card" style="border-left:3px solid var(--coral)">
+      <h4 class="coral">ONA perceptual ≠ sociométrica</h4>
+      <p>ONA basada en similitud de respuestas (perceptual) no es lo mismo que ONA basada en interacciones reales (sociométrica). La primera agrupa por percepción similar, la segunda por colaboración real.</p>
     </div>
   </div>
 </section>
 
+<!-- Closing quote -->
 <section data-state="impact" data-background-gradient="radial-gradient(ellipse at 50% 50%, rgba(6,214,160,0.08) 0%, #0a0e1a 60%)">
   <div class="quote fragment fade-up">
-    Las organizaciones que observan sus redes pueden dejar de gestionar la cultura a ciegas — y empezar a entender su arquitectura.
+    Una encuesta de clima te dice cómo se siente la organización. Estadística te dice si es significativo. ONA te muestra la estructura. Juntos, te dicen dónde actuar.
   </div>
-  <p class="quote-author fragment fade-up">Conway's Law no es una maldición. Es una lente.<br>Y Towerbank ya tiene la cultura para aprovecharla.</p>
+  <p class="quote-author fragment fade-up">El valor no está en medir más. Está en entender mejor.</p>
 </section>
 
 <!-- CLOSING -->
@@ -492,6 +571,7 @@
       <p style="font-size:0.6em;max-width:100%"><a href="https://linkedin.com/in/ulisesgonzalez" target="_blank" class="teal" style="text-decoration:none">→ /in/ulisesgonzalez</a></p>
     </div>
   </div>
+  <p class="small" style="text-align:center;max-width:100%;margin-top:24px">Caso educativo. Red sintética. Datos de clima basados en estudio real (pipeline v3_audited).</p>
 </section>
 
 </div><!-- /slides -->
@@ -519,7 +599,6 @@ Reveal.initialize({
   touch:true
 });
 
-// Mini SVG diagrams for the "orgchart vs network" slide
 Reveal.on('slidechanged',event=>{
   if(event.currentSlide.querySelector('#orgChart')){
     drawOrgChart();
@@ -544,7 +623,6 @@ function drawOrgChart(){
      {x:w*0.68,y:240,label:'',color:'#475569'},{x:w*0.78,y:240,label:'',color:'#475569'},{x:w*0.88,y:240,label:'',color:'#475569'}]
   ];
 
-  // Draw lines
   const edges=[[0,0,1,0],[0,0,1,1],[0,0,1,2],
     [1,0,2,0],[1,0,2,1],[1,0,2,2],[1,1,2,3],[1,1,2,4],[1,2,2,5],[1,2,2,6],
     [2,0,3,0],[2,0,3,1],[2,1,3,2],[2,2,3,3],[2,3,3,4],[2,4,3,5],[2,5,3,6],[2,5,3,7],[2,6,3,8]];
@@ -553,7 +631,6 @@ function drawOrgChart(){
     svg.append('line').attr('x1',s.x).attr('y1',s.y).attr('x2',t.x).attr('y2',t.y)
       .attr('stroke','rgba(100,116,139,0.2)').attr('stroke-width',1);
   });
-  // Draw nodes
   levels.flat().forEach(n=>{
     svg.append('circle').attr('cx',n.x).attr('cy',n.y).attr('r',n.label?10:6)
       .attr('fill',n.color).attr('opacity',0.7);
@@ -573,13 +650,11 @@ function drawNetworkViz(){
   for(let i=0;i<30;i++){
     nodes.push({x:w*0.15+Math.random()*w*0.7, y:30+Math.random()*220, color:colors[Math.floor(Math.random()*5)], r:3+Math.random()*8});
   }
-  // Random edges
   const edges=[];
   for(let i=0;i<50;i++){
     const a=Math.floor(Math.random()*30),b=Math.floor(Math.random()*30);
     if(a!==b)edges.push([a,b]);
   }
-  // Cross-group bridge edges (thicker)
   const bridges=[[2,15],[7,22],[10,28]];
 
   edges.forEach(([a,b])=>{
