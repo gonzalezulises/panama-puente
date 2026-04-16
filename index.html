@@ -6,27 +6,38 @@
 <title>De Encuesta de Clima a Inteligencia Organizacional — Panamá Puente Digital 2026</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/reveal.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/5.1.0/theme/black.min.css">
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
 <style>
 :root{
-  --r-background-color:#0a0e1a;
-  --r-main-font:'Outfit',sans-serif;
-  --r-heading-font:'Outfit',sans-serif;
+  --r-background-color:#060a14;
+  --r-main-font:'Inter',system-ui,sans-serif;
+  --r-heading-font:'Inter',system-ui,sans-serif;
   --r-code-font:'JetBrains Mono',monospace;
-  --r-main-color:#e2e8f0;
+  --r-main-color:#c8d6e5;
   --r-heading-color:#ffffff;
   --r-link-color:#06d6a0;
   --teal:#06d6a0;--amber:#fbbf24;--coral:#f97066;--violet:#a78bfa;--blue:#38bdf8;--rose:#fb7185;
+  --glass:rgba(15,23,42,0.55);
+  --glass-border:rgba(100,116,139,0.12);
+  --glass-hover:rgba(20,30,55,0.7);
 }
+
+/* ── Animated mesh background ── */
+.reveal .slides{background:
+  radial-gradient(ellipse 80% 60% at 20% 80%, rgba(6,214,160,0.04) 0%, transparent 60%),
+  radial-gradient(ellipse 60% 50% at 80% 20%, rgba(56,189,248,0.03) 0%, transparent 50%),
+  radial-gradient(ellipse 70% 70% at 50% 50%, rgba(167,139,250,0.02) 0%, transparent 60%);
+}
+
 .reveal{font-size:28px}
 .reveal .slides{text-align:left}
-.reveal .slides section{padding:40px 60px}
-.reveal h1{font-size:2.8em;font-weight:900;line-height:1.05;letter-spacing:-0.03em;margin-bottom:0.3em}
-.reveal h2{font-size:1.8em;font-weight:700;line-height:1.15;letter-spacing:-0.02em;margin-bottom:0.4em}
-.reveal h3{font-size:1.2em;font-weight:600;color:var(--teal);letter-spacing:0.02em;text-transform:uppercase;margin-bottom:0.3em}
-.reveal p{font-size:0.85em;line-height:1.6;color:#94a3b8;max-width:80%}
-.reveal .small{font-size:0.65em;color:#64748b}
+.reveal .slides section{padding:44px 64px}
+.reveal h1{font-size:2.8em;font-weight:900;line-height:1.05;letter-spacing:-0.04em;margin-bottom:0.3em;background:linear-gradient(135deg,#ffffff 0%,#c8d6e5 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.reveal h2{font-size:1.75em;font-weight:800;line-height:1.15;letter-spacing:-0.03em;margin-bottom:0.4em;color:#fff}
+.reveal h3{font-size:1.1em;font-weight:700;color:var(--teal);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:0.3em}
+.reveal p{font-size:0.82em;line-height:1.7;color:#8899aa;max-width:80%}
+.reveal .small{font-size:0.62em;color:#5a6a7a}
 .reveal .mono{font-family:'JetBrains Mono',monospace}
 .reveal .teal{color:var(--teal)}
 .reveal .amber{color:var(--amber)}
@@ -38,81 +49,125 @@
 .reveal .slides section[data-state="section-opener"]{text-align:center}
 .reveal .slides section[data-state="impact"]{text-align:center}
 
-.big-number{font-size:6em;font-weight:900;font-family:'JetBrains Mono',monospace;line-height:1;margin:0.2em 0}
-.big-number.teal{color:var(--teal)}
-.big-number.amber{color:var(--amber)}
-.big-number.coral{color:var(--coral)}
-
-.compare{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:30px}
-.compare-card{padding:30px;border-radius:16px;border:1px solid rgba(100,116,139,0.2)}
-.compare-card.old{background:rgba(249,112,102,0.06);border-color:rgba(249,112,102,0.2)}
-.compare-card.new{background:rgba(6,214,160,0.06);border-color:rgba(6,214,160,0.2)}
-.compare-card h4{font-size:0.85em;font-weight:600;margin-bottom:12px}
-.compare-card ul{font-size:0.7em;line-height:1.8;color:#94a3b8;list-style:none;padding:0}
-.compare-card ul li::before{content:'→ ';color:var(--teal)}
-.compare-card.old ul li::before{color:var(--coral)}
-
-.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:30px}
-.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-top:30px}
-.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:30px}
-.card{padding:24px;border-radius:12px;background:rgba(30,40,65,0.4);border:1px solid rgba(100,116,139,0.15)}
-.card h4{font-size:0.75em;font-weight:600;margin-bottom:8px;color:#e2e8f0}
-.card p{font-size:0.6em;color:#94a3b8;max-width:100%}
+/* ── Glassmorphism cards ── */
+.card{padding:26px;border-radius:16px;background:var(--glass);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid var(--glass-border);transition:all 0.35s cubic-bezier(.4,0,.2,1);box-shadow:0 4px 24px rgba(0,0,0,0.15),inset 0 1px 0 rgba(255,255,255,0.04)}
+.card:hover{background:var(--glass-hover);border-color:rgba(100,116,139,0.22);box-shadow:0 8px 40px rgba(0,0,0,0.25),inset 0 1px 0 rgba(255,255,255,0.06)}
+.card h4{font-size:0.73em;font-weight:700;margin-bottom:8px;color:#e2e8f0;letter-spacing:-0.01em}
+.card p{font-size:0.58em;color:#8899aa;max-width:100%}
 .card .icon{font-size:1.5em;margin-bottom:8px}
 
+.big-number{font-size:6em;font-weight:900;font-family:'JetBrains Mono',monospace;line-height:1;margin:0.2em 0}
+.big-number.teal{color:var(--teal);text-shadow:0 0 60px rgba(6,214,160,0.3),0 0 120px rgba(6,214,160,0.1)}
+.big-number.amber{color:var(--amber);text-shadow:0 0 60px rgba(251,191,36,0.3),0 0 120px rgba(251,191,36,0.1)}
+.big-number.coral{color:var(--coral);text-shadow:0 0 60px rgba(249,112,102,0.3)}
+
+/* ── Compare cards ── */
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:30px}
+.compare-card{padding:28px 30px;border-radius:18px;border:1px solid var(--glass-border);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:0 4px 20px rgba(0,0,0,0.12)}
+.compare-card.old{background:linear-gradient(145deg,rgba(249,112,102,0.06),rgba(249,112,102,0.02));border-color:rgba(249,112,102,0.15)}
+.compare-card.new{background:linear-gradient(145deg,rgba(6,214,160,0.07),rgba(56,189,248,0.03));border-color:rgba(6,214,160,0.15)}
+.compare-card h4{font-size:0.82em;font-weight:700;margin-bottom:14px}
+.compare-card ul{font-size:0.66em;line-height:1.9;color:#8899aa;list-style:none;padding:0}
+.compare-card ul li{padding:2px 0}
+.compare-card ul li::before{content:'→ ';color:var(--teal);font-weight:600}
+.compare-card.old ul li::before{color:var(--coral)}
+
+/* ── Grids ── */
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:30px}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:30px}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:30px}
+
+/* ── Concept cards ── */
 .concept-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:30px}
-.concept{padding:20px;border-radius:12px;text-align:center;border:1px solid rgba(100,116,139,0.15)}
-.concept .label{font-size:0.55em;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;margin-top:8px}
-.concept .desc{font-size:0.5em;color:#64748b;margin-top:4px;line-height:1.4}
+.concept{padding:22px;border-radius:16px;text-align:center;border:1px solid var(--glass-border);background:var(--glass);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);transition:all 0.3s ease}
+.concept:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,0,0,0.2)}
+.concept .label{font-size:0.55em;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;margin-top:8px}
+.concept .desc{font-size:0.48em;color:#6a7a8a;margin-top:4px;line-height:1.5}
 
-.def-block{padding:20px 24px;border-radius:12px;background:rgba(30,40,65,0.4);border-left:3px solid var(--teal);margin-bottom:16px}
-.def-block h4{font-size:0.75em;font-weight:700;color:#e2e8f0;margin-bottom:6px}
-.def-block p{font-size:0.6em;color:#94a3b8;max-width:100%;line-height:1.6}
-.def-block .source{font-size:0.5em;color:#64748b;margin-top:4px;font-style:italic}
+/* ── Definition blocks ── */
+.def-block{padding:22px 28px;border-radius:16px;background:var(--glass);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-left:3px solid var(--teal);border-top:1px solid var(--glass-border);border-right:1px solid var(--glass-border);border-bottom:1px solid var(--glass-border);margin-bottom:14px;transition:all 0.3s ease;box-shadow:0 2px 12px rgba(0,0,0,0.1)}
+.def-block:hover{background:var(--glass-hover)}
+.def-block h4{font-size:0.73em;font-weight:700;color:#e2e8f0;margin-bottom:6px}
+.def-block p{font-size:0.58em;color:#8899aa;max-width:100%;line-height:1.65}
+.def-block .source{font-size:0.48em;color:#5a6a7a;margin-top:6px;font-style:italic}
 
-.timeline{display:flex;gap:16px;margin-top:30px}
-.timeline-step{flex:1;padding:20px;border-radius:12px;background:rgba(30,40,65,0.4);border-left:3px solid var(--teal);position:relative}
+/* ── Timeline ── */
+.timeline{display:flex;gap:14px;margin-top:30px}
+.timeline-step{flex:1;padding:22px;border-radius:16px;background:var(--glass);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid var(--glass-border);border-left:3px solid var(--teal);position:relative;transition:all 0.3s ease;box-shadow:0 2px 12px rgba(0,0,0,0.1)}
+.timeline-step:hover{background:var(--glass-hover);transform:translateY(-2px)}
 .timeline-step .num{font-family:'JetBrains Mono',monospace;font-size:0.6em;font-weight:700;color:var(--teal);margin-bottom:4px}
-.timeline-step h4{font-size:0.7em;font-weight:600;margin-bottom:6px}
-.timeline-step p{font-size:0.55em;color:#94a3b8;max-width:100%;line-height:1.5}
+.timeline-step h4{font-size:0.68em;font-weight:700;margin-bottom:6px;color:#e2e8f0}
+.timeline-step p{font-size:0.53em;color:#8899aa;max-width:100%;line-height:1.5}
 
-.quote{font-size:1.3em;font-weight:300;font-style:italic;color:#e2e8f0;line-height:1.5;max-width:85%;margin:30px auto;text-align:center;position:relative;padding:0 40px}
-.quote::before,.quote::after{content:'"';font-size:2em;color:var(--teal);position:absolute;font-style:normal;font-weight:900;line-height:1}
+/* ── Quote ── */
+.quote{font-size:1.25em;font-weight:300;font-style:italic;color:#e2e8f0;line-height:1.6;max-width:80%;margin:30px auto;text-align:center;position:relative;padding:0 50px}
+.quote::before,.quote::after{content:'"';font-size:3em;color:var(--teal);position:absolute;font-style:normal;font-weight:900;line-height:1;opacity:0.6}
 .quote::before{left:0;top:-10px}
-.quote::after{right:0;bottom:-20px}
-.quote-author{font-size:0.65em;color:#64748b;text-align:center;margin-top:12px;font-style:normal}
+.quote::after{right:0;bottom:-30px}
+.quote-author{font-size:0.62em;color:#5a6a7a;text-align:center;margin-top:16px;font-style:normal}
 
-.demo-frame{width:100%;height:500px;border:1px solid rgba(100,116,139,0.2);border-radius:12px;overflow:hidden;margin-top:20px}
+/* ── Demo frame ── */
+.demo-frame{width:100%;height:500px;border:1px solid var(--glass-border);border-radius:16px;overflow:hidden;margin-top:20px;box-shadow:0 8px 40px rgba(0,0,0,0.3),inset 0 1px 0 rgba(255,255,255,0.03)}
 .demo-frame iframe{width:100%;height:100%;border:none}
 
-.provocation{background:linear-gradient(90deg,rgba(6,214,160,0.1),rgba(56,189,248,0.1));border:1px solid rgba(6,214,160,0.2);border-radius:12px;padding:24px 30px;margin-top:24px}
-.provocation p{font-size:0.8em;color:#e2e8f0;max-width:100%;line-height:1.6}
+/* ── Provocation bar ── */
+.provocation{background:linear-gradient(135deg,rgba(6,214,160,0.08),rgba(56,189,248,0.06),rgba(167,139,250,0.04));border:1px solid rgba(6,214,160,0.15);border-radius:16px;padding:24px 30px;margin-top:24px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);box-shadow:0 2px 16px rgba(6,214,160,0.06)}
+.provocation p{font-size:0.76em;color:#c8d6e5;max-width:100%;line-height:1.7}
 
-.ficha-table{width:100%;border-collapse:collapse;margin-top:20px;font-size:0.65em}
-.ficha-table td{padding:10px 16px;border-bottom:1px solid rgba(100,116,139,0.15);color:#94a3b8}
-.ficha-table td:first-child{font-weight:600;color:#e2e8f0;width:40%}
+/* ── Ficha table ── */
+.ficha-table{width:100%;border-collapse:collapse;margin-top:20px;font-size:0.63em}
+.ficha-table td{padding:11px 18px;border-bottom:1px solid rgba(100,116,139,0.1);color:#8899aa}
+.ficha-table td:first-child{font-weight:700;color:#c8d6e5;width:40%}
 .ficha-table td .mono{font-family:'JetBrains Mono',monospace;color:var(--teal)}
 
-/* Stack layer visual */
-.stack-layer{padding:16px 24px;border-radius:10px;margin-bottom:8px;display:flex;align-items:center;gap:16px}
-.stack-layer .layer-num{font-family:'JetBrains Mono',monospace;font-size:1.2em;font-weight:900;min-width:32px}
+/* ── Stack layers ── */
+.stack-layer{padding:18px 28px;border-radius:14px;margin-bottom:8px;display:flex;align-items:center;gap:20px;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);transition:all 0.3s ease;box-shadow:0 2px 12px rgba(0,0,0,0.08)}
+.stack-layer:hover{transform:translateX(4px)}
+.stack-layer .layer-num{font-family:'JetBrains Mono',monospace;font-size:1.4em;font-weight:900;min-width:36px;opacity:0.9}
 .stack-layer h4{font-size:0.7em;font-weight:700;color:#e2e8f0;margin-bottom:2px}
-.stack-layer p{font-size:0.55em;color:#94a3b8;max-width:100%;line-height:1.4;margin:0}
+.stack-layer p{font-size:0.53em;color:#8899aa;max-width:100%;line-height:1.4;margin:0}
 
-.brand-footer{position:fixed;bottom:12px;left:24px;font-size:11px;color:#475569;font-family:'JetBrains Mono',monospace;z-index:100;letter-spacing:0.04em}
-.brand-footer span{color:var(--teal)}
+/* ── Brand footer ── */
+.brand-footer{position:fixed;bottom:16px;left:28px;font-size:11px;color:rgba(100,116,139,0.5);font-family:'JetBrains Mono',monospace;z-index:100;letter-spacing:0.06em}
+.brand-footer span{color:rgba(6,214,160,0.5)}
 
-.reveal .progress{height:3px;color:var(--teal)}
-.reveal .progress span{background:var(--teal)}
+/* ── Progress bar ── */
+.reveal .progress{height:2px;color:var(--teal)}
+.reveal .progress span{background:linear-gradient(90deg,var(--teal),var(--blue))}
 
-.reveal .fragment{transition:all 0.4s ease}
-.reveal .fragment.fade-up{transform:translateY(20px)}
-.reveal .fragment.fade-up.visible{transform:translateY(0)}
+/* ── Fragment animations ── */
+.reveal .fragment{transition:all 0.5s cubic-bezier(.4,0,.2,1)}
+.reveal .fragment.fade-up{transform:translateY(24px);opacity:0}
+.reveal .fragment.fade-up.visible{transform:translateY(0);opacity:1}
 
-@keyframes glowPulse{0%,100%{text-shadow:0 0 20px rgba(6,214,160,0.2)}50%{text-shadow:0 0 40px rgba(6,214,160,0.4)}}
-.glow-text{animation:glowPulse 3s ease-in-out infinite}
+/* ── Title glow ── */
+@keyframes glowPulse{
+  0%,100%{text-shadow:0 0 30px rgba(6,214,160,0.15),0 0 60px rgba(6,214,160,0.05);filter:brightness(1)}
+  50%{text-shadow:0 0 50px rgba(6,214,160,0.25),0 0 100px rgba(6,214,160,0.1);filter:brightness(1.05)}
+}
+.glow-text{animation:glowPulse 4s ease-in-out infinite;-webkit-text-fill-color:unset;background:none;-webkit-background-clip:unset;background-clip:unset}
 
+/* ── Section opener styling ── */
+.reveal .slides section[data-state="section-opener"] h2{font-size:2.2em;background:linear-gradient(135deg,#ffffff 0%,var(--teal) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.reveal .slides section[data-state="section-opener"] h3{font-size:0.85em;letter-spacing:0.12em;opacity:0.7}
+
+/* ── Noise texture overlay ── */
+.reveal::after{content:'';position:fixed;inset:0;pointer-events:none;opacity:0.015;z-index:1000;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* ── Animated gradient orbs behind title ── */
+@keyframes orbFloat1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(30px,-20px) scale(1.1)}}
+@keyframes orbFloat2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-20px,30px) scale(0.9)}}
+.title-orb{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:-1}
+.title-orb.orb1{width:400px;height:400px;background:radial-gradient(circle,rgba(6,214,160,0.12),transparent 70%);top:10%;left:15%;animation:orbFloat1 8s ease-in-out infinite}
+.title-orb.orb2{width:350px;height:350px;background:radial-gradient(circle,rgba(56,189,248,0.08),transparent 70%);bottom:15%;right:15%;animation:orbFloat2 10s ease-in-out infinite}
+
+/* ── Mini graph ── */
 .mini-graph{width:100%;height:300px;margin:20px 0}
+
+/* ── Controls styling ── */
+.reveal .controls .controls-arrow{color:rgba(6,214,160,0.4)}
+.reveal .controls .controls-arrow:hover{color:var(--teal)}
+.reveal .slide-number{font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(100,116,139,0.4);background:transparent}
 </style>
 </head>
 <body>
@@ -122,23 +177,25 @@
 <!-- =====================================================
      TITLE
      ===================================================== -->
-<section data-state="title-slide" data-background-gradient="radial-gradient(ellipse at 50% 50%, rgba(6,214,160,0.08) 0%, #0a0e1a 70%)">
-  <h3 style="color:var(--teal);font-size:0.6em;letter-spacing:0.15em;margin-bottom:16px">PANAMÁ PUENTE DIGITAL 2026</h3>
-  <h1 style="font-size:2.4em;max-width:90%;margin:0 auto" class="glow-text">De Encuesta de Clima a<br><span class="teal">Inteligencia Organizacional</span></h1>
-  <p style="text-align:center;max-width:100%;margin-top:20px;font-size:0.7em">Caso educativo: cómo la estadística rigurosa, el machine learning y el análisis<br>de redes transforman datos de clima en decisiones de negocio.</p>
-  <p style="text-align:center;max-width:100%;margin-top:32px;font-size:0.6em;color:#64748b">
-    <strong style="color:#e2e8f0">Ulises González</strong> · Business Scientist · Rizo.ma<br>
-    <span class="mono" style="font-size:0.85em">ICF ACC · PMP® · MIT AI/ML</span>
+<section data-state="title-slide" data-background-color="#060a14">
+  <div class="title-orb orb1"></div>
+  <div class="title-orb orb2"></div>
+  <h3 style="color:var(--teal);font-size:0.55em;letter-spacing:0.2em;margin-bottom:20px;opacity:0.8">PANAMÁ PUENTE DIGITAL 2026</h3>
+  <h1 style="font-size:2.5em;max-width:90%;margin:0 auto" class="glow-text">De Encuesta de Clima a<br><span class="teal">Inteligencia Organizacional</span></h1>
+  <p style="text-align:center;max-width:100%;margin-top:24px;font-size:0.68em;color:#7a8a9a">Caso educativo: cómo la estadística rigurosa, el machine learning y el análisis<br>de redes transforman datos de clima en decisiones de negocio.</p>
+  <p style="text-align:center;max-width:100%;margin-top:36px;font-size:0.58em;color:#5a6a7a">
+    <strong style="color:#c8d6e5">Ulises González</strong> · Business Scientist · Rizo.ma<br>
+    <span class="mono" style="font-size:0.85em;color:rgba(6,214,160,0.6)">ICF ACC · PMP® · MIT AI/ML</span>
   </p>
 </section>
 
 <!-- =====================================================
      ACT 1: FOUNDATIONS (12 min)
      ===================================================== -->
-<section data-state="section-opener" data-background-gradient="radial-gradient(ellipse at 30% 40%, rgba(6,214,160,0.06) 0%, #0a0e1a 60%)">
+<section data-state="section-opener" data-background-gradient="radial-gradient(ellipse at 25% 40%, rgba(6,214,160,0.07) 0%, #060a14 55%)">
   <h3>Acto I</h3>
   <h2>Fundamentos</h2>
-  <p style="text-align:center;max-width:70%;margin:0 auto">Qué es clima organizacional, cómo se mide con rigor, y por qué la mayoría de las encuestas se quedan cortas.</p>
+  <p style="text-align:center;max-width:65%;margin:0 auto;color:#7a8a9a">Qué es clima organizacional, cómo se mide con rigor, y por qué la mayoría de las encuestas se quedan cortas.</p>
 </section>
 
 <!-- Definitions -->
@@ -225,10 +282,10 @@
 <!-- =====================================================
      ACT 2: THE SCIENCE (12 min)
      ===================================================== -->
-<section data-state="section-opener" data-background-gradient="radial-gradient(ellipse at 60% 50%, rgba(6,214,160,0.06) 0%, #0a0e1a 60%)">
+<section data-state="section-opener" data-background-gradient="radial-gradient(ellipse at 65% 45%, rgba(56,189,248,0.06) 0%, rgba(167,139,250,0.03) 30%, #060a14 60%)">
   <h3>Acto II</h3>
   <h2>La Ciencia</h2>
-  <p style="text-align:center;max-width:70%;margin:0 auto">El valor de cada capa: qué pregunta responde, qué método usa, y por qué importa.</p>
+  <p style="text-align:center;max-width:65%;margin:0 auto;color:#7a8a9a">El valor de cada capa: qué pregunta responde, qué método usa, y por qué importa.</p>
 </section>
 
 <!-- Layer 1: The instrument -->
@@ -338,10 +395,10 @@
 <!-- =====================================================
      ACT 3: THE CASE (12 min)
      ===================================================== -->
-<section data-state="section-opener" data-background-gradient="radial-gradient(ellipse at 40% 60%, rgba(56,189,248,0.06) 0%, #0a0e1a 60%)">
+<section data-state="section-opener" data-background-gradient="radial-gradient(ellipse at 40% 55%, rgba(251,191,36,0.05) 0%, rgba(6,214,160,0.03) 35%, #060a14 60%)">
   <h3>Acto III</h3>
   <h2>El Caso: Banco Panameño</h2>
-  <p style="text-align:center;max-width:70%;margin:0 auto">270 colaboradores, 22 áreas, 4 mediciones, y un engagement de 89.9%.<br>¿Qué historia cuentan los datos cuando se analizan con rigor?</p>
+  <p style="text-align:center;max-width:65%;margin:0 auto;color:#7a8a9a">270 colaboradores, 22 áreas, 4 mediciones, y un engagement de 89.9%.<br>¿Qué historia cuentan los datos cuando se analizan con rigor?</p>
 </section>
 
 <!-- Ficha técnica -->
@@ -461,10 +518,10 @@
 <!-- =====================================================
      ACT 4: BUSINESS IMPACT (10 min)
      ===================================================== -->
-<section data-state="section-opener" data-background-gradient="radial-gradient(ellipse at 50% 40%, rgba(167,139,250,0.06) 0%, #0a0e1a 60%)">
+<section data-state="section-opener" data-background-gradient="radial-gradient(ellipse at 50% 40%, rgba(167,139,250,0.06) 0%, rgba(6,214,160,0.03) 35%, #060a14 60%)">
   <h3>Acto IV</h3>
   <h2>Impacto de Negocio</h2>
-  <p style="text-align:center;max-width:70%;margin:0 auto">Todo se resume en una pregunta: ¿cómo se traduce esto en decisiones que mueven indicadores?</p>
+  <p style="text-align:center;max-width:65%;margin:0 auto;color:#7a8a9a">Todo se resume en una pregunta: ¿cómo se traduce esto en decisiones que mueven indicadores?</p>
 </section>
 
 <section>
@@ -546,7 +603,7 @@
 </section>
 
 <!-- Closing quote -->
-<section data-state="impact" data-background-gradient="radial-gradient(ellipse at 50% 50%, rgba(6,214,160,0.08) 0%, #0a0e1a 60%)">
+<section data-state="impact" data-background-gradient="radial-gradient(ellipse at 50% 50%, rgba(6,214,160,0.08) 0%, rgba(56,189,248,0.03) 35%, #060a14 65%)">
   <div class="quote fragment fade-up">
     Una encuesta de clima te dice cómo se siente la organización. Estadística te dice si es significativo. ONA te muestra la estructura. Juntos, te dicen dónde actuar.
   </div>
@@ -554,8 +611,10 @@
 </section>
 
 <!-- CLOSING -->
-<section data-state="title-slide" data-background-gradient="radial-gradient(ellipse at 50% 50%, rgba(6,214,160,0.06) 0%, #0a0e1a 60%)">
-  <h3 style="color:var(--teal);font-size:0.6em;letter-spacing:0.15em;margin-bottom:20px">GRACIAS</h3>
+<section data-state="title-slide" data-background-color="#060a14">
+  <div class="title-orb orb1"></div>
+  <div class="title-orb orb2"></div>
+  <h3 style="color:var(--teal);font-size:0.55em;letter-spacing:0.2em;margin-bottom:20px;opacity:0.8">GRACIAS</h3>
   <h1 style="font-size:2.2em">Ulises González</h1>
   <p style="text-align:center;max-width:100%;font-size:0.75em;color:#94a3b8;margin-top:20px">
     Business Scientist · Rizo.ma<br>
@@ -585,7 +644,7 @@ Reveal.initialize({
   hash:true,
   slideNumber:'c/t',
   transition:'fade',
-  transitionSpeed:'default',
+  transitionSpeed:'slow',
   backgroundTransition:'fade',
   center:false,
   width:1280,
@@ -596,7 +655,9 @@ Reveal.initialize({
   controlsTutorial:false,
   keyboard:true,
   overview:true,
-  touch:true
+  touch:true,
+  autoAnimateEasing:'cubic-bezier(0.4, 0, 0.2, 1)',
+  autoAnimateDuration:0.8
 });
 
 Reveal.on('slidechanged',event=>{
